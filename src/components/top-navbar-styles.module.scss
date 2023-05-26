@@ -1,0 +1,10 @@
+.header {
+    display: flex;
+    width: 100%;
+    height: var(--navbar-height);
+    position: sticky;
+    background-color: yellow;
+    h1 {
+        color: black;
+    }
+}

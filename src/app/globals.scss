@@ -1,0 +1,19 @@
+:root {
+  --navbar-height: 90px;
+  --footer-height: 200px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+.page-wrapper {
+  //make sure minimum height of the wrapper is the height of the viewport minus the heights of the navbar and footer.
+  //that way, if there is not enough content to fill the page, the footer will still be fully visible
+  //while staying at the bottom of the viewport
+
+  min-height: calc(100vh - var(--navbar-height) - var(--footer-height)); 
+  background-color: black;
+}
