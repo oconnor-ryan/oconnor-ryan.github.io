@@ -1,6 +1,10 @@
 :root {
+  //dimensions
   --navbar-height: 90px;
-  --footer-height: 200px;
+  --footer-height: 90px;
+
+  //colors
+  --navbar-background: repeating-linear-gradient(45deg, rgb(215, 211, 7), rgb(255, 238, 1), rgb(215, 211, 7) 30%);
 }
 
 * {
@@ -9,7 +13,7 @@
   border: 0;
 }
 
-.page-wrapper {
+#main-page-wrapper {
   //make sure minimum height of the wrapper is the height of the viewport minus the heights of the navbar and footer.
   //that way, if there is not enough content to fill the page, the footer will still be fully visible
   //while staying at the bottom of the viewport

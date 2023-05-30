@@ -21,7 +21,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <TopNavbar />
 
-        <div className="page-wrapper">
+        <div id="main-page-wrapper">
           {children}
         </div>
         

@@ -6,7 +6,7 @@
   width: 100%;
   height: var(--navbar-height);
   position: sticky;
-  background-color: yellow;
+  background: var(--navbar-background);
   
   .social-container {
     margin-left: 20px;
@@ -38,7 +38,7 @@
       height: 60px;
       padding-top: 10px;
       
-      background-color: yellow;
+      background-color: transparent;
     }
     
     .hamburger > * {
