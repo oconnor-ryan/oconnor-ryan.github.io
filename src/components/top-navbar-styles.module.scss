@@ -1,10 +1,64 @@
 .header {
-    display: flex;
-    width: 100%;
-    height: var(--navbar-height);
-    position: sticky;
-    background-color: yellow;
-    h1 {
-        color: black;
+  display: flex;
+  flex-direction: row;
+  align-items: center; //center flex items vertically
+  justify-content: space-between; //first and last elements go to leftmost and rightmost sides respectively
+  width: 100%;
+  height: var(--navbar-height);
+  position: sticky;
+  background-color: yellow;
+  
+  .logo-container {
+    text-decoration: none;
+    margin-left: 1em;
+    .name {
+      text-align: center;
+      font-size: 2em;
     }
+  }
+
+  .nav-wrapper {
+    margin-right: 20px;
+
+    .hamburger {
+      display: none;
+      width: 40px;
+      height: 60px;
+      padding-top: 10px;
+      
+      background-color: yellow;
+    }
+    
+    .hamburger > * {
+      background-color: black;
+      padding: 2px;
+      margin: 10px 0 10px 0;
+    }
+  
+    .nav {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+    }
+    
+    .nav > * {
+      text-decoration: none;
+      padding: 1em;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    .nav-wrapper {
+      .hamburger {
+        display: block;
+      }
+
+      .nav > * {
+        display: none;
+      }
+    }
+    
+  }
 }
