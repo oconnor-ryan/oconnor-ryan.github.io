@@ -8,10 +8,22 @@
   position: sticky;
   background-color: yellow;
   
+  .social-container {
+    margin-left: 20px;
+    display: inline-block;
+
+    img {
+      padding: 5px;
+      width: 28px;
+      height: 28px;
+    }
+  }
+
   .logo-container {
     text-decoration: none;
-    margin-left: 1em;
+
     .name {
+      color: purple;
       text-align: center;
       font-size: 2em;
     }
@@ -43,6 +55,7 @@
     
     .nav > * {
       text-decoration: none;
+      color: purple;
       padding: 1em;
     }
   }
