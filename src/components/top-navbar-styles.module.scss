@@ -1,16 +1,20 @@
 .header {
   display: flex;
   flex-direction: row;
-  align-items: center; //center flex items vertically
+  align-items: normal; //center flex items vertically
   justify-content: space-between; //first and last elements go to leftmost and rightmost sides respectively
-  width: 100%;
   height: var(--navbar-height);
+  transition: height 0.5s;
   position: sticky;
+  padding: var(--navbar-padding-except-bottom);
+  padding-bottom: 0px;
   background: var(--navbar-background);
+  overflow: hidden; //prevents user from interacting with elements outside of the borders of this element
+
   
   .social-container {
-    margin-left: 20px;
     display: inline-block;
+    height: 100%;
 
     img {
       padding: 5px;
@@ -21,6 +25,8 @@
 
   .logo-container {
     text-decoration: none;
+    height: 100%;
+
 
     .name {
       color: purple;
@@ -29,49 +35,65 @@
     }
   }
 
-  .nav-wrapper {
-    margin-right: 20px;
-
-    .hamburger {
-      display: none;
-      width: 40px;
-      height: 60px;
-      padding-top: 10px;
-      
-      background-color: transparent;
-    }
+  .hamburger {
+    height: 100%;
+    display: none;
+    width: 40px;
+    height: fit-content;
     
-    .hamburger > * {
-      background-color: black;
-      padding: 2px;
-      margin: 10px 0 10px 0;
-    }
+    background-color: transparent;
+  }
   
-    .nav {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-evenly;
-    }
-    
-    .nav > * {
-      text-decoration: none;
-      color: purple;
-      padding: 1em;
-    }
+  .hamburger > * {
+    background-color: black;
+    padding: 2px;
+    margin: 7px 0 7px 0;
+  }
+
+  .nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 100%;
+
+  }
+  
+  .nav > * {
+    text-decoration: none;
+    color: purple;
+    padding: 1em;
   }
 }
 
+
+
 @media screen and (max-width: 768px) {
   .header {
-    .nav-wrapper {
-      .hamburger {
-        display: block;
-      }
-
-      .nav > * {
-        display: none;
-      }
+    .hamburger {
+      display: block; //make the hamburger display visible.
     }
-    
+
+    //adjust the navbar as it would appear when the dropdown class is in the header.
+    //because overflow: hidden in the header, the navbar cannot be seen or interacted with until
+    //the user selects the hamburger menu
+    .nav {
+      display: block;
+      position: absolute;
+      //make sure navbar stays under the bottom border of the header when not in dropdown mode.
+      //this is hidden due to the overflow: hidden attribute in the header.
+      top: calc(var(--navbar-height) + var(--navbar-padding-except-bottom));
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .nav > * {
+      display: block; //make elements of navbar display up to down instead of left to right
+    }
+  }
+
+  //when the dropdown class is added to header, move the header to the bottom of the viewport
+  .header.dropdown {
+    height: 100vh;
   }
 }

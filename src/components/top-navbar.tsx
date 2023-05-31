@@ -1,3 +1,4 @@
+import Script from "next/script";
 import styles from "./top-navbar-styles.module.scss";
 
 export default function TopNavbar()  {
@@ -13,21 +14,42 @@ export default function TopNavbar()  {
       <a href="/" className={styles["logo-container"]}>
         <h1 className={styles.name}>Ryan O'Connor</h1>
       </a>
-
-      <div className={styles["nav-wrapper"]}>
-        <div className={styles.hamburger}>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-        <nav className={styles.nav}>
-          <a href="/#about">About</a>
-          <a href="/#education">Education</a>
-          <a href="/#experience">Experience</a>
-          <a href="/blog">Blog</a>
-        </nav>
-      </div>
+        
+      <nav className={styles.nav}>
+        <a href="/#about">About</a>
+        <a href="/#education">Education</a>
+        <a href="/#experience">Experience</a>
+        <a href="/blog">Blog</a>
+      </nav>
       
+      <div className={styles.hamburger}>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+
+      <Script id="display-nav-dropdown"
+        dangerouslySetInnerHTML={ {
+          __html: `
+          const header = document.getElementsByClassName('${styles.header}')[0];
+          const hamburger = document.getElementsByClassName('${styles.hamburger}')[0];
+          const nav = document.getElementsByClassName('${styles.nav}')[0];
+          let showDropdown = false;
+
+          hamburger.addEventListener("click", (ev) => {
+            showDropdown = !showDropdown;
+
+            if(showDropdown) {
+              header.classList.add("${styles.dropdown}");
+
+            } else {
+              header.classList.remove("${styles.dropdown}");
+            }
+          });
+        `
+        }}
+      />
+
     </header>
   );
 }
