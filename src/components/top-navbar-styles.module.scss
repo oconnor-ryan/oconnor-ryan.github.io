@@ -11,25 +11,10 @@
   background: var(--navbar-background);
   overflow: hidden; //prevents user from interacting with elements outside of the borders of this element
 
-  .social-container {
-    display: inline-block;
-    height: 100%;
-
-    a {
-      display: inline-block; //required so that it expands to fit imgs
-      padding: 5px;
-      text-align: center;
-    }
-
-    img {
-      width: 28px;
-      height: 28px;
-    }
-  }
-
   .logo-container {
     text-decoration: none;
     height: 100%;
+
 
     .name {
       display: block;
@@ -88,13 +73,28 @@
   .nav {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-around;
     height: 100%;
 
-    * {
+    .link {
       text-decoration: none;
-      padding: 0.5em 1em 0.5em 1em;
       color: black;
+      padding: 0.5em 1em 0.5em 1em;
+    }
+
+    .social-container {
+      display: flex;
+      padding: 0;
+  
+      a {
+        display: inline-block; //required so that it expands to fit imgs
+        padding: 5px;
+      }
+  
+      img {
+        width: 32px;
+        height: 32px;
+      }
     }
   }
 }
@@ -118,14 +118,19 @@
       width: 100%;
       overflow: hidden;
 
-      * {
+      .link {
         display: block; //make elements of navbar display up to down instead of left to right
         padding: 1em;
       }
 
+      .social-container {
+        background-color: transparent;
+      }
+
       //add a partially transparent black background so that each odd child element appears
-      //to have a slightly darker background compared to the navbar background color
-      :nth-child(odd) {
+      //to have a slightly darker background compared to the navbar background color.
+      //NOTE. USE > to only select the children of .social-container and not its grandchildren.
+      > :nth-child(odd) {
         background-color: rgba(0, 0, 0, 0.2);
       }
     }
@@ -134,15 +139,5 @@
   //when the dropdown class is added to header, move the header to the bottom of the viewport
   .header.dropdown {
     height: 100vh;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .header {
-    .logo-container {
-      .name {
-        font-size: 1.2em;
-      }
-    }
   }
 }
