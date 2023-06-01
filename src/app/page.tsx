@@ -5,8 +5,17 @@ import styles from './page.module.scss'
 export default function Home() {
   return (
     <main className={styles.main}>
-      <h1>Hi there!</h1>
-      <a href="/blog">Blog Page</a>
+      <div id="about">
+        <h1>About</h1>
+      </div>
+
+      <div id="education">
+        <h1>Education</h1>
+      </div>
+
+      <div id="experience">
+        <h1>Experience</h1>
+      </div>
     </main>
   )
 }

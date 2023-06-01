@@ -16,8 +16,12 @@
     display: inline-block;
     height: 100%;
 
-    img {
+    a {
+      display: inline-block; //required so that it expands to fit imgs
       padding: 5px;
+      text-align: center;
+    }
+    img {
       width: 28px;
       height: 28px;
     }
@@ -36,19 +40,53 @@
   }
 
   .hamburger {
-    height: 100%;
+    position: relative; //required before using children with position: absolute
     display: none;
     width: 40px;
-    height: fit-content;
-    
+    height: 30px;
     background-color: transparent;
+    cursor: pointer;
+
+    //these are the 3 bars in the hamburger menu
+    * {
+      position: absolute;
+      background-color: black;
+      border-radius: 2px;
+      width: 100%;
+      height: 4px;
+      transition: all 0.5s;
+    }
+
+    :nth-child(1) {
+      top: 0px;
+    }
+
+    :nth-child(2) {
+      top: 13px; //placed so bar is directly in middle of 15px height (bar covered 13px-17px)
+    }
+
+    :nth-child(3) {
+      top: 26px; //because height=4px, the bottom of the bar will reach the bottom of the hamburger border 
+    }
   }
+
+  //class .x indicates that the hamburger menu should form an x
+  .hamburger.x {
+    :nth-child(1) {
+      rotate: 45deg;
+      top: 15px; //put at center of hamburger wrapper
+    }
+    :nth-child(2) {
+      width: 0; //shrink second bar down to 0
+    }
+    :nth-child(3) {
+      rotate: -45deg;
+      top: 15px; //put at center of hamburger wrapper
+    }
+
+  }
+
   
-  .hamburger > * {
-    background-color: black;
-    padding: 2px;
-    margin: 7px 0 7px 0;
-  }
 
   .nav {
     display: flex;

@@ -41,9 +41,12 @@ export default function TopNavbar()  {
 
             if(showDropdown) {
               header.classList.add("${styles.dropdown}");
+              hamburger.classList.add("${styles.x}");
 
             } else {
               header.classList.remove("${styles.dropdown}");
+              hamburger.classList.remove("${styles.x}");
+
             }
           });
         `
