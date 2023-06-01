@@ -98,8 +98,8 @@
   
   .nav > * {
     text-decoration: none;
+    padding: 0.5em 1em 0.5em 1em;
     color: purple;
-    padding: 1em;
   }
 }
 
@@ -127,6 +127,7 @@
 
     .nav > * {
       display: block; //make elements of navbar display up to down instead of left to right
+      padding: 1em;
     }
   }
 
