@@ -11,7 +11,6 @@
   background: var(--navbar-background);
   overflow: hidden; //prevents user from interacting with elements outside of the borders of this element
 
-  
   .social-container {
     display: inline-block;
     height: 100%;
@@ -21,6 +20,7 @@
       padding: 5px;
       text-align: center;
     }
+
     img {
       width: 28px;
       height: 28px;
@@ -31,11 +31,11 @@
     text-decoration: none;
     height: 100%;
 
-
     .name {
-      color: purple;
+      display: block;
+      color: black;
       text-align: center;
-      font-size: 2em;
+      font-size: 1.7em;
     }
   }
 
@@ -83,10 +83,7 @@
       rotate: -45deg;
       top: 15px; //put at center of hamburger wrapper
     }
-
   }
-
-  
 
   .nav {
     display: flex;
@@ -94,16 +91,13 @@
     justify-content: space-evenly;
     height: 100%;
 
-  }
-  
-  .nav > * {
-    text-decoration: none;
-    padding: 0.5em 1em 0.5em 1em;
-    color: purple;
+    * {
+      text-decoration: none;
+      padding: 0.5em 1em 0.5em 1em;
+      color: black;
+    }
   }
 }
-
-
 
 @media screen and (max-width: 768px) {
   .header {
@@ -123,16 +117,32 @@
       left: 0;
       width: 100%;
       overflow: hidden;
-    }
 
-    .nav > * {
-      display: block; //make elements of navbar display up to down instead of left to right
-      padding: 1em;
+      * {
+        display: block; //make elements of navbar display up to down instead of left to right
+        padding: 1em;
+      }
+
+      //add a partially transparent black background so that each odd child element appears
+      //to have a slightly darker background compared to the navbar background color
+      :nth-child(odd) {
+        background-color: rgba(0, 0, 0, 0.2);
+      }
     }
   }
 
   //when the dropdown class is added to header, move the header to the bottom of the viewport
   .header.dropdown {
     height: 100vh;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .header {
+    .logo-container {
+      .name {
+        font-size: 1.2em;
+      }
+    }
   }
 }

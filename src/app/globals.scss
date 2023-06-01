@@ -1,13 +1,15 @@
 :root {
   //dimensions
-  --navbar-height: 80px;
+  --navbar-height: 90px;
   --navbar-padding-except-bottom: 20px;
   --footer-height: 90px;
 
   //colors
-  --navbar-background: repeating-linear-gradient(45deg, rgb(255, 238, 1), rgb(228, 232, 0), rgb(255, 238, 1) 15%);
+  --gold-1: rgb(228, 232, 0);
+  --gold-2: rgb(255, 238, 1);
 
-  ;
+  --navbar-background: var(--gold-1);
+
 }
 
 * {
