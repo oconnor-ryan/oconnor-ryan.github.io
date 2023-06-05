@@ -99,6 +99,16 @@
   }
 }
 
+@media screen and (max-width: 900px) {
+  .header {
+    .nav {
+      .social-container {
+        display: none;
+      }
+    }
+  }
+}
+
 @media screen and (max-width: 768px) {
   .header {
     .hamburger {
@@ -124,6 +134,7 @@
       }
 
       .social-container {
+        display: block;
         background-color: transparent;
       }
 

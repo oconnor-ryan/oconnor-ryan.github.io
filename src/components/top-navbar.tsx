@@ -13,6 +13,7 @@ export default function TopNavbar()  {
         <a className={styles.link} href="/#education">Education</a>
         <a className={styles.link} href="/#experience">Experience</a>
         <a className={styles.link} href="/blog">Blog</a>
+        <a className={styles.link} href="/#resume-pdf-wrapper">Resume</a>
         <div className={styles["social-container"]}>
           {/* target="_blank" tells browser to open link in new tab. */}
           <a href="mailto:oconnor.ryan.m@proton.me"><img src="iconmonstr-email-10.svg" /></a>
