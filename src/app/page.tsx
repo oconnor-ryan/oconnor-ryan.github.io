@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Script from 'next/script'
 import styles from './page.module.scss'
 
 //page is the equivalent to index.html on Apache web server
@@ -7,6 +7,7 @@ export default function Home() {
     <main className={styles.main}>
       <div id="about">
         <h1>About</h1>
+        <canvas id="hero-background-canvas" width="700px" height="700px"></canvas>
       </div>
 
       <div id="education">
@@ -23,6 +24,8 @@ export default function Home() {
           <p>Cannot display PDF file. <a href="/Resume.pdf">Download my resume instead!</a></p>
         </object>
       </div>
+
+      <Script src="/hero-section-canvas-handler.js"></Script>
     </main>
   )
 }
