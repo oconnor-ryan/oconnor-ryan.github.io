@@ -14,7 +14,7 @@ let nodes = [{x: WIDTH/2, y: HEIGHT/2, deg: Math.PI/2}];
 
 function drawLine(x0, y0, x1, y1) {
   ctx.beginPath();
-  ctx.strokeStyle = "white";
+  ctx.strokeStyle = "yellow";
   ctx.moveTo(x0, y0);
   ctx.lineTo(x1, y1);
   ctx.stroke();
@@ -47,7 +47,7 @@ function drawTreeStep(iteration) {
 let lastCall = 0;
 let iterations = 1;
 function update(deltaTimeMillis) {
-  if(iterations <= 10 && deltaTimeMillis - lastCall >= 100) {
+  if(iterations <= 7 && deltaTimeMillis - lastCall >= 100) {
     lastCall = deltaTimeMillis;
     drawTreeStep(iterations);
     iterations++;
