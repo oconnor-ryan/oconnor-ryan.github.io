@@ -118,6 +118,7 @@
 
 @media screen and (max-width: 768px) {
   .header {
+
     .hamburger {
       display: block; //make the hamburger display visible.
     }
@@ -131,6 +132,7 @@
       //make sure navbar stays under the bottom border of the header when not in dropdown mode.
       //this is hidden due to the overflow: hidden attribute in the header.
       top: calc(var(--navbar-height));
+
       left: 0;
       width: 100%;
 
@@ -170,5 +172,8 @@
   //when the dropdown class is added to header, move the header to the bottom of the viewport
   .header.dropdown {
     height: 100vh;
+    .nav {
+    //  top: var(--navbar-height);
+    }
   }
 }

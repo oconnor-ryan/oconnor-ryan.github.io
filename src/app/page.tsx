@@ -7,7 +7,7 @@ export default function Home() {
     <main className={styles.main}>
       <div id="about">
         <h1>About</h1>
-        <canvas id="hero-background-canvas" width="700px" height="700px"></canvas>
+        <canvas id="hero-background-canvas" width="400px" height="400px"></canvas>
       </div>
 
       <div id="education">
