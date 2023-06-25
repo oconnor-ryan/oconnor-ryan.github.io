@@ -10,6 +10,11 @@ export default function Home() {
         <canvas id="hero-background-canvas" width="400px" height="400px"></canvas>
       </div>
 
+      <div id="skills">
+        <h1>My Toolbox</h1>
+        <img src="toolbox.svg" className={styles.toolbox}></img>
+      </div>
+
       <div id="education">
         <h1>Education</h1>
       </div>
