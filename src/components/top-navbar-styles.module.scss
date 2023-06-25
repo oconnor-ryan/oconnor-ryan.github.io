@@ -6,6 +6,13 @@
   height: var(--navbar-height);
   transition: height 0.5s;
   position: sticky;
+  top: 0; //for position: sticky to work, at least one of the following properties must be specified: top, left, right, bottom.
+  
+  border-bottom-style: solid;
+  border-bottom-width: var(--navbar-padding-except-bottom);
+  border-bottom-color: darken($color: brown, $amount: 20%);
+
+
   padding: var(--navbar-padding-except-bottom);
   padding-bottom: 0px;
   background: var(--navbar-background);
@@ -123,9 +130,18 @@
       position: absolute;
       //make sure navbar stays under the bottom border of the header when not in dropdown mode.
       //this is hidden due to the overflow: hidden attribute in the header.
-      top: calc(var(--navbar-height) + var(--navbar-padding-except-bottom));
+      top: calc(var(--navbar-height));
       left: 0;
       width: 100%;
+
+      border-width: var(--navbar-padding-except-bottom);
+      border-color: darken($color: brown, $amount: 20%);
+      border-style: solid;
+      border-bottom: none;
+      border-top: none;
+
+      background: var(--walnut-grain-vertical);
+
       overflow: hidden;
 
       .link {
@@ -135,14 +151,18 @@
 
       .social-container {
         display: block;
-        background-color: transparent;
+        background: var(--pine-light-grain-horizontal);
       }
 
       //add a partially transparent black background so that each odd child element appears
       //to have a slightly darker background compared to the navbar background color.
       //NOTE. USE > to only select the children of .social-container and not its grandchildren.
       > :nth-child(odd) {
-        background-color: rgba(0, 0, 0, 0.2);
+        background: var(--basswood-light-grain-horizontal);
+      }
+
+      > :nth-child(even) {
+        background: var(--pine-dark-grain-horizontal);
       }
     }
   }

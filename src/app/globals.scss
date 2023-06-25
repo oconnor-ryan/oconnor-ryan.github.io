@@ -1,3 +1,4 @@
+@import "wood-theme.scss";
 :root {
   //dimensions
   --navbar-height: 90px;
@@ -8,24 +9,10 @@
   --gold-1: rgb(228, 232, 0);
   --gold-2: rgb(255, 238, 1);
 
-  --wood-grain-straight-light-horizontal: repeating-linear-gradient(
-    0deg, 
-    #dcc465 0px, 
-    #dcc465 10px, 
-    #9c8b46 10px, 
-    #9c8b46 15px,
-    #dcc465 15px, 
-    #dcc465 25px, 
-    #b09d52 25px, 
-    #b09d52 35px, 
-    #dcc465 35px, 
-    #dcc465 45px, 
-    #9c8b46 45px, 
-    #9c8b46 50px
-  );
 
-  --navbar-background: var(--wood-grain-straight-light-horizontal);
+ 
 
+  --navbar-background: var(--pine-light-grain-horizontal);
 }
 
 * {
