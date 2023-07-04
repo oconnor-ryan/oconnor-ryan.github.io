@@ -4,6 +4,7 @@ import styles from "./top-navbar-styles.module.scss";
 export default function TopNavbar()  {
   return (
     <header className={styles.header}>
+      <div className={styles.drawerTopContainer}></div>
       <a href="/" className={styles["logo-container"]}>
         <h1 className={styles.name}>Ryan O'Connor</h1>
       </a>
