@@ -1,17 +1,30 @@
+@use "wood-theme" as wood;
+
 .main {
-    background: var(--walnut-grain-vertical);
-    h1 {
-        color: yellow;
-    }
+  @include wood.straight-grain-1-walnut-dark(135deg);
+  h1 {
+    color: yellow;
+  }
 
-    .toolbox {
-        width: 80%;
-        height: auto;
-        margin-left: 10%;
-        margin-right: 10%; 
-    }
+  .toolbox {
+    width: 80%;
+    height: auto;
+    margin-left: 10%;
+    margin-right: 10%; 
+  }
 
-    .resume-pdf-wrapper {
-        padding: 5%;
-    }
+  .resume-pdf-wrapper {
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    height: 500px;
+    background-color: white;
+  }
+
+  .heroBackgroundCanvas {
+    width: 80%;
+    height: 400px;
+    margin-left: 10%;
+    margin-right: 10%; 
+  }
 }

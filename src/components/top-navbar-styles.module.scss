@@ -1,21 +1,28 @@
+@use "wood-theme" as wood;
+
+
+//variables
+$drawerTopHeight: calc(var(--navbar-height) - var(--navbar-padding-except-bottom));
+$drawerExpandedHeight: 75vh;
+
 .header {
   display: flex;
   flex-direction: row;
   align-items: normal; //center flex items vertically
   justify-content: space-between; //first and last elements go to leftmost and rightmost sides respectively
-  height: var(--navbar-height);
+  height: $drawerTopHeight;
   transition: height 0.5s;
   position: sticky;
   top: 0; //for position: sticky to work, at least one of the following properties must be specified: top, left, right, bottom.
   
-  border-bottom-style: solid;
-  border-bottom-width: var(--navbar-padding-except-bottom);
-  border-bottom-color: darken($color: brown, $amount: 20%);
+//  border-bottom-style: solid;
+ // border-bottom-width: var(--navbar-padding-except-bottom);
+//  border-bottom-color: darken($color: brown, $amount: 20%);
 
 
   padding: var(--navbar-padding-except-bottom);
   padding-bottom: 0px;
-  background: var(--walnut-grain-vertical);
+  @include wood.straight-grain-1-walnut-light(90deg);
   overflow: hidden; //prevents user from interacting with elements outside of the borders of this element
 
   //represents the top of a drawer, is on the z-index
@@ -26,13 +33,13 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: calc(var(--navbar-height) - var(--navbar-padding-except-bottom));
-    background: var(--navbar-background);
+    height: $drawerTopHeight;
+    @include wood.straight-grain-1-pine-light(90deg);
   }
 
   .logo-container {
     text-decoration: none;
-    height: 100%;
+    height: calc($drawerTopHeight - var(--navbar-padding-except-bottom));
     z-index: 2; //stays above all elements in navbar
 
 
@@ -152,7 +159,8 @@
 
       //use -100vh so that when header expands to 100vh, the nav
       //will have the same height as the header's 100vh height.
-      top: calc(-100vh - var(--navbar-height) + var(--navbar-padding-except-bottom));
+     // top: calc(-100vh - var(--navbar-height) + var(--navbar-padding-except-bottom));
+      top: calc(-#{$drawerExpandedHeight} - var(--navbar-height));
       transition: top 0.5s; //make sure transition is same as the one used for the header dropdown
       left: 0;
       width: 100%;
@@ -161,7 +169,6 @@
       border-width: var(--navbar-padding-except-bottom);
       border-color: darken($color: brown, $amount: 20%);
       border-style: solid;
-      border-bottom: none;
       border-top: none;
 
       //background is already supplied by header
@@ -176,29 +183,32 @@
 
       .social-container {
         display: block;
-        background: var(--pine-light-grain-horizontal);
+        @include wood.straight-grain-1-pine-light(0deg);
       }
 
       //add a partially transparent black background so that each odd child element appears
       //to have a slightly darker background compared to the navbar background color.
       //NOTE. USE > to only select the children of .social-container and not its grandchildren.
       > :nth-child(odd) {
-        background: var(--basswood-light-grain-horizontal);
+        @include wood.straight-grain-1-basswood-light(0deg);
+
       }
 
       > :nth-child(even) {
-        background: var(--pine-dark-grain-horizontal);
+        @include wood.straight-grain-1-pine-dark(0deg);
       }
     }
   }
 
   //when the dropdown class is added to header, move the header to the bottom of the viewport
   .header.dropdown {
-    height: 100vh;
+    height: $drawerExpandedHeight;
     .nav {
+      height: calc($drawerExpandedHeight - $drawerTopHeight);
       //move the nav container down so that the entire container is visible.
       //this creates the illusion of someone opening a drawer and looking at what's inside.
-      top: calc(var(--navbar-height) - var(--navbar-padding-except-bottom));
+      top: $drawerTopHeight;
+    
     }
   }
 }

@@ -1,4 +1,4 @@
-@import "wood-theme.scss";
+@use 'wood-theme' as wood;
 :root {
   //dimensions
   --navbar-height: 90px;
@@ -9,10 +9,6 @@
   --gold-1: rgb(228, 232, 0);
   --gold-2: rgb(255, 238, 1);
 
-
- 
-
-  --navbar-background: var(--pine-light-grain-horizontal);
 }
 
 * {
@@ -22,6 +18,16 @@
   box-sizing: border-box;
 }
 
+html {
+  //overscroll-behavior: none;
+
+  //does not work on firefox and safari iOS.
+  //does work on safari desktop
+ // @include wood.straight-grain-1-walnut-dark(90deg);
+
+  //works on all browsers
+  background-color: rgb(60, 40, 0);
+}
 
 #main-page-wrapper {
   //make sure minimum height of the wrapper is the height of the viewport minus the heights of the navbar and footer.
@@ -29,6 +35,5 @@
   //while staying at the bottom of the viewport
 
   min-height: calc(100vh - var(--navbar-height) - var(--footer-height)); 
-  background-color: black;
 }
 

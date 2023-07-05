@@ -1,6 +1,8 @@
+@use "wood-theme" as wood;
+
 .footer {
   height: var(--footer-height);
-  background: var(--pine-light-grain-horizontal);
+  @include wood.straight-grain-1-pine-light(0deg);
 
   a {
     text-decoration: none;

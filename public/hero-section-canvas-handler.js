@@ -1,9 +1,15 @@
 const heroBackgroundCanvas = document.getElementById("hero-background-canvas");
 const ctx = heroBackgroundCanvas.getContext("2d");
 
-const WIDTH = heroBackgroundCanvas.width;
-const HEIGHT = heroBackgroundCanvas.height;
+const canvasStyle = getComputedStyle(heroBackgroundCanvas);
 
+const WIDTH = parseInt(canvasStyle.getPropertyValue('width'), 10);
+const HEIGHT = parseInt(canvasStyle.getPropertyValue('height'), 10);
+
+heroBackgroundCanvas.width = WIDTH;
+heroBackgroundCanvas.height = HEIGHT;
+
+console.log(WIDTH, HEIGHT);
 ctx.fillStyle = 'black';
 ctx.beginPath();
 ctx.fillRect(0, 0, WIDTH, HEIGHT);
