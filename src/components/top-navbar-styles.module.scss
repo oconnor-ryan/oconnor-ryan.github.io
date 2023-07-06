@@ -4,26 +4,47 @@
 //variables
 $drawerTopHeight: calc(var(--navbar-height) - var(--navbar-padding-except-bottom));
 $drawerExpandedHeight: 75vh;
+$transitionTime: 0.5s;
+
+/*
+  When the user has a wide screen (>900px), the full navbar is visible.
+
+  There are only 2 layers to worry about for the z-index:
+
+  z-index: 1
+    This is the drawerTopContainer, which sits under all other navbar elements
+    and forms the background of the navbar.
+  
+  z-index: 2
+    The nav and logo elements are on this layer and appear above the drawerTopContainer.
+    
+  When the screen size is reduced to 768px or less, the nav element will
+  get moved to z-index: 0 so that it can serve as a dropdown menu for mobile users.
+*/
 
 .header {
   display: flex;
   flex-direction: row;
-  align-items: normal; //center flex items vertically
+  align-items: normal; //center flex items on vertical axis
   justify-content: space-between; //first and last elements go to leftmost and rightmost sides respectively
-  height: $drawerTopHeight;
-  transition: height 0.5s;
-  position: sticky;
-  top: 0; //for position: sticky to work, at least one of the following properties must be specified: top, left, right, bottom.
-  
-//  border-bottom-style: solid;
- // border-bottom-width: var(--navbar-padding-except-bottom);
-//  border-bottom-color: darken($color: brown, $amount: 20%);
 
+  //needed so that when nav element moves down and up, the header moves at the same rate as the nav element to avoid clipping off parts of the nav element
+  transition: height $transitionTime; 
+
+  //use position fixed instead of position sticky so that 
+  //navbar is always on top and does not affect the positions
+  //of other elements
+  position: fixed;
+  left: 0;
+  top: 0; //for position: sticky to work, at least one of the following properties must be specified: top, left, right, bottom.
+  width: 100%;
+  height: $drawerTopHeight;
 
   padding: var(--navbar-padding-except-bottom);
   padding-bottom: 0px;
-  @include wood.straight-grain-1-walnut-light(90deg);
   overflow: hidden; //prevents user from interacting with elements outside of the borders of this element
+
+  background: transparent; //nav element already has background to use
 
   //represents the top of a drawer, is on the z-index
   //below the logo and links and the z-index above the drawer bottom
@@ -39,8 +60,12 @@ $drawerExpandedHeight: 75vh;
 
   .logo-container {
     text-decoration: none;
+
+    //must calculate height to fit text so that it
+    //does not overflow into other elements
     height: calc($drawerTopHeight - var(--navbar-padding-except-bottom));
-    z-index: 2; //stays above all elements in navbar
+    
+    z-index: 2; //logo stays above all other elements in navbar
 
 
     .name {
@@ -51,59 +76,28 @@ $drawerExpandedHeight: 75vh;
     }
   }
 
-  .hamburger {
-    position: relative; //required before using children with position: absolute
-    display: none;
-    width: 40px;
-    height: 30px;
-    z-index: 2; //stays above all elements in navbar
-    background-color: transparent;
-    cursor: pointer;
-
-    //these are the 3 bars in the hamburger menu
-    * {
-      position: absolute;
-      background-color: black;
-      border-radius: 2px;
-      width: 100%;
-      height: 4px;
-      transition: all 0.5s;
-    }
-
-    :nth-child(1) {
-      top: 0px;
-    }
-
-    :nth-child(2) {
-      top: 13px; //placed so bar is directly in middle of 15px height (bar covered 13px-17px)
-    }
-
-    :nth-child(3) {
-      top: 26px; //because height=4px, the bottom of the bar will reach the bottom of the hamburger border 
-    }
-  }
-
-  //class .x indicates that the hamburger menu should form an x
-  .hamburger.x {
-    :nth-child(1) {
-      rotate: 45deg;
-      top: 15px; //put at center of hamburger wrapper
-    }
-    :nth-child(2) {
-      width: 0; //shrink second bar down to 0
-    }
-    :nth-child(3) {
-      rotate: -45deg;
-      top: 15px; //put at center of hamburger wrapper
-    }
-  }
-
+  //this is where all links and socials are displayed
   .nav {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    z-index: 2; //when in wide-screen mode, make it have the highest z-index so that links can be seen
+
+    /* 
+    Distribute items evenly
+    Items have a half-size space
+    on either end.
+    */
+    justify-content: space-around;  
+
+    //when in wide-screen mode, make it have the highest z-index so that links can be seen
+    z-index: 2; 
     height: 100%;
+
+    //
+    transition: top $transitionTime; //make sure transition is same as the one used for the header dropdown
+
+    
+    overflow-y: visible; //allow overflow only on top and bottom
+    overflow-x: hidden;
 
     .link {
       text-decoration: none;
@@ -126,9 +120,62 @@ $drawerExpandedHeight: 75vh;
       }
     }
   }
+
+  //basic hamburger menu that turns into an X when pressed.
+  .hamburger {
+    position: relative; //required before using children with position: absolute
+    display: none;
+    width: 40px;
+    height: 30px;
+    z-index: 2; //stays above all elements in navbar
+    background-color: transparent;
+    cursor: pointer;
+
+    //these are the 3 bars in the hamburger menu
+    * {
+      position: absolute;
+      background-color: black;
+      border-radius: 2px;
+      width: 100%;
+      height: 4px;
+      transition: all $transitionTime;
+    }
+
+    :nth-child(1) {
+      top: 0px;
+    }
+
+    :nth-child(2) {
+      top: 13px; //placed so bar is directly in middle of 15px height (bar covered 13px-17px)
+    }
+
+    :nth-child(3) {
+      top: 26px; //because height=4px, the bottom of the bar will reach the bottom of the hamburger border 
+    }
+  }
+
+  //class .x indicates that the hamburger menu should form an x
+  .hamburger.x {
+    :nth-child(1) {
+      rotate: 45deg; //Rotate to form a forward slash \
+      top: 15px; //put at center of hamburger wrapper
+    }
+    :nth-child(2) {
+      width: 0; //shrink second bar down to 0
+    }
+    :nth-child(3) {
+      rotate: -45deg; //Rotate to form a backslash /
+      top: 15px; //put at center of hamburger wrapper
+    }
+  }
+
+  
 }
 
 //used for tablet screens
+
+//looks the same as the header above, except the 
+//social-container in the nav element is removed.
 @media screen and (max-width: 900px) {
   .header {
     .nav {
@@ -139,6 +186,37 @@ $drawerExpandedHeight: 75vh;
     }
   }
 }
+
+/*
+
+  This is only for when the viewport width is less than 768px:
+
+  The navbar can be split into 3 layers on the z-axis:
+
+  * z-index: 0 (Bottom layer)
+    The nav element is at this layer when its dropdown is expanded.
+    
+
+  * z-index: 1 (Middle layer)
+    These elements appear on top of the bottom layer and cover up
+    the elements below it.
+    - The drawerTopContainer is drawn over the nav element so that 
+    the user cannot see that the nav elements is positioned directly
+    under the drawerTopContainer. Once the nav element extends down,
+    the nav container does not block the drawerTopContainer, giving
+    the illusion of opening a drawer.
+
+  * z-index 2 (Top layer)
+    The logo and hamburger menu appear on top of all other navbar elements
+    since they must be visible to the user at all times.
+
+  When the header is not given a .dropdown class, only Layers
+  1 and 2 are visible. The nav element at Layer 0 is positioned offscreen
+  above the navbar.
+
+  When the header is given a .dropdown class, the nav element at Layer 0
+  moves down until the top of the container reaches the bottom of the drawetTopContainer.
+*/
 
 //used for phone screens
 @media screen and (max-width: 768px) {
@@ -161,9 +239,9 @@ $drawerExpandedHeight: 75vh;
       //will have the same height as the header's 100vh height.
      // top: calc(-100vh - var(--navbar-height) + var(--navbar-padding-except-bottom));
       top: calc(-#{$drawerExpandedHeight} - var(--navbar-height));
-      transition: top 0.5s; //make sure transition is same as the one used for the header dropdown
       left: 0;
       width: 100%;
+      height: calc($drawerExpandedHeight - $drawerTopHeight);
       z-index: 0; //move to lowest z-index so that the logo, hamburger, and drawerTopContainer are above this element
 
       border-width: var(--navbar-padding-except-bottom);
@@ -172,7 +250,7 @@ $drawerExpandedHeight: 75vh;
       border-top: none;
 
       //background is already supplied by header
-     // background: var(--walnut-grain-vertical);
+      @include wood.straight-grain-1-walnut-light(90deg);
 
       overflow: hidden;
 
@@ -204,7 +282,7 @@ $drawerExpandedHeight: 75vh;
   .header.dropdown {
     height: $drawerExpandedHeight;
     .nav {
-      height: calc($drawerExpandedHeight - $drawerTopHeight);
+     // height: calc($drawerExpandedHeight - $drawerTopHeight);
       //move the nav container down so that the entire container is visible.
       //this creates the illusion of someone opening a drawer and looking at what's inside.
       top: $drawerTopHeight;

@@ -30,10 +30,15 @@ html {
 }
 
 #main-page-wrapper {
+  //add padding on top that is the same height as the navbar
+  //because the navbar has a position of fixed.
+  //Thus, the page will not change on its own to move content
+  //out from under the navbar
+  padding-top: calc(var(--navbar-height) - var(--navbar-padding-except-bottom));
+
   //make sure minimum height of the wrapper is the height of the viewport minus the heights of the navbar and footer.
   //that way, if there is not enough content to fill the page, the footer will still be fully visible
   //while staying at the bottom of the viewport
-
   min-height: calc(100vh - var(--navbar-height) - var(--footer-height)); 
 }
 
