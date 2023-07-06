@@ -1,7 +1,7 @@
 @use "wood-theme" as wood;
 
 .main {
-  @include wood.straight-grain-1-walnut-dark(135deg);
+  @include wood.straight-grain-1-walnut-dark-bg(135deg);
   h1 {
     color: yellow;
   }

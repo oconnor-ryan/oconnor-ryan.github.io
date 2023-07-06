@@ -55,7 +55,7 @@ $transitionTime: 0.5s;
     left: 0;
     width: 100%;
     height: $drawerTopHeight;
-    @include wood.straight-grain-1-pine-light(90deg);
+    @include wood.straight-grain-1-pine-light-bg(0deg);
   }
 
   .logo-container {
@@ -245,14 +245,19 @@ $transitionTime: 0.5s;
       z-index: 0; //move to lowest z-index so that the logo, hamburger, and drawerTopContainer are above this element
 
       border-width: var(--navbar-padding-except-bottom);
-      border-color: darken($color: brown, $amount: 20%);
       border-style: solid;
       border-top: none;
+      
+      @include wood.straight-grain-1-pine-dark-border(45deg, 25);
 
       //background is already supplied by header
-      @include wood.straight-grain-1-walnut-light(90deg);
+      @include wood.straight-grain-1-walnut-light-bg(90deg);
 
-      overflow: hidden;
+      overflow-x: hidden;
+
+      //if there are too many rows to fit in nav dropdown,
+      //allow the user to scroll.
+      overflow-y: scroll; 
 
       .link {
         display: block; //make elements of navbar display up to down instead of left to right
@@ -261,19 +266,19 @@ $transitionTime: 0.5s;
 
       .social-container {
         display: block;
-        @include wood.straight-grain-1-pine-light(0deg);
+        @include wood.straight-grain-1-pine-light-bg(0deg);
       }
 
       //add a partially transparent black background so that each odd child element appears
       //to have a slightly darker background compared to the navbar background color.
       //NOTE. USE > to only select the children of .social-container and not its grandchildren.
       > :nth-child(odd) {
-        @include wood.straight-grain-1-basswood-light(0deg);
+        @include wood.straight-grain-1-basswood-light-bg(0deg);
 
       }
 
       > :nth-child(even) {
-        @include wood.straight-grain-1-pine-dark(0deg);
+        @include wood.straight-grain-1-pine-dark-bg(0deg);
       }
     }
   }

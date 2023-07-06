@@ -2,7 +2,7 @@
 
 .footer {
   height: var(--footer-height);
-  @include wood.straight-grain-1-pine-light(0deg);
+  @include wood.straight-grain-1-pine-light-bg(0deg);
 
   a {
     text-decoration: none;
