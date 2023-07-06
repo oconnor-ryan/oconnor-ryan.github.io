@@ -248,7 +248,7 @@ $transitionTime: 0.5s;
       border-style: solid;
       border-top: none;
       
-      @include wood.straight-grain-1-pine-dark-border(45deg, 25);
+      @include wood.straight-grain-1-pine-dark-border(90deg, 25);
 
       //background is already supplied by header
       @include wood.straight-grain-1-walnut-light-bg(90deg);
