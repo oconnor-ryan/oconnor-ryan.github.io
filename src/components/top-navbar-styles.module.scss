@@ -31,6 +31,10 @@ $transitionTime: 0.5s;
   //needed so that when nav element moves down and up, the header moves at the same rate as the nav element to avoid clipping off parts of the nav element
   transition: height $transitionTime; 
 
+  //must be 1 because this element must always remain above its
+  //sibling elements: TopNavbar and Footer.
+  z-index: 1;
+
   //use position fixed instead of position sticky so that 
   //navbar is always on top and does not affect the positions
   //of other elements

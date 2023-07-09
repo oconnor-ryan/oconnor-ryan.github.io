@@ -29,7 +29,13 @@ html {
   background-color: rgb(60, 40, 0);
 }
 
+
+
 #main-page-wrapper {
+  //must be zero because this element must always remain under its
+  //sibling elements: TopNavbar and Footer.
+  z-index: 0;
+
   //add padding on top that is the same height as the navbar
   //because the navbar has a position of fixed.
   //Thus, the page will not change on its own to move content

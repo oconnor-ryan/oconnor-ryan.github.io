@@ -5,6 +5,17 @@ import styles from './page.module.scss'
 export default function Home() {
   return (
     <main className={styles.main}>
+      <div className={styles.hook}>
+        <div className={styles.profilePicBackground}>
+          <img className={styles.profilePic} src='/me.jpg'/>
+        </div>
+        <p className={styles.pitch}>
+          Just as a craftsman knows the tools of their trade,
+          I know the tools to build your dream websites and mobile
+          apps. I aspire to build great fullstack web and mobile
+          applications for a variety of industries.
+        </p>
+      </div>
       <div id="about">
         <h1>About</h1>
         <canvas className={styles.heroBackgroundCanvas} id="hero-background-canvas"></canvas>

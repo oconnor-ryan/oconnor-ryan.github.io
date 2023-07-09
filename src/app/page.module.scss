@@ -1,9 +1,61 @@
 @use "wood-theme" as wood;
 
 .main {
-  @include wood.straight-grain-1-walnut-dark-bg(135deg);
+  @include wood.straight-grain-1-walnut-dark-bg(0deg);
   h1 {
     color: yellow;
+  }
+
+  .hook {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    //@include wood.straight-grain-1-pine-dark-bg(0deg);
+    padding: 5%;
+
+    .profilePicBackground { 
+      flex: 30%;
+
+      margin: 0 2%; //keep small amount of space between siblings in same row
+
+
+      //maintain aspect ratio
+      aspect-ratio: 1/1;
+
+      //used to allow absolute positioning for child image
+      position: relative;
+
+      @include wood.straight-grain-1-walnut-light-bg(45deg);
+      border-radius: 50%;
+
+      
+      .profilePic {
+        //this portion centers the image horizontally and vertically to the parent element
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        border-radius: 50%; //makes the div into a circle (if the element has the same width and height)
+        width: 90%;
+        height: auto; //maintain same aspect ratio
+      }
+    }
+    
+    .pitch {
+      flex: 70%;
+      padding: 2em;
+
+      @include wood.straight-grain-1-basswood-light-bg(0deg);
+      color: invert(wood.$bassword-light2);
+
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.3em;
+      line-height: 2em; //space between line of text
+
+    }
   }
 
   .toolbox {
@@ -26,5 +78,24 @@
     height: 400px;
     margin-left: 10%;
     margin-right: 10%; 
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .main {
+    .hook {
+      display: block; //stack children top to bottom instead of using flex container
+
+      .profilePicBackground { 
+        margin: 10px auto; //center element horizontally and add 10px top and bottom margin
+        width: 50%;
+      }
+      
+      .pitch {
+        margin: auto; //center element horizontally
+        width: 90%; //expand to 90% of parent
+      }
+    }
+
   }
 }
