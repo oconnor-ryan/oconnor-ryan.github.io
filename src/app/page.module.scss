@@ -46,6 +46,8 @@
     .pitch {
       flex: 70%;
       padding: 2em;
+      border-radius: 10px;
+
 
       @include wood.straight-grain-1-basswood-light-bg(0deg);
       color: invert(wood.$bassword-light2);
