@@ -1,4 +1,5 @@
 import Script from 'next/script'
+import Toolbox from '@/components/toolbox';
 import styles from './page.module.scss'
 
 //page is the equivalent to index.html on Apache web server
@@ -23,7 +24,7 @@ export default function Home() {
 
       <div id="skills">
         <h1>My Toolbox</h1>
-        <img src="toolbox.svg" className={styles.toolbox}></img>
+        <Toolbox />    
       </div>
 
       <div id="education">

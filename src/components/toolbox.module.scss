@@ -1,0 +1,50 @@
+@use "wood-theme" as wood;
+
+.toolboxContainer {
+  width: 80%;
+  margin: auto;
+
+  position: relative;
+
+  .toolbox {
+    width: 100%;
+    height: auto;
+    z-index: 0; //keep image under the skillContainer
+  }
+
+  .skillContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    //justify-content: center;
+
+    list-style: none; //remove dots from list
+
+    z-index: 1; //keep skills above the toolbox image
+
+    overflow: hidden;
+    position: absolute;
+    
+    //height = 100% - topPos - bottomPos
+    //start the container in the middle of the parent
+    top: 45%;
+
+    //make height slightly less than 55% so that content does 
+    //not end right at the end of the image outline
+    height: 54%; 
+
+    left: 15%;
+    //right is 15% away from 100%, use width to set the right value
+    width: 70%; //width must be equal to 100% - left - right
+
+    li {
+      margin: 0.5em;
+      padding: 1em;
+    
+      @include wood.straight-grain-1-basswood-light-bg(0deg);
+
+      font-weight: bold;
+    }
+  }
+}

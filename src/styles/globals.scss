@@ -26,15 +26,15 @@ html {
  // @include wood.straight-grain-1-walnut-dark(90deg);
 
   //works on all browsers
-  background-color: rgb(60, 40, 0);
+  background-color: wood.$walnut-dark0;
 }
 
 
 
 #main-page-wrapper {
-  //must be zero because this element must always remain under its
-  //sibling elements: TopNavbar and Footer.
-  z-index: 0;
+  //must be 1 because this element must always remain under its
+  //sibling element: TopNavbar, which have a z-index of 2.
+  z-index: 1;
 
   //add padding on top that is the same height as the navbar
   //because the navbar has a position of fixed.
