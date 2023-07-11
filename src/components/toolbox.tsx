@@ -14,6 +14,8 @@ export default function Toolbox() {
         <li>NextJS</li>
         <li>PHP</li>
         <li>NodeJS</li>
+        <li>Linux</li>
+        <li>Git</li>
         <li>MariaDB / MySQL</li>
         <li>XCode for iOS</li>
         <li>Android Studio</li>
