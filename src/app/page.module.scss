@@ -3,7 +3,7 @@
 .main {
   @include wood.straight-grain-1-walnut-dark-bg(0deg);
   h1 {
-    color: yellow;
+    color: wood.$bassword-light0;
   }
 
   .hook {
@@ -57,6 +57,27 @@
       font-size: 1.3em;
       line-height: 2em; //space between line of text
 
+    }
+  }
+
+  .aboutWrapper {
+    width: 80%;
+    margin: auto;
+    h3 {
+      color: wood.$bassword-light0;
+    }
+
+    .aboutDesc {
+      @include wood.straight-grain-1-walnut-light-bg(0deg);
+      margin: 1em 0;
+      padding: 1em;
+
+      border-radius: 10px;
+
+      color: wood.$bassword-light0;
+      line-height: 1.5em;
+      font-size: 1em;
+      font-weight: bold;
     }
   }
 

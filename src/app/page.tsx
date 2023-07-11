@@ -17,9 +17,47 @@ export default function Home() {
           applications for a variety of industries.
         </p>
       </div>
-      <div id="about">
+      <div id="about" className={styles.aboutWrapper}>
         <h1>About</h1>
-        <canvas className={styles.heroBackgroundCanvas} id="hero-background-canvas"></canvas>
+
+        <h3>Who Am I?</h3>
+        <p className={styles.aboutDesc}>
+          I am a senior college student majoring in Computer
+          Science and minoring in Computer Engineering. For
+          my profession, I build websites and mobile
+          apps from the ground up and have some degree of skill
+          in managing all parts of a web/mobile app, from database
+          management via SQL to writing backend server-side code to 
+          designing the frontends of apps. I also like developing 
+          cross-platform apps that can run on any OS using tools like
+          Flutter.
+        </p>
+
+        <h3>Why Full-Stack Development?</h3>
+        <p className={styles.aboutDesc}>
+          I like fullstack development because it is the easiest
+          way to share my applications to the largest possible
+          number of people. I can create one website that can 
+          viewed and interacted with by anyone without the need
+          for them to install my application. I also hate not being
+          able to solve a specific problem just because I don't specialize
+          in a certain aspect of web/mobile development. I learn as 
+          much as I can about every aspect of web/mobile development
+          to fix all possible problems in the application.
+        </p>
+
+        <h3>What do I do for fun?</h3>
+        <p className={styles.aboutDesc}>
+          Some of my hobbies include playing video games, woodworking, 
+          and self-hosting. My favorite types of woodworking are caricature 
+          carvings, scrollwork, and intarsia. For self-hosting, I've 
+          recently set up a home server with Debian 12 for running my
+          own Nextcloud instance for file syncronization for all of my
+          devices. I've also recently started blogging on this site, 
+          partially to share the things I have learned to you and 
+          partially so that I have to spend hours piecing together 
+          how to solve a problem I already solved 3 months prior.
+        </p>
       </div>
 
       <div id="skills">
