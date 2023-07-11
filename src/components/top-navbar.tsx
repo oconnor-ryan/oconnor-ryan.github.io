@@ -17,9 +17,9 @@ export default function TopNavbar()  {
         <a className={styles.link} href="/#resume-pdf-wrapper">Resume</a>
         <div className={styles["social-container"]}>
           {/* target="_blank" tells browser to open link in new tab. */}
-          <a href="mailto:oconnor.ryan.m@proton.me"><img src="iconmonstr-email-10.svg" /></a>
-          <a href="https://github.com/oconnor-ryan" target="_blank"><img src="/iconmonstr-github-4.svg" /></a>
-          <a href="https://www.linkedin.com/in/ryan-o-connor-5615b326a/" target="_blank"><img src="/iconmonstr-linkedin-4.svg" /></a>
+          <a href="mailto:oconnor.ryan.m@proton.me"><div className={`${styles.icons} ${styles.iconEmail}`}></div></a>
+          <a href="https://github.com/oconnor-ryan" target="_blank"><div className={`${styles.icons} ${styles.iconGithub}`}></div></a>
+          <a href="https://www.linkedin.com/in/ryan-o-connor-5615b326a/" target="_blank"><div className={`${styles.icons} ${styles.iconLinkedin}`}></div></a>
         </div>
       </nav>
       

@@ -71,8 +71,9 @@ $toolboxAnimationDuration: 1s;
       text-align: center;
       border-radius: 10px;
     
-      @include wood.straight-grain-1-basswood-light-bg(0deg);
+      @include wood.straight-grain-1-walnut-light-bg(0deg);
 
+      color: wood.$basswood-light0;
       font-weight: bold;
     }
   }

@@ -3,7 +3,13 @@
 .main {
   @include wood.straight-grain-1-walnut-dark-bg(0deg);
   h1 {
-    color: wood.$bassword-light0;
+    padding: 0.5em;
+    margin: 1em 0;
+
+    border-radius: 10px;
+
+    color: wood.$basswood-light0;
+    @include wood.straight-grain-1-pine-dark-bg(0deg);
   }
 
   .hook {
@@ -49,8 +55,8 @@
       border-radius: 10px;
 
 
-      @include wood.straight-grain-1-basswood-light-bg(0deg);
-      color: invert(wood.$bassword-light2);
+      @include wood.straight-grain-1-walnut-light-bg(0deg);
+      color: wood.$basswood-light0;
 
       text-align: center;
       font-weight: bold;
@@ -64,7 +70,7 @@
     width: 80%;
     margin: auto;
     h3 {
-      color: wood.$bassword-light0;
+      color: wood.$basswood-light0;
     }
 
     .aboutDesc {
@@ -74,13 +80,18 @@
 
       border-radius: 10px;
 
-      color: wood.$bassword-light0;
+      color: wood.$basswood-light0;
       line-height: 1.5em;
       font-size: 1em;
       font-weight: bold;
     }
   }
 
+  .skillWrapper {
+    h1 {
+      margin: 1em 10%;
+    }
+  }
 
   .resume-pdf-wrapper {
     width: 80%;

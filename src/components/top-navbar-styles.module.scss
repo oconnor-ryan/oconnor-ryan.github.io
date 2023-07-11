@@ -59,7 +59,7 @@ $transitionTime: 0.5s;
     left: 0;
     width: 100%;
     height: $drawerTopHeight;
-    @include wood.straight-grain-1-pine-light-bg(0deg);
+    @include wood.straight-grain-1-walnut-light-bg(0deg);
   }
 
   .logo-container {
@@ -74,7 +74,7 @@ $transitionTime: 0.5s;
 
     .name {
       display: block;
-      color: black;
+      color: wood.$basswood-light0;
       text-align: center;
       font-size: 1.7em;
     }
@@ -105,7 +105,9 @@ $transitionTime: 0.5s;
 
     .link {
       text-decoration: none;
-      color: black;
+      color: wood.$basswood-light0;
+      font-weight: bold;
+
       padding: 0.5em 1em 0.5em 1em;
     }
 
@@ -118,9 +120,22 @@ $transitionTime: 0.5s;
         padding: 5px;
       }
   
-      img {
+      .icons {
         width: 32px;
         height: 32px;
+        mask-size: cover; //expand SVG to fill entire div
+        background: wood.$basswood-light0; //color of SVG
+      }
+
+      //use masks so that color of SVG can match the background.
+      .iconEmail {
+        mask-image: url("/iconmonstr-email-10.svg");
+      }
+      .iconGithub {
+        mask-image: url("/iconmonstr-github-4.svg");
+      }
+      .iconLinkedin {
+        mask-image: url("/iconmonstr-linkedin-4.svg");
       }
     }
   }
@@ -138,7 +153,7 @@ $transitionTime: 0.5s;
     //these are the 3 bars in the hamburger menu
     * {
       position: absolute;
-      background-color: black;
+      background-color: wood.$basswood-light0;
       border-radius: 2px;
       width: 100%;
       height: 4px;
@@ -252,10 +267,9 @@ $transitionTime: 0.5s;
       border-style: solid;
       border-top: none;
       
-      @include wood.straight-grain-1-pine-dark-border(90deg, 25);
+      @include wood.straight-grain-1-walnut-light-border(90deg, 25);
 
-      //background is already supplied by header
-      @include wood.straight-grain-1-walnut-light-bg(90deg);
+      @include wood.straight-grain-1-walnut-dark-bg(90deg);
 
       overflow-x: hidden;
 
@@ -270,19 +284,19 @@ $transitionTime: 0.5s;
 
       .social-container {
         display: block;
-        @include wood.straight-grain-1-pine-light-bg(0deg);
+        @include wood.straight-grain-1-walnut-light-bg(0deg);
       }
 
       //add a partially transparent black background so that each odd child element appears
       //to have a slightly darker background compared to the navbar background color.
       //NOTE. USE > to only select the children of .social-container and not its grandchildren.
       > :nth-child(odd) {
-        @include wood.straight-grain-1-basswood-light-bg(0deg);
+        @include wood.straight-grain-1-walnut-dark-bg(0deg);
 
       }
 
       > :nth-child(even) {
-        @include wood.straight-grain-1-pine-dark-bg(0deg);
+        @include wood.straight-grain-1-walnut-light-bg(0deg);
       }
     }
   }

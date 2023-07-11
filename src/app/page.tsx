@@ -60,7 +60,7 @@ export default function Home() {
         </p>
       </div>
 
-      <div id="skills">
+      <div id="skills" className={styles.skillWrapper}>
         <h1>My Toolbox</h1>
         <Toolbox />    
       </div>

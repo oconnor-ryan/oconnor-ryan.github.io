@@ -1,8 +1,8 @@
 //variables 
 
-$bassword-light0: rgb(240, 216, 121);
-$bassword-light1: rgb(213, 193, 116);
-$bassword-light2: rgb(211, 190, 107);
+$basswood-light0: rgb(240, 216, 121);
+$basswood-light1: rgb(213, 193, 116);
+$basswood-light2: rgb(211, 190, 107);
 
 $pine-light0: rgb(220, 196, 101);
 $pine-light1: rgb(193, 173, 96);
@@ -45,9 +45,9 @@ $walnut-dark2: rgb(40, 20, 0);
 @mixin straight-grain-1-basswood-light-bg($degree: 0deg) {
   @include straight-grain-1-bg(
     $degree, 
-    $bassword-light0, 
-    $bassword-light1, 
-    $bassword-light2
+    $basswood-light0, 
+    $basswood-light1, 
+    $basswood-light2
   );
 }
 
@@ -96,9 +96,9 @@ $walnut-dark2: rgb(40, 20, 0);
   @include straight-grain-1-border(
     $degree, 
     $slice,
-    $bassword-light0, 
-    $bassword-light1, 
-    $bassword-light2
+    $basswood-light0, 
+    $basswood-light1, 
+    $basswood-light2
   );
 }
 
