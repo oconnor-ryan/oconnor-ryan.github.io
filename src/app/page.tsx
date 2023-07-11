@@ -50,7 +50,7 @@ export default function Home() {
         
       </div>
 
-      <Script src="/hero-section-canvas-handler.js"></Script>
+      <Script src="/main-page.js"></Script>
     </main>
   )
 }

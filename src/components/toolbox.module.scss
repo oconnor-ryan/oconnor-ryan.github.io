@@ -1,15 +1,29 @@
 @use "wood-theme" as wood;
 
+$toolboxAnimationDuration: 2s;
+
+
 .toolboxContainer {
-  width: 80%;
-  margin: auto;
+  display: block;
+  width: 100%;
+
+  overflow: hidden;
 
   position: relative;
 
   .toolbox {
-    width: 100%;
+    width: 70%;
     height: auto;
-    z-index: 0; //keep image under the skillContainer
+    margin: 0 15%;
+   // margin-top: 10%;
+
+
+    transform: rotate(0deg);
+    transition: transform $toolboxAnimationDuration;
+    transition-delay: $toolboxAnimationDuration; //the delay is for when the toolbox flips upward.
+
+    position: relative; //required to allow z-index to work
+    z-index: 1; //keep image above the skillContainer
   }
 
   .skillContainer {
@@ -17,34 +31,64 @@
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    //justify-content: center;
+    justify-content: center;
 
     list-style: none; //remove dots from list
 
-    z-index: 1; //keep skills above the toolbox image
+    //position must be relative so that the space for the
+    //skill container to sit in when the toolbox flips over
+    //is available.
+    position: relative; //required to allow z-index to work
 
-    overflow: hidden;
-    position: absolute;
-    
-    //height = 100% - topPos - bottomPos
-    //start the container in the middle of the parent
-    top: 45%;
+    z-index: 0; //keep skills under the toolbox image
 
-    //make height slightly less than 55% so that content does 
-    //not end right at the end of the image outline
-    height: 54%; 
+    //keep container hidden behind toolbox by translating
+    //up 2 times the height of this container to give the 
+    //illusion of the container falling out of the toolbox.
+
+    //Note that 200% may not work as well when the container is 
+    //very short relative to the toolbox
+    transform: translateY(-100%); 
+
+
+    transition: transform $toolboxAnimationDuration, opacity $toolboxAnimationDuration;
+    //the delay is for when the toolbox flips upward, allowing 
+    //this to retract into the image before the toolbox rotates
+    transition-delay: 0s;  
+
+    //set to 0 since toolbox has a transparent background that
+    //would reveal the skill container if opacity was not 0
+    opacity: 0; 
+
+    //right is 15% away from 100%, use width to set the right value
 
     left: 15%;
-    //right is 15% away from 100%, use width to set the right value
     width: 70%; //width must be equal to 100% - left - right
 
     li {
       margin: 0.5em;
       padding: 1em;
+      text-align: center;
+      border-radius: 10px;
     
       @include wood.straight-grain-1-basswood-light-bg(0deg);
 
       font-weight: bold;
     }
+  }
+}
+
+
+.toolboxContainer.upsideDown {
+  .toolbox {
+    transform: rotate(180deg);
+    transition-delay: 0s; //this delay is for when the toolbox flips upside down. It must flip before the skill container moves
+
+  }
+
+  .skillContainer {
+    transform: translateY(0);
+    transition-delay: $toolboxAnimationDuration;; //this delay is for when the toolbox flips upside down.
+    opacity: 1;
   }
 }
