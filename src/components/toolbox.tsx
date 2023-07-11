@@ -32,21 +32,8 @@ export default function Toolbox() {
           let willBeUpsideDown = false;
           let currentlyUpsideDown = willBeUpsideDown;
           let transitionComplete = true;
-
-          let callback = (entries, observer) => {
-            entries.forEach((entry) => {
-              if(entry.target == toolboxContainer) {
-                if(entry.isIntersecting) {
-                  toolboxContainer.classList.add("${styles.upsideDown}");
-                } else {
-                  toolboxContainer.classList.remove("${styles.upsideDown}");
-
-                }
-              }
-            });
-          };
           
-          /*
+          
           let callback = (entries, observer) => {
             entries.forEach((entry) => {
               if(entry.target == toolboxContainer) {
@@ -71,11 +58,11 @@ export default function Toolbox() {
               }
             });
           };
-          */
+          
 
           let options = {
             root: null, //use browser viewport
-            threshold: 0.25 //0.25 of element must be onscreen for animation to take affect
+            threshold: 0.5 //0.25 of element must be onscreen for animation to take affect
           };
 
           let observer = new IntersectionObserver(callback, options);
@@ -85,8 +72,6 @@ export default function Toolbox() {
 
           //set up transitionend listeners for toolboxImage and skillContainer
 
-          /*
-          
           toolboxImage.addEventListener("transitionend", (ev) => {
             if(!willBeUpsideDown) {
               transitionComplete = true;
@@ -105,7 +90,7 @@ export default function Toolbox() {
             }
           });
           
-          */
+          
           
 
         `
