@@ -93,6 +93,14 @@
     }
   }
 
+  .educationWrapper {
+    .educationContent {
+      width: 600px;
+      height: 600px;
+      @include wood.straight-grain-1-basswood-light-border-bg();
+    }
+  }
+
   .resume-pdf-wrapper {
     width: 80%;
     margin-left: 10%;

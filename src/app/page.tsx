@@ -65,8 +65,9 @@ export default function Home() {
         <Toolbox />    
       </div>
 
-      <div id="education">
+      <div id="education" className={styles.educationWrapper}>
         <h1>Education</h1>
+        <div className={styles.educationContent}></div>
       </div>
 
       <div id="experience">
