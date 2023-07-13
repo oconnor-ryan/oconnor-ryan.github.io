@@ -20,6 +20,14 @@ $walnut-dark0: rgb(60, 40, 0);
 $walnut-dark1: rgb(50, 30, 0);
 $walnut-dark2: rgb(40, 20, 0);
 
+$ebony-light0: rgb(40, 40, 40);
+$ebony-light1: rgb(30, 30, 30);
+$ebony-light2: rgb(20, 20, 20);
+
+$ebony-dark0: rgb(20, 20, 20);
+$ebony-dark1: rgb(10, 10, 10);
+$ebony-dark2: rgb(0, 0, 0);
+
 $default-background-size: 50px;
 
 @function straight-grain-1($degree: 0deg, $color0, $color1, $color2, $size: $default-background-size) {
@@ -92,6 +100,8 @@ $default-background-size: 50px;
   
 }
 
+/* START OF BACKGROUNDS */
+
 @mixin straight-grain-1-bg($degree: 0deg, $color0, $color1, $color2, $background-size: $default-background-size) {
   background: straight-grain-1($degree, $color0, $color1, $color2, $background-size);
 }
@@ -145,6 +155,30 @@ $default-background-size: 50px;
     $background-size
   );
 }
+
+@mixin straight-grain-1-ebony-light-bg($degree: 0deg, $background-size: $default-background-size) {
+  @include straight-grain-1-bg(
+    $degree, 
+    $ebony-light0, 
+    $ebony-light1, 
+    $ebony-light2,
+    $background-size
+  );
+}
+
+@mixin straight-grain-1-ebony-dark-bg($degree: 0deg, $background-size: $default-background-size) {
+  @include straight-grain-1-bg(
+    $degree, 
+    $ebony-dark0, 
+    $ebony-dark1, 
+    $ebony-dark2,
+    $background-size
+  );
+}
+
+
+
+/* START OF BORDER IMAGES */
 
 @mixin straight-grain-1-border($degree: 0deg, $slice, $color0, $color1, $color2) {
   border-image: straight-grain-1($degree, $color0, $color1, $color2);
@@ -201,6 +235,28 @@ $default-background-size: 50px;
   );
 }
 
+@mixin straight-grain-1-ebony-light-border($degree: 0deg, $slice) {
+  @include straight-grain-1-bg(
+    $degree, 
+    $slice
+    $ebony-light0, 
+    $ebony-light1, 
+    $ebony-light2
+  );
+}
+
+@mixin straight-grain-1-ebony-dark-border($degree: 0deg, $slice) {
+  @include straight-grain-1-bg(
+    $degree, 
+    $slice
+    $ebony-dark0, 
+    $ebony-dark1, 
+    $ebony-dark2
+  );
+}
+
+/* START OF BORDER BACKGROUNDS */
+
 @mixin straight-grain-1-basswood-light-border-bg($padding) {
   @include straight-grain-1-border-bg($padding, $basswood-light0, $basswood-light1, $basswood-light2);
 }
@@ -220,5 +276,15 @@ $default-background-size: 50px;
 @mixin straight-grain-1-walnut-dark-border-bg($padding) {
   @include straight-grain-1-border-bg($padding, $walnut-dark0, $walnut-dark1, $walnut-dark2);
 }
+
+@mixin straight-grain-1-ebony-light-border-bg($padding) {
+  @include straight-grain-1-border-bg($padding, $ebony-light0, $ebony-light1, $ebony-light2);
+}
+
+@mixin straight-grain-1-ebony-dark-border-bg($padding) {
+  @include straight-grain-1-border-bg($padding, $ebony-dark0, $ebony-dark1, $ebony-dark2);
+}
+
+
 
 

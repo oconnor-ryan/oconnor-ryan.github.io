@@ -269,7 +269,7 @@ $transitionTime: 0.5s;
       
       @include wood.straight-grain-1-walnut-light-border(90deg, 25);
 
-      @include wood.straight-grain-1-pine-light-bg(90deg);
+      @include wood.straight-grain-1-ebony-dark-bg(90deg, 25%);
 
       overflow-x: hidden;
 
