@@ -1,7 +1,8 @@
 @use "wood-theme" as wood;
 
 $toolboxAnimationDuration: 1s;
-
+$max-width: 500px;
+$childWidth: 70%;
 
 .toolboxContainer {
   display: block;
@@ -18,8 +19,10 @@ $toolboxAnimationDuration: 1s;
 
 
   .toolbox {
-    width: 70%;
+    width: $childWidth;
     height: auto;
+
+    max-width: $max-width;
 
 
     transform: rotate(0deg);
@@ -46,6 +49,12 @@ $toolboxAnimationDuration: 1s;
 
     z-index: 0; //keep skills under the toolbox image
 
+    margin: 0 auto;
+    width: $childWidth; 
+    max-width: $max-width;
+
+
+
     //keep container hidden behind toolbox by translating
     //up 2 times the height of this container to give the 
     //illusion of the container falling out of the toolbox.
@@ -53,7 +62,6 @@ $toolboxAnimationDuration: 1s;
     //Note that current percentage may not work as well when the container is 
     //very short relative to the toolbox
     transform: translateY(-100%); 
-
 
     transition: transform $toolboxAnimationDuration, opacity $toolboxAnimationDuration;
     //the delay is for when the toolbox flips upward, allowing 
@@ -64,10 +72,6 @@ $toolboxAnimationDuration: 1s;
     //would reveal the skill container if opacity was not 0
     opacity: 0; 
 
-    //right is 15% away from 100%, use width to set the right value
-
-    left: 15%;
-    width: 70%; //width must be equal to 100% - left - right
 
     li {
       margin: 0.5em;
