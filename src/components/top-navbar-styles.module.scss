@@ -272,6 +272,10 @@ $transitionTime: 0.5s;
 
       @include wood.straight-grain-1-walnut-light-border-bg(20px, $top: false);
       
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+
+
       .nav {
         display: block;
         height: 100%;
