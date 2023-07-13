@@ -7,15 +7,19 @@ $toolboxAnimationDuration: 1s;
   display: block;
   width: 100%;
 
+  margin: 0 auto;
+
+
   overflow: hidden;
 
-  position: relative;
+  //this centers the IMG (.toobox) horizontally.
+  //the margin: auto; trick does not work on images, it seems
+  text-align: center; 
+
 
   .toolbox {
     width: 70%;
     height: auto;
-    margin: 0 15%;
-   // margin-top: 10%;
 
 
     transform: rotate(0deg);
@@ -46,7 +50,7 @@ $toolboxAnimationDuration: 1s;
     //up 2 times the height of this container to give the 
     //illusion of the container falling out of the toolbox.
 
-    //Note that 200% may not work as well when the container is 
+    //Note that current percentage may not work as well when the container is 
     //very short relative to the toolbox
     transform: translateY(-100%); 
 

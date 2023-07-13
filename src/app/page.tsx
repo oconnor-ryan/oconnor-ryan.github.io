@@ -11,10 +11,9 @@ export default function Home() {
           <img className={styles.profilePic} src='/me.jpg'/>
         </div>
         <p className={styles.pitch}>
-          Just as a craftsman knows the tools of their trade,
-          I know the tools to build your dream websites and mobile
-          apps. I aspire to build great fullstack web and mobile
-          applications for a variety of industries.
+          Just as a carpenter uses their tools and expertise to build 
+          beautiful buildings, I use my tools and expertise to build 
+          beautiful websites and mobile apps. 
         </p>
       </div>
       <div id="about" className={styles.aboutWrapper}>

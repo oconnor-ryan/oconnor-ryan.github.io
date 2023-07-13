@@ -95,9 +95,11 @@
 
   .educationWrapper {
     .educationContentBorder {
+      margin: auto;
       width: 600px;
       height: 600px;
       @include wood.straight-grain-1-pine-dark-border-bg(50px);
+      border-radius: 10px;
 
       .educationContent {
         width: 100%;
