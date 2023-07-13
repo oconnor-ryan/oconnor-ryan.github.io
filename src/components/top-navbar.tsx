@@ -11,10 +11,11 @@ export default function TopNavbar()  {
         
       <nav className={styles.nav}>
         <a className={styles.link} href="/#about">About</a>
-        <a className={styles.link} href="/#education">Education</a>
-        <a className={styles.link} href="/#experience">Experience</a>
+        <a className={styles.link} href="/#projects">Projects</a>
+        <a className={styles.link} href="/#resume">Resume</a>
         <a className={styles.link} href="/blog">Blog</a>
-        <a className={styles.link} href="/#resume-pdf-wrapper">Resume</a>
+        <a className={styles.link} href="/woodgallery">Wood Gallery</a>
+        {/*<a className={styles.link} href="/games">Games</a>*/}
         <div className={styles["social-container"]}>
           {/* target="_blank" tells browser to open link in new tab. */}
           <a href="mailto:oconnor.ryan.m@proton.me"><div className={`${styles.icons} ${styles.iconEmail}`}></div></a>

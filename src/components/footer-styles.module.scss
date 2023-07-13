@@ -1,7 +1,8 @@
 @use "wood-theme" as wood;
+@use "global-variables" as globals;
 
 .footer {
-  height: var(--footer-height);
+  height: globals.$footer-height;
   @include wood.straight-grain-1-walnut-light-bg(0deg);
 
   a {
