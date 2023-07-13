@@ -20,41 +20,26 @@ $walnut-dark0: rgb(60, 40, 0);
 $walnut-dark1: rgb(50, 30, 0);
 $walnut-dark2: rgb(40, 20, 0);
 
-@function straight-grain-1($degree: 0deg, $color0, $color1, $color2) {
-  @return repeating-linear-gradient(
-    $degree, 
-    $color0 0px, 
-    $color0 10px, 
-    $color1 10px, 
-    $color1 15px,
-    $color0 15px, 
-    $color0 25px, 
-    $color2 25px, 
-    $color2 35px, 
-    $color0 35px, 
-    $color0 45px, 
-    $color1 45px, 
-    $color1 50px
-  );
-}
+$default-background-size: 50px;
 
-@function straight-grain-1-border-bg-segment($degree, $color0, $color1, $color2) {
-
-  @return linear-gradient(
+@function straight-grain-1($degree: 0deg, $color0, $color1, $color2, $size: $default-background-size) {
+  $parameters: 
     $degree, 
-    $color0 0%, 
-    $color0 20%, 
-    $color1 20%, 
-    $color1 30%,
-    $color0 30%, 
-    $color0 50%, 
-    $color2 50%, 
-    $color2 70%, 
-    $color0 70%, 
-    $color0 90%, 
-    $color1 90%, 
-    $color1 100%
-  );
+    $color0 calc($size * 0), 
+    $color0 calc($size * 0.2), 
+    $color1 calc($size * 0.2), 
+    $color1 calc($size * 0.3),
+    $color0 calc($size * 0.3), 
+    $color0 calc($size * 0.5), 
+    $color2 calc($size * 0.5), 
+    $color2 calc($size * 0.7), 
+    $color0 calc($size * 0.7), 
+    $color0 calc($size * 0.9), 
+    $color1 calc($size * 0.9), 
+    $color1 calc($size * 1);
+
+  @return repeating-linear-gradient($parameters...);
+
 }
 
 @mixin straight-grain-1-border-bg($padding, $color0, $color1, $color2) {
@@ -62,36 +47,40 @@ $walnut-dark2: rgb(40, 20, 0);
   background:
 
   //top border
-  straight-grain-1-border-bg-segment(
+  straight-grain-1(
     0deg, 
     $color0, 
     $color1, 
-    $color2
+    $color2,
+    $padding
   ), 
 
   //bottom border
-  straight-grain-1-border-bg-segment(
+  straight-grain-1(
     0deg,
     $color0, 
     $color1, 
-    $color2
+    $color2,
+    $padding
   ),
 
   
   //left border
-  straight-grain-1-border-bg-segment(
+  straight-grain-1(
     90deg,
     $color0, 
     $color1, 
-    $color2
+    $color2,
+    $padding
   ),
 
   //right border
-  straight-grain-1-border-bg-segment(
+  straight-grain-1(
     90deg,
     $color0, 
     $color1, 
-    $color2
+    $color2,
+    $padding
   )
 
   ;
@@ -103,52 +92,57 @@ $walnut-dark2: rgb(40, 20, 0);
   
 }
 
-@mixin straight-grain-1-bg($degree: 0deg, $color0, $color1, $color2) {
-  background: straight-grain-1($degree, $color0, $color1, $color2);
+@mixin straight-grain-1-bg($degree: 0deg, $color0, $color1, $color2, $background-size: $default-background-size) {
+  background: straight-grain-1($degree, $color0, $color1, $color2, $background-size);
 }
 
-@mixin straight-grain-1-basswood-light-bg($degree: 0deg) {
+@mixin straight-grain-1-basswood-light-bg($degree: 0deg, $background-size: $default-background-size) {
   @include straight-grain-1-bg(
     $degree, 
     $basswood-light0, 
     $basswood-light1, 
-    $basswood-light2
+    $basswood-light2,
+    $background-size
   );
 }
 
-@mixin straight-grain-1-pine-light-bg($degree: 0deg) {
+@mixin straight-grain-1-pine-light-bg($degree: 0deg, $background-size: $default-background-size) {
   @include straight-grain-1-bg(
     $degree, 
     $pine-light0, 
     $pine-light1, 
-    $pine-light2
+    $pine-light2,
+    $background-size
   );
 }
 
-@mixin straight-grain-1-pine-dark-bg($degree: 0deg) {
+@mixin straight-grain-1-pine-dark-bg($degree: 0deg, $background-size: $default-background-size) {
   @include straight-grain-1-bg(
     $degree, 
     $pine-dark0, 
     $pine-dark1, 
-    $pine-dark2
+    $pine-dark2,
+    $background-size
   );
 }
 
-@mixin straight-grain-1-walnut-light-bg($degree: 0deg) {
+@mixin straight-grain-1-walnut-light-bg($degree: 0deg, $background-size: $default-background-size) {
   @include straight-grain-1-bg(
     $degree, 
     $walnut-light0, 
     $walnut-light1, 
-    $walnut-light2
+    $walnut-light2,
+    $background-size
   );
 }
 
-@mixin straight-grain-1-walnut-dark-bg($degree: 0deg) {
+@mixin straight-grain-1-walnut-dark-bg($degree: 0deg, $background-size: $default-background-size) {
   @include straight-grain-1-bg(
     $degree, 
     $walnut-dark0, 
     $walnut-dark1, 
-    $walnut-dark2
+    $walnut-dark2,
+    $background-size
   );
 }
 
