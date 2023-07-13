@@ -1,8 +1,9 @@
 @use "wood-theme" as wood;
+@use "global-variables" as globals;
 
 
 //variables
-$drawerTopHeight: calc(var(--navbar-height) - var(--navbar-padding-except-bottom));
+$drawerTopHeight: globals.$navbar-height;
 $drawerExpandedHeight: 75vh;
 $transitionTime: 0.5s;
 
@@ -44,7 +45,7 @@ $transitionTime: 0.5s;
   width: 100%;
   height: $drawerTopHeight;
 
-  padding: var(--navbar-padding-except-bottom);
+  padding: globals.$navbar-padding;
   padding-bottom: 0px;
   overflow: hidden; //prevents user from interacting with elements outside of the borders of this element
 
@@ -67,7 +68,7 @@ $transitionTime: 0.5s;
 
     //must calculate height to fit text so that it
     //does not overflow into other elements
-    height: calc($drawerTopHeight - var(--navbar-padding-except-bottom));
+    height: calc($drawerTopHeight - globals.$navbar-padding);
     
     z-index: 2; //logo stays above all other elements in navbar
 
@@ -97,11 +98,10 @@ $transitionTime: 0.5s;
     height: 100%;
 
     //
-    transition: top $transitionTime; //make sure transition is same as the one used for the header dropdown
+    transition: transform $transitionTime; //make sure transition is same as the one used for the header dropdown
 
     
-    overflow-y: visible; //allow overflow only on top and bottom
-    overflow-x: hidden;
+    overflow: hidden;
 
     .link {
       text-decoration: none;
@@ -251,19 +251,21 @@ $transitionTime: 0.5s;
     .nav {
       display: block;
       position: absolute;
-      //make sure navbar stays under the bottom border of the header when not in dropdown mode.
-      //this is hidden due to the overflow: hidden attribute in the header.
 
-      //use -100vh so that when header expands to 100vh, the nav
-      //will have the same height as the header's 100vh height.
-     // top: calc(-100vh - var(--navbar-height) + var(--navbar-padding-except-bottom));
-      top: calc(-#{$drawerExpandedHeight} - var(--navbar-height));
+      top: $drawerTopHeight;
       left: 0;
       width: 100%;
       height: calc($drawerExpandedHeight - $drawerTopHeight);
       z-index: 0; //move to lowest z-index so that the logo, hamburger, and drawerTopContainer are above this element
 
-      border-width: var(--navbar-padding-except-bottom);
+
+      //move up into the drawerTopContainer by 100% of nav's height.
+      //because the top of the nav is right at the bottom of
+      //the drawerTopContainer, it is completely hidden
+
+      transform: translateY(-100%); 
+
+      border-width: globals.$navbar-padding;
       border-style: solid;
       border-top: none;
       
@@ -313,10 +315,9 @@ $transitionTime: 0.5s;
   .header.dropdown {
     height: $drawerExpandedHeight;
     .nav {
-     // height: calc($drawerExpandedHeight - $drawerTopHeight);
       //move the nav container down so that the entire container is visible.
       //this creates the illusion of someone opening a drawer and looking at what's inside.
-      top: $drawerTopHeight;
+      transform: translateY(0);
     
     }
   }
