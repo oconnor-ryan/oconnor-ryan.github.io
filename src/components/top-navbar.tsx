@@ -13,7 +13,7 @@ export default function TopNavbar()  {
         <nav className={styles.nav}>
           <a className={styles.link} href="/#about">About</a>
           <a className={styles.link} href="/#projects">Projects</a>
-          <a className={styles.link} href="/#resume">Resume</a>
+          <a className={styles.link} href="/Resume.pdf">Resume</a>
           <a className={styles.link} href="/blog">Blog</a>
           <a className={styles.link} href="/woodgallery">Wood Gallery</a>
           {/*<a className={styles.link} href="/games">Games</a>*/}
