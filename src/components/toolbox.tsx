@@ -15,6 +15,7 @@ export default function Toolbox() {
         <li>PHP</li>
         <li>NodeJS</li>
         <li>Linux</li>
+        <li>AWS</li>
         <li>Git</li>
         <li>MariaDB / MySQL</li>
         <li>XCode for iOS</li>
