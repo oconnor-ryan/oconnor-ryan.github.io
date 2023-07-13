@@ -1,8 +1,12 @@
 @use "wood-theme" as wood;
 
 .main {
+  display: block;
   @include wood.straight-grain-1-walnut-dark-bg(0deg);
   padding: 0 5%;
+
+  text-align: center;
+
 
   h1 {
     padding: 0.5em;
@@ -99,13 +103,30 @@
     }
   }
 
-  .resumeWrapper {
-    .resume-pdf-wrapper {
-      width: 100%;
-      height: 500px;
-      background-color: white;
+  .resumeButton {
+    margin: 1em;
+    padding: 1em;
+    width: 70%;
+    max-width: 600px;
+    cursor: pointer;
+
+    transition: filter 0.5s;
+    filter: brightness(100%);
+
+    @include wood.straight-grain-1-pine-dark-bg(0deg);
+    border-radius: 10px;
+   // box-shadow: 0 0 10px 10px rgba(0,0,0,0.5);
+
+    color: wood.$ebony-dark2;
+    font-size: 2em;
+    font-weight: bold;
+
+    &:hover {
+      filter: brightness(60%);
     }
   }
+
+  
   
 }
 

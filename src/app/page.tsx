@@ -1,4 +1,3 @@
-import Script from 'next/script'
 import Toolbox from '@/components/toolbox';
 import Card from '@/components/card';
 
@@ -55,20 +54,10 @@ export default function Home() {
         </div>
       </div>
 
-      {/* 
-        Note that the PDF will embed nicely on Desktop, but not on most mobile browsers.
-        On Safari and Firefox iOS browsers, only the first page is displayed as an image, making 
-        downloading the PDF file difficult.
-      */}
-      <div id="resume" className={styles.resumeWrapper}>
-        <h1>My Resume in PDF form!</h1>
-        <a href="/Resume.pdf">
-          <object className={styles["resume-pdf-wrapper"]} data="/Resume.pdf" type="application/pdf">
-            <p>Cannot display PDF file. Download my resume instead!</p>
-          </object>
-        </a>
-        
-      </div>
+      <a href="/Resume.pdf">
+        <button className={styles.resumeButton}>Check Out My Resume! &#8594;</button>
+      </a>
+      
     </main>
   )
 }
