@@ -50,55 +50,6 @@ $default-background-size: 50px;
 
 }
 
-@mixin straight-grain-1-border-bg($padding, $color0, $color1, $color2) {
-  
-  background:
-
-  //top border
-  straight-grain-1(
-    0deg, 
-    $color0, 
-    $color1, 
-    $color2,
-    $padding
-  ), 
-
-  //bottom border
-  straight-grain-1(
-    0deg,
-    $color0, 
-    $color1, 
-    $color2,
-    $padding
-  ),
-
-  
-  //left border
-  straight-grain-1(
-    90deg,
-    $color0, 
-    $color1, 
-    $color2,
-    $padding
-  ),
-
-  //right border
-  straight-grain-1(
-    90deg,
-    $color0, 
-    $color1, 
-    $color2,
-    $padding
-  )
-
-  ;
-
-  background-size: 100% $padding, 100% $padding, $padding 100%, $padding 100%;
-  background-position: top, bottom, left, right;
-  background-repeat: no-repeat;
-  padding: $padding;
-  
-}
 
 /* START OF BACKGROUNDS */
 
@@ -256,33 +207,159 @@ $default-background-size: 50px;
 }
 
 /* START OF BORDER BACKGROUNDS */
+//Creates a background with a "border" with a width specified by
+//padding. The user can also specify which borders they want visible
+//( any combination of (top, left, bottom, right)
+@mixin straight-grain-1-border-bg(
+  $padding, 
+  $color0, 
+  $color1, 
+  $color2, 
+  $top: true,
+  $bottom: true, 
+  $left: true, 
+  $right: true
+) {
+  
+  $background-parameters: unquote('');
+  $background-positions: unquote('');
+  $background-sizes: unquote('');
 
-@mixin straight-grain-1-basswood-light-border-bg($padding) {
-  @include straight-grain-1-border-bg($padding, $basswood-light0, $basswood-light1, $basswood-light2);
+  $padding-top: 0;
+  $padding-bottom: 0;
+  $padding-left: 0;
+  $padding-right: 0;
+
+  $addComma: false;
+
+  @if $top {
+    $comma: '';
+    @if $addComma {
+      $comma: ', ';
+    }
+
+    $comma: unquote($comma);
+
+    $addComma: true;
+
+    $background-parameters: $background-parameters + $comma + straight-grain-1(
+      0deg, 
+      $color0, 
+      $color1, 
+      $color2,
+      $padding
+    );
+    $background-positions: $background-positions + $comma + top;
+    $background-sizes: $background-sizes + $comma + 100% $padding;
+    $padding-top: $padding;
+  }
+
+  @if $bottom {
+    $comma: '';
+    @if $addComma {
+      $comma: ', ';
+    }
+
+    $comma: unquote($comma);
+
+    $addComma: true;
+
+    $background-parameters: $background-parameters + $comma + straight-grain-1(
+      0deg, 
+      $color0, 
+      $color1, 
+      $color2,
+      $padding
+    );
+    $background-positions: $background-positions + $comma + bottom;
+    $background-sizes: $background-sizes + $comma + 100% $padding;
+    $padding-bottom: $padding;
+  }
+
+  @if $left {
+    $comma: '';
+    @if $addComma {
+      $comma: ', ';
+    }
+
+    $comma: unquote($comma);
+
+    $addComma: true;
+
+    $background-parameters: $background-parameters + $comma + straight-grain-1(
+      90deg, 
+      $color0, 
+      $color1, 
+      $color2,
+      $padding
+    );
+    $background-positions: $background-positions + $comma + left;
+    $background-sizes: $background-sizes + $comma + $padding 100%;
+    $padding-left: $padding;
+  }
+
+  @if $right {
+    $comma: '';
+    @if $addComma {
+      $comma: ', ';
+    }
+
+    $comma: unquote($comma);
+
+    $addComma: true;
+
+    $background-parameters: $background-parameters + $comma + straight-grain-1(
+      90deg, 
+      $color0, 
+      $color1, 
+      $color2,
+      $padding
+    );
+    $background-positions: $background-positions + $comma + right;
+    $background-sizes: $background-sizes + $comma + $padding 100%;
+    $padding-right: $padding;
+  }
+
+  background: $background-parameters;
+
+  background-size: $background-sizes;
+  background-position: $background-positions;
+  background-repeat: no-repeat;
+
+  padding-top: $padding-top;
+  padding-bottom: $padding-bottom;
+  padding-left: $padding-left;
+  padding-right: $padding-right;
+
+  
 }
 
-@mixin straight-grain-1-pine-light-border-bg($padding) {
-  @include straight-grain-1-border-bg($padding, $pine-light0, $pine-light1, $pine-light2);
+@mixin straight-grain-1-basswood-light-border-bg($padding, $top: true, $bottom: true, $left: true, $right: true) {
+  @include straight-grain-1-border-bg($padding, $basswood-light0, $basswood-light1, $basswood-light2, $top, $bottom, $left, $right);
 }
 
-@mixin straight-grain-1-pine-dark-border-bg($padding) {
-  @include straight-grain-1-border-bg($padding, $pine-dark0, $pine-dark1, $pine-dark2);
+@mixin straight-grain-1-pine-light-border-bg($padding, $top: true, $bottom: true, $left: true, $right: true) {
+  @include straight-grain-1-border-bg($padding, $pine-light0, $pine-light1, $pine-light2, $top, $bottom, $left, $right);
 }
 
-@mixin straight-grain-1-walnut-light-border-bg($padding) {
-  @include straight-grain-1-border-bg($padding, $walnut-light0, $walnut-light1, $walnut-light2);
+@mixin straight-grain-1-pine-dark-border-bg($padding, $top: true, $bottom: true, $left: true, $right: true) {
+  @include straight-grain-1-border-bg($padding, $pine-dark0, $pine-dark1, $pine-dark2, $top, $bottom, $left, $right);
 }
 
-@mixin straight-grain-1-walnut-dark-border-bg($padding) {
-  @include straight-grain-1-border-bg($padding, $walnut-dark0, $walnut-dark1, $walnut-dark2);
+@mixin straight-grain-1-walnut-light-border-bg($padding, $top: true, $bottom: true, $left: true, $right: true) {
+  @include straight-grain-1-border-bg($padding, $walnut-light0, $walnut-light1, $walnut-light2, $top, $bottom, $left, $right);
 }
 
-@mixin straight-grain-1-ebony-light-border-bg($padding) {
-  @include straight-grain-1-border-bg($padding, $ebony-light0, $ebony-light1, $ebony-light2);
+@mixin straight-grain-1-walnut-dark-border-bg($padding, $top: true, $bottom: true, $left: true, $right: true) {
+  @include straight-grain-1-border-bg($padding, $walnut-dark0, $walnut-dark1, $walnut-dark2, $top, $bottom, $left, $right);
 }
 
-@mixin straight-grain-1-ebony-dark-border-bg($padding) {
-  @include straight-grain-1-border-bg($padding, $ebony-dark0, $ebony-dark1, $ebony-dark2);
+@mixin straight-grain-1-ebony-light-border-bg($padding, $top: true, $bottom: true, $left: true, $right: true) {
+  @include straight-grain-1-border-bg($padding, $ebony-light0, $ebony-light1, $ebony-light2, $top, $bottom, $left, $right);
+}
+
+@mixin straight-grain-1-ebony-dark-border-bg($padding, $top: true, $bottom: true, $left: true, $right: true) {
+  @include straight-grain-1-border-bg($padding, $ebony-dark0, $ebony-dark1, $ebony-dark2, $top, $bottom, $left, $right);
 }
 
 
