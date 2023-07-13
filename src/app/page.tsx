@@ -67,7 +67,9 @@ export default function Home() {
 
       <div id="education" className={styles.educationWrapper}>
         <h1>Education</h1>
-        <div className={styles.educationContent}></div>
+        <div className={styles.educationContentBorder}>
+          <div className={styles.educationContent}></div>
+        </div>
       </div>
 
       <div id="experience">

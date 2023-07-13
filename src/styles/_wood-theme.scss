@@ -38,32 +38,32 @@ $walnut-dark2: rgb(40, 20, 0);
   );
 }
 
-@function straight-grain-1-border-bg-segment($degree, $offset, $color0, $color1, $color2) {
+@function straight-grain-1-border-bg-segment($degree, $color0, $color1, $color2) {
+
   @return linear-gradient(
     $degree, 
-    $color0 0px + $offset, 
-    $color0 4px + $offset, 
-    $color1 4px + $offset, 
-    $color1 6px + $offset,
-    $color0 6px + $offset, 
-    $color0 10px + $offset, 
-    $color2 10px + $offset, 
-    $color2 14px + $offset, 
-    $color0 14px + $offset, 
-    $color0 18px + $offset, 
-    $color1 18px + $offset, 
-    $color1 20px + $offset
+    $color0 0%, 
+    $color0 20%, 
+    $color1 20%, 
+    $color1 30%,
+    $color0 30%, 
+    $color0 50%, 
+    $color2 50%, 
+    $color2 70%, 
+    $color0 70%, 
+    $color0 90%, 
+    $color1 90%, 
+    $color1 100%
   );
 }
 
-@mixin straight-grain-1-border-bg($color0, $color1, $color2) {
+@mixin straight-grain-1-border-bg($padding, $color0, $color1, $color2) {
   
-  background:  
+  background:
 
   //top border
   straight-grain-1-border-bg-segment(
     0deg, 
-    0,
     $color0, 
     $color1, 
     $color2
@@ -72,7 +72,6 @@ $walnut-dark2: rgb(40, 20, 0);
   //bottom border
   straight-grain-1-border-bg-segment(
     0deg,
-    0px,
     $color0, 
     $color1, 
     $color2
@@ -82,7 +81,6 @@ $walnut-dark2: rgb(40, 20, 0);
   //left border
   straight-grain-1-border-bg-segment(
     90deg,
-    0px,
     $color0, 
     $color1, 
     $color2
@@ -91,7 +89,6 @@ $walnut-dark2: rgb(40, 20, 0);
   //right border
   straight-grain-1-border-bg-segment(
     90deg,
-    0px,
     $color0, 
     $color1, 
     $color2
@@ -99,10 +96,10 @@ $walnut-dark2: rgb(40, 20, 0);
 
   ;
 
-  background-size: 100% 20px, 100% 20px, 20px 100%, 20px 100%;
+  background-size: 100% $padding, 100% $padding, $padding 100%, $padding 100%;
   background-position: top, bottom, left, right;
   background-repeat: no-repeat;
-  padding: 20px;
+  padding: $padding;
   
 }
 
@@ -210,7 +207,24 @@ $walnut-dark2: rgb(40, 20, 0);
   );
 }
 
-@mixin straight-grain-1-basswood-light-border-bg() {
-  @include straight-grain-1-border-bg($basswood-light0, $basswood-light1, $basswood-light1);
+@mixin straight-grain-1-basswood-light-border-bg($padding) {
+  @include straight-grain-1-border-bg($padding, $basswood-light0, $basswood-light1, $basswood-light2);
 }
+
+@mixin straight-grain-1-pine-light-border-bg($padding) {
+  @include straight-grain-1-border-bg($padding, $pine-light0, $pine-light1, $pine-light2);
+}
+
+@mixin straight-grain-1-pine-dark-border-bg($padding) {
+  @include straight-grain-1-border-bg($padding, $pine-dark0, $pine-dark1, $pine-dark2);
+}
+
+@mixin straight-grain-1-walnut-light-border-bg($padding) {
+  @include straight-grain-1-border-bg($padding, $walnut-light0, $walnut-light1, $walnut-light2);
+}
+
+@mixin straight-grain-1-walnut-dark-border-bg($padding) {
+  @include straight-grain-1-border-bg($padding, $walnut-dark0, $walnut-dark1, $walnut-dark2);
+}
+
 
