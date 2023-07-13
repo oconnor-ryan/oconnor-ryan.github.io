@@ -38,12 +38,7 @@ export default function Home() {
           I like fullstack development because it is the easiest
           way to share my applications to the largest possible
           number of people. I can create one website that can 
-          viewed and interacted with by anyone without the need
-          for them to install my application. I also hate not being
-          able to solve a specific problem just because I don't specialize
-          in a certain aspect of web/mobile development. I learn as 
-          much as I can about every aspect of web/mobile development
-          to fix all possible problems in the application.
+          viewed and interacted with by anyone who has a browser.
         </p>
 
         <h3>What do I do for fun?</h3>
