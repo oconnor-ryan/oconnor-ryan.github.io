@@ -35,6 +35,6 @@ html {
   //make sure minimum height of the wrapper is the height of the viewport minus the heights of the navbar and footer.
   //that way, if there is not enough content to fill the page, the footer will still be fully visible
   //while staying at the bottom of the viewport
-  min-height: calc(100vh - globals.$navbar-height - globals.$footer-height); 
+  min-height: calc(100vh - globals.$footer-height); 
 }
 
