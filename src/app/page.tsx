@@ -60,7 +60,7 @@ export default function Home() {
         On Safari and Firefox iOS browsers, only the first page is displayed as an image, making 
         downloading the PDF file difficult.
       */}
-      <div id="resume">
+      <div id="resume" className={styles.resumeWrapper}>
         <h1>My Resume in PDF form!</h1>
         <a href="/Resume.pdf">
           <object className={styles["resume-pdf-wrapper"]} data="/Resume.pdf" type="application/pdf">

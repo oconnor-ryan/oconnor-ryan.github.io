@@ -2,6 +2,8 @@
 
 .main {
   @include wood.straight-grain-1-walnut-dark-bg(0deg);
+  padding: 0 5%;
+
   h1 {
     padding: 0.5em;
     margin: 1em 0;
@@ -17,8 +19,6 @@
     flex-direction: row;
     align-items: center;
 
-    //@include wood.straight-grain-1-pine-dark-bg(0deg);
-    padding: 5%;
 
     .profilePicBackground { 
       flex: 30%;
@@ -67,8 +67,6 @@
   }
 
   .aboutWrapper {
-    width: 80%;
-    margin: auto;
 
     .cardContainer {
       width: 100%;
@@ -82,14 +80,11 @@
 
   .skillWrapper {
     h1 {
-      margin: 1em 10%;
+      margin: 1em 0;
     }
   }
 
   .projectWrapper {
-    margin: auto;
-    width: 80%;
-
     .testBorder {
       width: 100%;
       aspect-ratio: 1/1;
@@ -104,13 +99,14 @@
     }
   }
 
-  .resume-pdf-wrapper {
-    width: 80%;
-    margin-left: 10%;
-    margin-right: 10%;
-    height: 500px;
-    background-color: white;
+  .resumeWrapper {
+    .resume-pdf-wrapper {
+      width: 100%;
+      height: 500px;
+      background-color: white;
+    }
   }
+  
 }
 
 @media screen and (max-width: 900px) {
