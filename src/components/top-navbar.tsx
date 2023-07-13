@@ -9,20 +9,22 @@ export default function TopNavbar()  {
         <h1 className={styles.name}>Ryan O'Connor</h1>
       </a>
         
-      <nav className={styles.nav}>
-        <a className={styles.link} href="/#about">About</a>
-        <a className={styles.link} href="/#projects">Projects</a>
-        <a className={styles.link} href="/#resume">Resume</a>
-        <a className={styles.link} href="/blog">Blog</a>
-        <a className={styles.link} href="/woodgallery">Wood Gallery</a>
-        {/*<a className={styles.link} href="/games">Games</a>*/}
-        <div className={styles["social-container"]}>
-          {/* target="_blank" tells browser to open link in new tab. */}
-          <a href="mailto:oconnor.ryan.m@proton.me"><div className={`${styles.icons} ${styles.iconEmail}`}></div></a>
-          <a href="https://github.com/oconnor-ryan" target="_blank"><div className={`${styles.icons} ${styles.iconGithub}`}></div></a>
-          <a href="https://www.linkedin.com/in/ryan-o-connor-5615b326a/" target="_blank"><div className={`${styles.icons} ${styles.iconLinkedin}`}></div></a>
-        </div>
-      </nav>
+      <div className={styles.navBackground}>
+        <nav className={styles.nav}>
+          <a className={styles.link} href="/#about">About</a>
+          <a className={styles.link} href="/#projects">Projects</a>
+          <a className={styles.link} href="/#resume">Resume</a>
+          <a className={styles.link} href="/blog">Blog</a>
+          <a className={styles.link} href="/woodgallery">Wood Gallery</a>
+          {/*<a className={styles.link} href="/games">Games</a>*/}
+          <div className={styles["social-container"]}>
+            {/* target="_blank" tells browser to open link in new tab. */}
+            <a href="mailto:oconnor.ryan.m@proton.me"><div className={`${styles.icons} ${styles.iconEmail}`}></div></a>
+            <a href="https://github.com/oconnor-ryan" target="_blank"><div className={`${styles.icons} ${styles.iconGithub}`}></div></a>
+            <a href="https://www.linkedin.com/in/ryan-o-connor-5615b326a/" target="_blank"><div className={`${styles.icons} ${styles.iconLinkedin}`}></div></a>
+          </div>
+        </nav>
+      </div>
       
       <div className={styles.hamburger}>
         <div></div>

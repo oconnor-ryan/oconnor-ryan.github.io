@@ -88,7 +88,7 @@
     .testBorder {
       width: 100%;
       aspect-ratio: 1/1;
-      @include wood.straight-grain-1-pine-dark-border-bg(50px, $top: false);
+      @include wood.straight-grain-1-pine-dark-border-bg(50px);
       border-radius: 10px;
 
       .testBorderContent {

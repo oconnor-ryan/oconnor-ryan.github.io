@@ -82,65 +82,69 @@ $transitionTime: 0.5s;
     }
   }
 
-  //this is where all links and socials are displayed
-  .nav {
-    display: flex;
-    flex-direction: row;
-
-    /* 
-    Distribute items evenly
-    Items have a half-size space
-    on either end.
-    */
-    justify-content: space-around;  
-
+  //nav background is used to render a border background from the wood theme SASS file
+  //behind the navbar dropdown
+  .navBackground {
     //when in wide-screen mode, make it have the highest z-index so that links can be seen
     z-index: 2; 
     height: 100%;
-
-    //
     transition: transform $transitionTime; //make sure transition is same as the one used for the header dropdown
 
-    
-    overflow: hidden;
 
-    .link {
-      text-decoration: none;
-      color: wood.$basswood-light0;
-      font-weight: bold;
-      white-space: nowrap; //dont let text wrap around
-
-      padding: 0.5em 1em 0.5em 1em;
-    }
-
-    .social-container {
+    //this is where all links and socials are displayed
+    .nav {
       display: flex;
-      padding: 0;
-  
-      a {
-        display: inline-block; //required so that it expands to fit imgs
-        padding: 5px;
-      }
-  
-      .icons {
-        width: 32px;
-        height: 32px;
-        mask-size: cover; //expand SVG to fill entire div
-        background: wood.$basswood-light0; //color of SVG
+      flex-direction: row;
+
+      /* 
+      Distribute items evenly
+      Items have a half-size space
+      on either end.
+      */
+      justify-content: space-around;  
+
+      
+      overflow: hidden;
+
+      .link {
+        text-decoration: none;
+        color: wood.$basswood-light0;
+        font-weight: bold;
+        white-space: nowrap; //dont let text wrap around
+
+        padding: 0.5em 1em 0.5em 1em;
       }
 
-      //use masks so that color of SVG can match the background.
-      .iconEmail {
-        mask-image: url("/iconmonstr-email-10.svg");
-      }
-      .iconGithub {
-        mask-image: url("/iconmonstr-github-4.svg");
-      }
-      .iconLinkedin {
-        mask-image: url("/iconmonstr-linkedin-4.svg");
+      .social-container {
+        display: flex;
+        padding: 0;
+    
+        a {
+          display: inline-block; //required so that it expands to fit imgs
+          padding: 5px;
+        }
+    
+        .icons {
+          width: 32px;
+          height: 32px;
+          mask-size: cover; //expand SVG to fill entire div
+          background: wood.$basswood-light0; //color of SVG
+        }
+
+        //use masks so that color of SVG can match the background.
+        .iconEmail {
+          mask-image: url("/iconmonstr-email-10.svg");
+        }
+        .iconGithub {
+          mask-image: url("/iconmonstr-github-4.svg");
+        }
+        .iconLinkedin {
+          mask-image: url("/iconmonstr-linkedin-4.svg");
+        }
       }
     }
   }
+  
 
   //basic hamburger menu that turns into an X when pressed.
   .hamburger {
@@ -199,10 +203,12 @@ $transitionTime: 0.5s;
 //social-container in the nav element is removed.
 @media screen and (max-width: 900px) {
   .header {
-    .nav {
-      //dont display the list of socials when in tablet mode
-      .social-container {
-        display: none;
+    .navBackground {
+      .nav {
+        //dont display the list of socials when in tablet mode
+        .social-container {
+          display: none;
+        }
       }
     }
   }
@@ -250,16 +256,13 @@ $transitionTime: 0.5s;
     //adjust the navbar as it would appear when the dropdown class is in the header.
     //because overflow: hidden in the header, the navbar cannot be seen or interacted with until
     //the user selects the hamburger menu
-    .nav {
-      display: block;
+    .navBackground {
       position: absolute;
-
       top: $drawerTopHeight;
       left: 0;
       width: 100%;
       height: calc($drawerExpandedHeight - $drawerTopHeight);
       z-index: 0; //move to lowest z-index so that the logo, hamburger, and drawerTopContainer are above this element
-
 
       //move up into the drawerTopContainer by 100% of nav's height.
       //because the top of the nav is right at the bottom of
@@ -267,56 +270,58 @@ $transitionTime: 0.5s;
 
       transform: translateY(-100%); 
 
-      border-width: globals.$navbar-padding;
-      border-style: solid;
-      border-top: none;
+      @include wood.straight-grain-1-walnut-light-border-bg(20px, $top: false);
       
-      @include wood.straight-grain-1-walnut-light-border(90deg, 25);
-
-      @include wood.straight-grain-1-ebony-dark-bg(90deg, 25%);
-
-      overflow-x: hidden;
-
-      //if there are too many rows to fit in nav dropdown,
-      //allow the user to scroll.
-      overflow-y: scroll; 
-
-      .link {
-        display: block; //make elements of navbar display up to down instead of left to right
-        padding: 1em;
-
-        margin: 0 10px;
-        margin-top: 10px;
-        border-radius: 10px;
-      }
-
-      .social-container {
+      .nav {
         display: block;
-        @include wood.straight-grain-1-walnut-light-bg(0deg);
+        height: 100%;
 
-        margin: 0 10px;
-        margin-top: 10px;
-        border-radius: 10px;
-      }
+        @include wood.straight-grain-1-ebony-light-bg(0deg, 25%);
 
-      //add a partially transparent black background so that each odd child element appears
-      //to have a slightly darker background compared to the navbar background color.
-      //NOTE. USE > to only select the children of .social-container and not its grandchildren.
-      > :nth-child(odd) {
-        @include wood.straight-grain-1-walnut-dark-bg(0deg);
+        overflow-x: hidden;
 
-      }
+        //if there are too many rows to fit in nav dropdown,
+        //allow the user to scroll.
+        overflow-y: scroll; 
 
-      > :nth-child(even) {
-        @include wood.straight-grain-1-walnut-light-bg(0deg);
+        .link {
+          display: block; //make elements of navbar display up to down instead of left to right
+          padding: 1em;
+
+          margin: 0 10px;
+          margin-top: 10px;
+          border-radius: 10px;
+        }
+
+        .social-container {
+          display: block;
+          @include wood.straight-grain-1-walnut-light-bg(0deg);
+
+          margin: 0 10px;
+          margin-top: 10px;
+          border-radius: 10px;
+        }
+
+        //add a partially transparent black background so that each odd child element appears
+        //to have a slightly darker background compared to the navbar background color.
+        //NOTE. USE > to only select the children of .social-container and not its grandchildren.
+        > :nth-child(odd) {
+          @include wood.straight-grain-1-walnut-dark-bg(0deg);
+
+        }
+
+        > :nth-child(even) {
+          @include wood.straight-grain-1-walnut-light-bg(0deg);
+        }
       }
     }
+    
   }
 
   //when the dropdown class is added to header, move the header to the bottom of the viewport
   .header.dropdown {
     height: $drawerExpandedHeight;
-    .nav {
+    .navBackground {
       //move the nav container down so that the entire container is visible.
       //this creates the illusion of someone opening a drawer and looking at what's inside.
       transform: translateY(0);
