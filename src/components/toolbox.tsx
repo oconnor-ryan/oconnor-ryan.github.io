@@ -34,23 +34,30 @@ export default function Toolbox() {
           let currentlyUpsideDown = willBeUpsideDown;
           let transitionComplete = true;
           
+          //Use this callback when an intersection observer
+          //finds an intersection between the toolbox container
+          //and the browser's viewport.
           
           let callback = (entries, observer) => {
             entries.forEach((entry) => {
               if(entry.target == toolboxContainer) {
                 willBeUpsideDown = entry.isIntersecting;
+
+                //only start transition if a previous transition has already
+                //finished.
                 if(!transitionComplete) {
                   return;
                 }
 
+                //if the toolbox is already in the correct position, 
+                //dont do anything
                 if(currentlyUpsideDown == willBeUpsideDown) {
                   return;
                 }
 
-                console.log(willBeUpsideDown);
-
                 transitionComplete = false;
 
+                //start transition 
                 if(willBeUpsideDown) {
                   toolboxContainer.classList.add("${styles.upsideDown}");
                 } else {
@@ -73,20 +80,30 @@ export default function Toolbox() {
 
           //set up transitionend listeners for toolboxImage and skillContainer
 
+          
           toolboxImage.addEventListener("transitionend", (ev) => {
+            //if the toolbox finished its transition and it is now
+            //rightside up, the transition for the entire toolbox container
+            //is done.
             if(!willBeUpsideDown) {
               transitionComplete = true;
               currentlyUpsideDown = willBeUpsideDown;
-            } else {
+            } 
+            //if this toolbox will be upside down, start the transition now.
+            else {
               toolboxContainer.classList.add("${styles.upsideDown}");
             }
           });
 
           skillContainer.addEventListener("transitionend", (ev) => {
+            //if the toolbox container is upside down, then 
+            //the transition is complete.
             if(willBeUpsideDown) {
               transitionComplete = true;
               currentlyUpsideDown = willBeUpsideDown;
-            } else {
+            } 
+            //otherwise, start the transition to being rightside up.
+            else {
               toolboxContainer.classList.remove("${styles.upsideDown}");
             }
           });
