@@ -25,7 +25,10 @@ export default function WoodGallery() {
   return (
     <main className={styles.gallery}>
       <h1>Gallery</h1>
-
+      <h2>
+        Here are some carvings, intarsias, and other wooden items
+        that I have made.
+      </h2>
       <div className={styles.pictureContainer}>
         {pictureSrcs.map((item) => <Frame key={item.id} src={item.src}/>)}
       </div>

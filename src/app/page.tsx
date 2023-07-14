@@ -17,8 +17,10 @@ export default function Home() {
           beautiful websites and mobile apps. 
         </p>
       </div>
+
       <div id="about" className={styles.aboutWrapper}>
         <h1>Who Am I?</h1>
+        <h2>My name is Ryan O'Connor, and I am a...</h2>
 
         <div className={styles.cardContainer}>
           <Card title="College Student" desc={`I'm majoring in Computer Science
@@ -45,11 +47,17 @@ export default function Home() {
 
       <div id="skills" className={styles.skillWrapper}>
         <h1>My Toolbox</h1>
+        <h2>Here are the tools I use for web and mobile development:</h2>
         <Toolbox />    
       </div>
 
       <div id="projects" className={styles.projectWrapper}>
         <h1>Projects</h1>
+        <h2>
+          This website (source code here) is not the only project
+          I have worked on. Here are some other projects that I have done:
+        </h2>
+
         <div className={`${styles.cardContainer} ${styles.projects}`}>
           <Card title={`AtoB Mobility`} desc={`Tools Used: AWS, Linux, NodeJS
           HTML, CSS, Javascript, MySQL, Flutter<br><br>
