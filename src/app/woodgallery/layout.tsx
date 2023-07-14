@@ -1,6 +1,6 @@
 
 export const metadata = {
-  title: "Blog",
+  title: "Wood Gallery",
   description: "I override the parent Layout's metadata"
 };
 

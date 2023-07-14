@@ -32,7 +32,7 @@ html {
   //out from under the navbar
   padding-top: globals.$navbar-height;
 
-  
+  @include wood.straight-grain-1-walnut-dark-bg(0deg);
 
   //make sure minimum height of the wrapper is the height of the viewport minus the heights of the navbar and footer.
   //that way, if there is not enough content to fill the page, the footer will still be fully visible
