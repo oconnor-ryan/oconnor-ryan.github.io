@@ -280,7 +280,8 @@ $transitionTime: 0.5s;
         display: block;
         height: 100%;
 
-        @include wood.straight-grain-1-ebony-light-bg(0deg, 25%);
+        @include wood.straight-grain-1-ebony-dark-bg(0deg, 25%);
+       // background: wood.$pine-dark0;
 
         overflow-x: hidden;
 
@@ -299,7 +300,6 @@ $transitionTime: 0.5s;
 
         .social-container {
           display: block;
-          @include wood.straight-grain-1-walnut-light-bg(0deg);
 
           margin: 0 10px;
           margin-top: 10px;
@@ -310,7 +310,8 @@ $transitionTime: 0.5s;
         //to have a slightly darker background compared to the navbar background color.
         //NOTE. USE > to only select the children of .social-container and not its grandchildren.
         > :nth-child(odd) {
-          @include wood.straight-grain-1-walnut-dark-bg(0deg);
+          @include wood.straight-grain-1-pine-light-bg(0deg);
+          color: wood.$ebony-dark0;
 
         }
 
