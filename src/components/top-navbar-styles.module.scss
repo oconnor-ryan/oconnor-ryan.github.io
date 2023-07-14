@@ -114,34 +114,6 @@ $transitionTime: 0.5s;
 
         padding: 0.5em 1em 0.5em 1em;
       }
-
-      .social-container {
-        display: flex;
-        padding: 0;
-    
-        a {
-          display: inline-block; //required so that it expands to fit imgs
-          padding: 5px;
-        }
-    
-        .icons {
-          width: 32px;
-          height: 32px;
-          mask-size: cover; //expand SVG to fill entire div
-          background: wood.$basswood-light0; //color of SVG
-        }
-
-        //use masks so that color of SVG can match the background.
-        .iconEmail {
-          mask-image: url("/iconmonstr-email-10.svg");
-        }
-        .iconGithub {
-          mask-image: url("/iconmonstr-github-4.svg");
-        }
-        .iconLinkedin {
-          mask-image: url("/iconmonstr-linkedin-4.svg");
-        }
-      }
     }
   }
   
@@ -195,23 +167,6 @@ $transitionTime: 0.5s;
   }
 
   
-}
-
-//used for tablet screens
-
-//looks the same as the header above, except the 
-//social-container in the nav element is removed.
-@media screen and (max-width: 900px) {
-  .header {
-    .navBackground {
-      .nav {
-        //dont display the list of socials when in tablet mode
-        .social-container {
-          display: none;
-        }
-      }
-    }
-  }
 }
 
 /*
@@ -297,15 +252,7 @@ $transitionTime: 0.5s;
           margin-top: 10px;
           border-radius: 10px;
         }
-
-        .social-container {
-          display: block;
-
-          margin: 0 10px;
-          margin-top: 10px;
-          border-radius: 10px;
-        }
-
+        
         //add a partially transparent black background so that each odd child element appears
         //to have a slightly darker background compared to the navbar background color.
         //NOTE. USE > to only select the children of .social-container and not its grandchildren.
