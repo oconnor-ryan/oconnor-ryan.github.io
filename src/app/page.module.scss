@@ -25,6 +25,10 @@
 
     color: wood.$pine-light0;
     @include wood.straight-grain-1-walnut-light-bg(0deg);
+
+    a {
+      color: wood.$pine-light0;
+    }
   }
 
   .hook {

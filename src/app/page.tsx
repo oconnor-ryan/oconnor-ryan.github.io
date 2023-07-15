@@ -54,7 +54,7 @@ export default function Home() {
       <div id="projects" className={styles.projectWrapper}>
         <h1>Projects</h1>
         <h2>
-          This website (source code here) is not the only project
+          This website (<a href="https://github.com/oconnor-ryan">source code here</a>) is not the only project
           I have worked on. Here are some other projects that I have done:
         </h2>
 
