@@ -2,6 +2,8 @@ $navbar-height: 70px;
 $navbar-padding: 20px;
 $min-footer-height: 250px;
 
+$main-page-wrapper-min-height: calc(100vh - $min-footer-height);
+
 $gold1: rgb(228, 232, 0);
 $gold2: rgb(255, 238, 1);
 

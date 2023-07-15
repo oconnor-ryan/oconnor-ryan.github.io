@@ -1,0 +1,17 @@
+@use "global-variables" as globals;
+
+
+.errorPage {
+  //WARNING
+  //This assumes that the height of errorPage will NEVER 
+  //extend beyond the minimum height of the main-page-wrapper.
+  height: globals.$main-page-wrapper-min-height;
+
+  width: 100%;
+
+  //use flex to keep children centered horizontally and vertically
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}

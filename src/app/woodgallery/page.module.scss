@@ -7,25 +7,6 @@
 
   text-align: center;
 
-  h1 {
-    padding: 0.5em;
-    margin: 1em 0;
-
-    border-radius: 10px;
-
-    color: wood.$walnut-dark0;
-    @include wood.straight-grain-1-pine-dark-bg(0deg);
-  }
-
-  h2 {
-    padding: 0.5em;
-    margin: 1em 0;
-
-    border-radius: 10px;
-
-    color: wood.$pine-light0;
-    @include wood.straight-grain-1-walnut-light-bg(0deg);
-  }
 
   .pictureContainer {
     width: 100%;
