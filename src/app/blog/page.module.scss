@@ -1,5 +1,16 @@
 .blog {
-  h1 {
-    color: orange;
+  display: block;
+  padding: 1em 5%;
+
+  text-align: center;
+
+
+  .cardContainer {
+    width: 100%;
+    display: grid;
+    grid-auto-rows: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1em;
+    justify-content: center;
   }
 }
