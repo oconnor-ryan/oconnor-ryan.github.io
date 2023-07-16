@@ -9,7 +9,7 @@ export default function Home() {
     <main className={styles.main}>
       <div className={styles.hook}>
         <div className={styles.profilePicBackground}>
-          <img className={styles.profilePic} src='/me.jpg'/>
+          <img className={styles.profilePic} src='/assets/images/me.jpg'/>
         </div>
         <p className={styles.pitch}>
           Just as a carpenter uses their tools and expertise to build 
@@ -83,7 +83,7 @@ export default function Home() {
         </div>
       </div>
 
-      <a href="/Resume.pdf">
+      <a href="/assets/Resume.pdf">
         <button className={styles.resumeButton}>Check Out My Resume! &#8594;</button>
       </a>
       

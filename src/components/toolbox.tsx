@@ -4,7 +4,7 @@ import styles from "./toolbox.module.scss";
 export default function Toolbox() {
   return (
     <div id="toolboxContainer" className={styles.toolboxContainer}>
-      <img className={styles.toolbox} src="/toolbox.svg"></img>
+      <img className={styles.toolbox} src="/assets/images/svg/toolbox.svg"></img>
       <ul className={styles.skillContainer}>
         <li>HTML</li>
         <li>CSS</li>

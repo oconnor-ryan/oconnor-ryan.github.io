@@ -52,13 +52,13 @@
         
             //use masks so that color of SVG can match the background.
             .iconEmail {
-              mask-image: url("/iconmonstr-email-10.svg");
+              mask-image: url("/assets/images/svg/iconmonstr-email-10.svg");
             }
             .iconGithub {
-              mask-image: url("/iconmonstr-github-4.svg");
+              mask-image: url("/assets/images/svg/iconmonstr-github-4.svg");
             }
             .iconLinkedin {
-              mask-image: url("/iconmonstr-linkedin-4.svg");
+              mask-image: url("/assets/images/svg/iconmonstr-linkedin-4.svg");
             }
           }
         }
@@ -75,7 +75,7 @@
         margin: auto; //center logo
 
         mask-size: cover;
-        mask-image: url("/nextjs.svg");
+        mask-image: url("/assets/images/svg/nextjs.svg");
         background: wood.$basswood-light0;
       }
     }

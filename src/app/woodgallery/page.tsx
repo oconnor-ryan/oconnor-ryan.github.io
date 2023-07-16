@@ -23,7 +23,7 @@ export default function WoodGallery() {
 
   let pictureSrcs: {id: number, src: string, desc?: string}[] = [];
   for(let i = 0; i < list.length; i++) {
-    pictureSrcs.push({id: i, src: "/images/woodprojects/" + list[i].image, desc: list[i].desc});
+    pictureSrcs.push({id: i, src: "/assets/images/woodprojects/" + list[i].image, desc: list[i].desc});
   }
 
   return (
