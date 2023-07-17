@@ -14,7 +14,7 @@ export default function TopNavbar()  {
           <a className={styles.link} href="/#about">About</a>
           <a className={styles.link} href="/#projects">Projects</a>
           <a className={styles.link} href="/blog">Blog</a>
-          <a className={styles.link} href="/woodgallery/1">Wood Gallery</a>
+          <a className={styles.link} href="/woodgallery">Wood Gallery</a>
           <a className={styles.link} href="#contact-info">Contact</a>
           {/*<a className={styles.link} href="/games">Games</a>*/}
           

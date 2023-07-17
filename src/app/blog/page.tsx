@@ -9,7 +9,7 @@ export default function Blog() {
       <h1>Welcome to My Blog</h1>
       <div className={styles.tagList}>
         <h2>You can search for an article using these tags:</h2>
-        {getAllTags().map(tag => <a key={tag} href={`./${tag}/1`}>{tag}</a>)}
+        {getAllTags().map(tag => <a key={tag} href={`./${tag}`}>{tag}</a>)}
       </div>
     </div>
   );
