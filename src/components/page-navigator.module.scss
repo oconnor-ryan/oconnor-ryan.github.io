@@ -46,6 +46,7 @@ $elementWidth: 15%;
     color: wood.$ebony-dark2;
     font-size: 1.5em;
     font-weight: bold;
+    white-space: nowrap; //dont let letters wrap around in text
   }
 
 }
