@@ -72,9 +72,39 @@ function getPostData(fileName: string) : PostData {
 
 /* Exports */
 
+export const ALL_TAG = 'all';
+
 export function getSlugsToAllPosts() {
   //remove .md extension from slug for a cleaner URL
   return Object.keys(allPostData);
+}
+
+export function getAllTags() : string[] {
+  let tags = new Set(); //use a set because each tag must be unique.
+  for(let postData of Object.values(allPostData)) {
+    for(let tag of postData.frontMatter.tags) {
+      tags.add(tag as string);
+    }
+  }
+  tags.add(ALL_TAG);
+  return Array.from(tags) as string[];
+}
+
+//retrieve the list of postData that has the tag specified.
+//if no tag was specified, the data from all posts is retrieved.
+export function getPostDataWithTag(tag: string = ALL_TAG) {
+  if(tag == ALL_TAG) {
+    return getAllPostData();
+  }
+  let rtn = [];
+  for(let postData of Object.values(allPostData)) {
+    if(postData.frontMatter.tags.includes(tag)) {
+      rtn.push(postData);
+    }
+  }
+
+  return rtn;
+
 }
 
 export function getAllPostData() {

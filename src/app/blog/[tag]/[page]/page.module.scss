@@ -1,0 +1,61 @@
+@use 'wood-theme' as wood;
+
+.blog {
+  display: block;
+  padding: 1em 5%;
+
+  text-align: center;
+
+
+  
+  .cardContainer {
+    width: 100%;
+    display: grid;
+    grid-auto-rows: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1em;
+    justify-content: center;
+
+    a {
+      text-decoration: none;
+    }
+  }
+
+  .pageNavContainer {
+    margin: 1em auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .arrow {
+      
+      text-decoration: none;
+      @include wood.straight-grain-1-pine-dark-bg(0deg);
+      border-radius: 10px;
+
+      
+      button {
+        background: transparent;
+        cursor: pointer;
+
+
+        width: 100%;
+        height: 100%;
+        padding: 0.5em;
+        font-weight: bold;
+        font-size: 1.5em;
+        color: wood.$ebony-dark2;
+      }
+    }
+
+    .pageNumber {
+      @include wood.straight-grain-1-pine-dark-bg(0deg);
+      border-radius: 10px;
+
+      padding: 0.5em;
+      color: wood.$ebony-dark2;
+      font-weight: bold;
+    }
+  }
+}
