@@ -1,4 +1,12 @@
 {
+  "/assets/images/woodprojects/chessboard-top.jpg": {
+    "caption": "A Full Chess Set"
+  },
+
+  "/assets/images/woodprojects/chessboard-side.jpg": {
+    "caption": "Side View Of Chess Set"
+  },
+  
   "/assets/images/woodprojects/50th-aniversary.jpg": {
     "caption": "A Gift For My Grandparents"
   },
@@ -25,14 +33,6 @@
 
   "/assets/images/woodprojects/sox.jpg": {
     "caption": "Sox The Cat Inside A Sox Sock!"
-  },
-
-  "/assets/images/woodprojects/chessboard-top.jpg": {
-    "caption": "A Full Chess Set"
-  },
-
-  "/assets/images/woodprojects/chessboard-side.jpg": {
-    "caption": "Side View Of Chess Set"
   },
 
   "/assets/images/woodprojects/gavel.jpg": {

@@ -6,7 +6,7 @@ export default function Frame({src, caption} : {src: string, caption?: string | 
       <div className={styles.pictureContainer}>
         <img className={styles.picture} src={src} alt={caption}></img>
       </div>
-      {caption ? null : <p className={styles.caption}>{caption}</p>}
+      {caption ? <p className={styles.caption}>{caption}</p> : null}
     </div>
     
   )
