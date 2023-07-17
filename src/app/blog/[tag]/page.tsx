@@ -9,7 +9,7 @@ export const POSTS_PER_PAGE = 2;
 
 
 export default function BlogSearchPage({params} : {params: {tag: string, page: string}}) {
-  let tag = params.tag.replaceAll(/(%20)|\s/g, "-"); //replace %20 or spaces with hyphen
+  let tag = params.tag;
   
   let allPosts = getPostDataWithTag(tag);
 
