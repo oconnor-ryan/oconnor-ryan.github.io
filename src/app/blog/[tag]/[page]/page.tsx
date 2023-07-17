@@ -8,7 +8,7 @@ const postsPerPage = 2;
 
 export function generateStaticParams({params} : {params: {tag: string}}) {
   let posts = getPostDataWithTag(params.tag);
-  let numPages = Math.ceil(Object.keys(posts).length / postsPerPage);
+  let numPages = Math.ceil(posts.length / postsPerPage);
 
   //generate an array containing numbers 1...numPages
   //Ex: if numPages = 4, then this returns [1,2,3,4];
@@ -21,7 +21,7 @@ export function generateStaticParams({params} : {params: {tag: string}}) {
 }
 
 export default function BlogSearchPage({params} : {params: {tag: string, page: string}}) {
-  let allPosts = Object.values(getPostDataWithTag(params.tag));
+  let allPosts = getPostDataWithTag(params.tag);
 
   let start = postsPerPage * (Number(params.page) - 1); 
   let end = start + postsPerPage;
@@ -37,7 +37,7 @@ export default function BlogSearchPage({params} : {params: {tag: string, page: s
     <main className={styles.blog}>
       <h1>Blogs</h1>
       <div className={styles.cardContainer}>
-        {Object.values(posts).map(data => <Card key={data.slug} title={data.frontMatter.title} desc={data.frontMatter.description} href={"/blog/post/" + data.slug}/>)}
+        {posts.map(data => <Card key={data.slug} title={data.frontMatter.title} desc={data.frontMatter.description} href={"/blog/post/" + data.slug}/>)}
       </div>
       <div className={styles.pageNavContainer}>
         {/* 

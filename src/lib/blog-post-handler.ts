@@ -108,7 +108,7 @@ export function getPostDataWithTag(tag: string = ALL_TAG) {
 }
 
 export function getAllPostData() {
-  return allPostData;
+  return Object.values(allPostData);
 }
 
 export async function getPost(slug: string) : Promise<Post> {
