@@ -9,8 +9,8 @@ export const POSTS_PER_PAGE = 2;
 
 
 export default function BlogSearchPage({params} : {params: {tag: string, page: string}}) {
-  let tag = decodeURI(params.tag); //required for tags with spaces
-
+  let tag = params.tag.replaceAll(/(%20)|\s/g, "-"); //replace %20 or spaces with hyphen
+  
   let allPosts = getPostDataWithTag(tag);
 
   let pageNum = !params.hasOwnProperty('page') ? 1 : Number(params.page);

@@ -5,7 +5,7 @@ import { getPostDataWithTag } from '@/lib/blog-post-handler';
 import { POSTS_PER_PAGE } from '../page';
 
 export function generateStaticParams({params} : {params: {tag: string}}) {
-  let tag = decodeURI(params.tag); //required for tags with spaces
+  let tag = params.tag;
 
   let posts = getPostDataWithTag(tag);
   let numPages = Math.ceil(posts.length / POSTS_PER_PAGE);

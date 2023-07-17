@@ -1,5 +1,6 @@
 import path from 'path';
 import fs from 'fs';
+import assert from 'assert';
 
 //import markdown processor
 import {remark} from 'remark';
@@ -80,10 +81,15 @@ export function getSlugsToAllPosts() {
 }
 
 export function getAllTags() : string[] {
-  let tags = new Set(); //use a set because each tag must be unique.
+  let tags = new Set<string>(); //use a set because each tag must be unique.
   for(let postData of Object.values(allPostData)) {
     for(let tag of postData.frontMatter.tags) {
-      tags.add(tag as string);
+      let tagCasted = tag as string;
+
+      //add assert to crash program 
+      assert(!tagCasted.includes(" "), `The tag '${tagCasted}' must not contain a space!`);
+      tags.add(tagCasted);
+
     }
   }
   tags.add(ALL_TAG);

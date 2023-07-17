@@ -6,7 +6,7 @@ description: >-
 
 tags: 
   - NextJS
-  - Static Website
+  - static-website
 ---
 
 # Why Is This Here? NextJS Already Has This Tutorial!
