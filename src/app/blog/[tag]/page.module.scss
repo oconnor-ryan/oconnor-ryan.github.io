@@ -20,42 +20,4 @@
       text-decoration: none;
     }
   }
-
-  .pageNavContainer {
-    margin: 1em auto;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    .arrow {
-      
-      text-decoration: none;
-      @include wood.straight-grain-1-pine-dark-bg(0deg);
-      border-radius: 10px;
-
-      
-      button {
-        background: transparent;
-        cursor: pointer;
-
-
-        width: 100%;
-        height: 100%;
-        padding: 0.5em;
-        font-weight: bold;
-        font-size: 1.5em;
-        color: wood.$ebony-dark2;
-      }
-    }
-
-    .pageNumber {
-      @include wood.straight-grain-1-pine-dark-bg(0deg);
-      border-radius: 10px;
-
-      padding: 0.5em;
-      color: wood.$ebony-dark2;
-      font-weight: bold;
-    }
-  }
 }

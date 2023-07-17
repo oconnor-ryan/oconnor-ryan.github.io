@@ -1,6 +1,7 @@
 import styles from "./page.module.scss";
 
 import Card from '@/components/card';
+import PageNavigator from "@/components/page-navigator";
 
 import { getPostDataWithTag } from "@/lib/blog-post-handler";
 
@@ -32,34 +33,13 @@ export default function BlogSearchPage({params} : {params: {tag: string, page: s
 
   let numPages = Math.ceil(allPosts.length / postsPerPage);
 
-  let prevPageNum = pageNum - 1;
-  let nextPageNum = pageNum + 1;
-
   return (
     <main className={styles.blog}>
       <h1>Blogs</h1>
       <div className={styles.cardContainer}>
         {posts.map(data => <Card key={data.slug} title={data.frontMatter.title} desc={data.frontMatter.description} href={"/blog/post/" + data.slug}/>)}
       </div>
-      <div className={styles.pageNavContainer}>
-        {/* 
-        If user is on first page, replace the previous page 
-        button with an empty div so that flexbox correctly
-        spaces out elements correctly.
-        */}
-        {prevPageNum > 0 ? <a className={styles.arrow} href={prevPageNum == 1 ? `../` :  `../${prevPageNum}`}><button>&lt;</button></a> : <div></div>}
-
-        <p className={styles.pageNumber}>Page {pageNum}</p>
-
-        {/* 
-        If user is on last page, replace the next page 
-        button with an empty div so that flexbox correctly
-        spaces out elements correctly.
-        */}
-        {nextPageNum <= numPages ? <a className={styles.arrow} href={pageNum == 1 ? `./${nextPageNum}` :  `../${nextPageNum}`}><button>&gt;</button></a> : <div></div>}
-
-
-      </div>
+      <PageNavigator pageNum={pageNum} numPages={numPages}/>
     </main>
   )
 }
