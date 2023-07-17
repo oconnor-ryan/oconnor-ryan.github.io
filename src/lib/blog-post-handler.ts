@@ -8,9 +8,11 @@ import html from 'remark-html';
 //import front-matter processor
 import matter from 'gray-matter';
 
+/* Interfaces */
 
 interface PostData {
   slug: string,
+  fileExtension: string,
   frontMatter: {
     [key: string]: any
   },
@@ -25,34 +27,63 @@ export interface Post {
   html: string
 }
 
-export function getSlugsToAllPosts() {
-  //remove .md extension from slug for a cleaner URL
-  return fs.readdirSync(path.resolve(`./src/posts`)).map((filePath) => path.parse(filePath).name);
+
+/* Variables */
+
+const POST_DIR = "./src/posts";
+const files = getFiles();
+
+//each post is identified using a slug as its key
+const allPostData : {[slug: string] : PostData} = (() => {
+  let rtn: {[slug: string] : PostData} = {};
+
+  for(let file of files) {
+    let data = getPostData(file);
+    rtn[data.slug] = data;
+  }
+
+  return rtn;
+})();
+
+
+/* Functions */
+
+function getFiles() {
+  return fs.readdirSync(path.resolve(POST_DIR));
 }
 
-function getPostData(slug: string) : PostData {
-  const fileContent = fs.readFileSync(path.resolve(`./src/posts/${slug}.md`));
+
+function getPostData(fileName: string) : PostData {
+  let filePath = path.resolve(POST_DIR, `./${fileName}`);
+
+  const fileContent = fs.readFileSync(filePath);
   const matterResult = matter(fileContent);
 
-  return {slug: slug, frontMatter: matterResult.data, content: matterResult.content};
+  let parsedPath = path.parse(filePath);
 
+  return {
+    slug: parsedPath.name, 
+    fileExtension: parsedPath.ext, 
+    frontMatter: matterResult.data, 
+    content: matterResult.content
+  };
+
+}
+
+/* Exports */
+
+export function getSlugsToAllPosts() {
+  //remove .md extension from slug for a cleaner URL
+  return Object.keys(allPostData);
+}
+
+export function getAllPostData() {
+  return allPostData;
 }
 
 export async function getPost(slug: string) : Promise<Post> {
-  const postData = getPostData(slug);
+  const postData = allPostData[slug];
   const contentHTML = (await remark().use(html).process(postData.content)).toString();
 
   return {slug: slug, html: contentHTML, data: postData.frontMatter};
-}
-
-export async function getAllPosts() : Promise<Post[]>{
-  let allPosts = [];
-  for(let slug of getSlugsToAllPosts()) {
-    allPosts.push(await getPost(slug));
-  }
-  return allPosts;
-}
-
-export async function getAllPostData() {
-  return getSlugsToAllPosts().map( (slug) => getPostData(slug) );
 }

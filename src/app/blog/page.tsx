@@ -4,15 +4,15 @@ import Card from '@/components/card';
 
 import { getAllPostData } from "@/lib/blog-post-handler";
 
-export default async function Blog() {
+export default function Blog() {
 
-  const posts = await getAllPostData();
+  const posts = getAllPostData();
 
   return (
     <main className={styles.blog}>
       <h1>Blogs</h1>
       <div className={styles.cardContainer}>
-        {posts.map(data => <a key={data.slug} href={data.slug}><Card title={data.frontMatter.title} desc={data.frontMatter.description}/></a>)}
+        {Object.values(posts).map(data => <Card key={data.slug} title={data.frontMatter.title} desc={data.frontMatter.description} href={data.slug}/>)}
       </div>
       
     </main>

@@ -13,6 +13,8 @@
   font-weight: bold;
   line-height: 1.5em;
 
+  text-decoration: none; //for when .card is an anchor
+
   a {
     color: wood.$basswood-light0;
   }
