@@ -1,12 +1,6 @@
 @use 'wood-theme' as wood;
 
 .blog {
-  display: block;
-  padding: 1em 5%;
-
-  text-align: center;
-
-
   .tagList {
     display: inline-block;
     a {

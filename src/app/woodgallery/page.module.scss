@@ -1,13 +1,6 @@
 @use 'wood-theme' as wood;
 
 .gallery {
-  display: block;
-  @include wood.straight-grain-1-walnut-dark-bg(0deg);
-  padding: 1em 5%;
-
-  text-align: center;
-
-
   .pictureContainer {
     width: 100%;
     display: grid;

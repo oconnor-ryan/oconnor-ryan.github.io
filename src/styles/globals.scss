@@ -22,15 +22,24 @@ html {
 
 
 #main-page-wrapper {
+  display: block;
+
   //must be 1 because this element must always remain under its
   //sibling element: TopNavbar, which have a z-index of 2.
   z-index: 1;
 
   //add padding on top that is the same height as the navbar
   //because the navbar has a position of fixed.
-  //Thus, the page will not change on its own to move content
-  //out from under the navbar
-  padding-top: globals.$navbar-height;
+  //Also add slight offset so that the first child element
+  //has some space between it and the bottom of the navbar
+  
+  padding-top: calc(globals.$navbar-height + 1em);
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-bottom: 1em;
+
+  text-align: center;
+
 
   @include wood.straight-grain-1-walnut-dark-bg(0deg);
 
@@ -38,6 +47,8 @@ html {
   //that way, if there is not enough content to fill the page, the footer will still be fully visible
   //while staying at the bottom of the viewport
   min-height: globals.$main-page-wrapper-min-height; 
+
+
 
 
   h1 {
