@@ -11,7 +11,7 @@ export default function PageNavigator({pageNum, numPages}: {pageNum: number, num
         button with an empty div so that flexbox correctly
         spaces out elements correctly.
         */}
-        {prevPageNum > 0 ? <a className={styles.arrow} href={prevPageNum == 1 ? `../` : `../${prevPageNum}`}><button>&lt;</button></a> : <div></div>}
+        {prevPageNum > 0 ? <a className={styles.arrow} href={prevPageNum == 1 ? `../` : `../${prevPageNum}`}><button>&lt;</button></a> : <div className={styles.emptySpace}></div>}
 
         <p className={styles.pageNumber}>Page {pageNum}</p>
 
@@ -20,7 +20,7 @@ export default function PageNavigator({pageNum, numPages}: {pageNum: number, num
         button with an empty div so that flexbox correctly
         spaces out elements correctly.
         */}
-        {nextPageNum <= numPages ? <a className={styles.arrow} href={pageNum == 1 ? `./${nextPageNum}` : `../${nextPageNum}`}><button>&gt;</button></a> : <div></div>}
+        {nextPageNum <= numPages ? <a className={styles.arrow} href={pageNum == 1 ? `./${nextPageNum}` : `../${nextPageNum}`}><button>&gt;</button></a> : <div className={styles.emptySpace}></div>}
 
 
       </div>

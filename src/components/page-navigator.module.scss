@@ -1,5 +1,7 @@
 @use 'wood-theme' as wood;
 
+$elementWidth: 15%;
+
 .pageNavContainer {
   margin: 1em auto;
   width: 100%;
@@ -7,11 +9,18 @@
   justify-content: space-between;
   align-items: center;
 
+  * {
+    flex: $elementWidth; 
+    flex-grow: 0; //don't let child elements grow to fill flexbox container
+  }
+
   .arrow {
     
     text-decoration: none;
     @include wood.straight-grain-1-pine-dark-bg(0deg);
     border-radius: 10px;
+
+    text-align: center;
 
     
     button {
@@ -32,8 +41,11 @@
     @include wood.straight-grain-1-pine-dark-bg(0deg);
     border-radius: 10px;
 
+
     padding: 0.5em;
     color: wood.$ebony-dark2;
+    font-size: 1.5em;
     font-weight: bold;
   }
+
 }
