@@ -1,8 +1,9 @@
-import TopNavbar from '@/components/top-navbar'
-import Footer from '@/components/footer'
+import TopNavbar from '@/components/top-navbar';
+import Footer from '@/components/footer';
 
-import '../styles/globals.scss'
-import { Inter } from 'next/font/google'
+import '../styles/globals.scss';
+import Script from 'next/script';
+import { Inter } from 'next/font/google';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,7 +19,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      {/* Added no-js class in order to load different SCSS if Javascript is on or not. */}
+      <body className={`${inter.className} no-js`}>
         <TopNavbar />
 
         <div id="main-page-wrapper">
@@ -26,6 +28,15 @@ export default function RootLayout({
         </div>
         
         <Footer />
+        {/* Added JS script for ALL pages that removes the no-js class from the body*/}
+        <Script id="root-script"
+          dangerouslySetInnerHTML={{
+            __html: `
+            document.body.classList.remove("no-js"); //remove no-js class
+            `
+          }}
+        />
+
       </body>
     </html>
   )

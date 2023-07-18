@@ -2,8 +2,9 @@ import Script from "next/script";
 import styles from "./toolbox.module.scss";
 
 export default function Toolbox() {
+  /* Added upsideDown class so that if there is no Javascript, the list of skills is still visible*/
   return (
-    <div id="toolboxContainer" className={styles.toolboxContainer}>
+    <div id="toolboxContainer" className={`${styles.toolboxContainer}`}>
       <img className={styles.toolbox} src="/assets/images/svg/toolbox.svg"></img>
       <ul className={styles.skillContainer}>
         <li>HTML</li>
@@ -28,7 +29,6 @@ export default function Toolbox() {
           const toolboxContainer = document.getElementById("toolboxContainer");
           const toolboxImage = toolboxContainer.getElementsByClassName("${styles.toolbox}")[0];
           const skillContainer = toolboxContainer.getElementsByClassName("${styles.skillContainer}")[0];
-
 
           let willBeUpsideDown = false;
           let currentlyUpsideDown = willBeUpsideDown;

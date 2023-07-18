@@ -4,6 +4,7 @@ $toolboxAnimationDuration: 1s;
 $max-width: 500px;
 $childWidth: 70%;
 
+
 .toolboxContainer {
   display: block;
   width: 100%;
@@ -87,8 +88,17 @@ $childWidth: 70%;
   }
 }
 
+/* 
+  NOTE: To use external class names outside of CSS/SCSS module:
+  Wrap external class name with :global.
+  Example: If the <body> has a 'no-js' class, use:
+    :global(.no-js)
 
-.toolboxContainer.upsideDown {
+*/
+
+//added no-js class so that toolbox is upside down
+//and skills are visible when there is no Javascript
+.toolboxContainer.upsideDown, :global(.no-js) .toolboxContainer {
   .toolbox {
     transform: rotate(180deg);
     transition-delay: 0s; //this delay is for when the toolbox flips upside down. It must flip before the skill container moves
@@ -97,7 +107,7 @@ $childWidth: 70%;
 
   .skillContainer {
     transform: translateY(0);
-    transition-delay: $toolboxAnimationDuration;; //this delay is for when the toolbox flips upside down.
+    transition-delay: $toolboxAnimationDuration; //this delay is for when the toolbox flips upside down.
     opacity: 1;
   }
 }
