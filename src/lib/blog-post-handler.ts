@@ -1,6 +1,5 @@
 import path from 'path';
 import fs from 'fs';
-import assert from 'assert';
 
 //import markdown processor
 import {remark} from 'remark';
@@ -20,6 +19,26 @@ interface PostData {
   content: string
 }
 
+//the front matter defined by the YAML in Markdown files in posts directory
+interface FrontMatter {
+  title: string,
+  description: string,
+  tags: string[],
+
+
+  //optional properties
+  thumbnailImageSrc?: string,
+  heroImageSrc?: string,
+}
+
+//A wrapper for a tag that contains the tag itself and
+//a URL-friendly version of the tag that can be appended to
+//URLs without issues
+export interface TagWrapper {
+  tag: string,
+  urlTag: string //used so that tags in url are correctly formatted, even if tags have spaces
+}
+
 export interface Post {
   slug: string,
   data: {
@@ -29,7 +48,12 @@ export interface Post {
 }
 
 
+
+
 /* Variables */
+
+export const ALL_TAG = 'All';
+
 
 const POST_DIR = "./src/posts";
 const files = getFiles();
@@ -44,6 +68,19 @@ const allPostData : {[slug: string] : PostData} = (() => {
   }
 
   return rtn;
+})();
+
+const allTags: TagWrapper[] = ( () => {
+  let tags = getTagsFromFrontMatter();
+  return tags.map((tag) => ({
+    tag: tag, 
+    
+    //use a valid URL for urlTag so that it can be appended to
+    //route URLs. All spaces are also replaced with hyphens because
+    //when this site is exported, some web servers have issues 
+    //reading directories with spaces in their names
+    urlTag: encodeURI(tag.replaceAll(" ", "-")) 
+  }));
 })();
 
 
@@ -71,30 +108,35 @@ function getPostData(fileName: string) : PostData {
 
 }
 
+function getTagsFromFrontMatter() : string[] {
+  let tags = new Set<string>(); //use a set because each tag must be unique.
+  for(let postData of Object.values(allPostData)) {
+    for(let tag of postData.frontMatter.tags) {
+      tags.add(tag as string);
+    }
+  }
+  tags.add(ALL_TAG);
+  return Array.from(tags) as string[];
+}
+
 /* Exports */
 
-export const ALL_TAG = 'all';
 
 export function getSlugsToAllPosts() {
   //remove .md extension from slug for a cleaner URL
   return Object.keys(allPostData);
 }
 
-export function getAllTags() : string[] {
-  let tags = new Set<string>(); //use a set because each tag must be unique.
-  for(let postData of Object.values(allPostData)) {
-    for(let tag of postData.frontMatter.tags) {
-      let tagCasted = tag as string;
-
-      //add assert to crash program 
-      assert(!tagCasted.includes(" "), `The tag '${tagCasted}' must not contain a space!`);
-      tags.add(tagCasted);
-
-    }
-  }
-  tags.add(ALL_TAG);
-  return Array.from(tags) as string[];
+export function getAllTags() {
+  return allTags;
 }
+
+//Find the tag corresponding to the urlTag parameter
+export function urlTagToTag(urlTag: string) {
+  let tagWrapper = allTags.find( tagWrapper => tagWrapper.urlTag === urlTag);
+  return tagWrapper ? tagWrapper.tag : undefined;
+}
+
 
 //retrieve the list of postData that has the tag specified.
 //if no tag was specified, the data from all posts is retrieved.
@@ -112,6 +154,7 @@ export function getPostDataWithTag(tag: string = ALL_TAG) {
   return rtn;
 
 }
+
 
 export function getAllPostData() {
   return Object.values(allPostData);

@@ -1,13 +1,11 @@
 import BlogSearchPage from '../page';
 
-import { getPostDataWithTag } from '@/lib/blog-post-handler';
+import { getPostDataWithTag, urlTagToTag } from '@/lib/blog-post-handler';
 
 import { POSTS_PER_PAGE } from '../page';
 
 export function generateStaticParams({params} : {params: {tag: string}}) {
-  let tag = params.tag;
-
-  let posts = getPostDataWithTag(tag);
+  let posts = getPostDataWithTag(urlTagToTag(params.tag));
   let numPages = Math.ceil(posts.length / POSTS_PER_PAGE);
 
   //generate an array containing numbers 2...numPages

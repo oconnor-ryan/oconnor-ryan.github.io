@@ -1,8 +1,8 @@
 import { getAllTags } from "@/lib/blog-post-handler";
 
 export function generateStaticParams() {
-  //replace " " with - so that the URL has no spaces. Spaces in URLS causes issues in many web servers
-  return getAllTags().map(tag => ({tag: tag})); 
+  //use urlTag because this function generates the names of each dynamic route used in URL
+  return getAllTags().map(tagWrapper => ({tag: tagWrapper.urlTag})); 
 }
 
 //note that this layout will inherit from any layout in the parent's directory

@@ -3,15 +3,14 @@ import styles from "./page.module.scss";
 import Card from '@/components/card';
 import PageNavigator from "@/components/page-navigator";
 
-import { getPostDataWithTag } from "@/lib/blog-post-handler";
+import { getPostDataWithTag, urlTagToTag} from "@/lib/blog-post-handler";
 
 export const POSTS_PER_PAGE = 2;
 
 
 export default function BlogSearchPage({params} : {params: {tag: string, page: string}}) {
-  let tag = params.tag;
-  
-  let allPosts = getPostDataWithTag(tag);
+
+  let allPosts = getPostDataWithTag(urlTagToTag(params.tag));
 
   let pageNum = !params.hasOwnProperty('page') ? 1 : Number(params.page);
 
