@@ -70,7 +70,7 @@ export default function Toolbox() {
 
           let options = {
             root: null, //use browser viewport
-            threshold: 0.5 //0.25 of element must be onscreen for animation to take affect
+            threshold: 0.25 //0.25 of element must be onscreen for animation to take affect
           };
 
           let observer = new IntersectionObserver(callback, options);
