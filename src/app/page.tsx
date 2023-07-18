@@ -56,8 +56,9 @@ export default function Home() {
       <div id="projects" className={styles.projectWrapper}>
         <h1>Projects</h1>
         <h2>
-          This website (<a href="https://github.com/oconnor-ryan">source code here</a>) is not the only project
-          I have worked on. Here are some other projects that I have done:
+          This website (<a href="https://github.com/oconnor-ryan" target="_blank">source code here</a>) 
+          is not the only project I have worked on. 
+          Here are some other projects that I have done:
         </h2>
 
         <div className={`${styles.cardContainer} ${styles.projects}`}>
@@ -80,7 +81,7 @@ export default function Home() {
           I designed a basic rendering engine for WebGL that allows a developer to render
           3D models and textures using only a few lines of code.<br><br>
           Check out the project 
-          <a href="https://github.com/oconnor-ryan/ryrender">here on my Github &#8594;</a>`}/>
+          <a href="https://github.com/oconnor-ryan/ryrender" target="_blank">here on my Github &#8594;</a>`}/>
 
         </div>
       </div>
