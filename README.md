@@ -9,6 +9,7 @@ and mobile development!
 ## Goals Before Publishing to GitHub
 * Refine the blog post page
 * Use different cards for showing each post.
+* Add Site Map to Footer
 * Write some posts!
 
 ## Optional Features
@@ -18,6 +19,8 @@ wood-theme SASS partial can be used on it.
 allows the user to skip to first and last pages.
 * Allow Frame component to use different wood backgrounds instead
 of just one.
+* Make AJAX requests to static server using Javascript for
+lazy-loading large images.
 
 ## Issues
 * Buttons in UI look way too much like Frame captions, headings, and tags. Either make buttons stand out more or redesign the
