@@ -1,5 +1,7 @@
 import Toolbox from '@/components/toolbox';
 import Card from '@/components/card';
+import Frame from '@/components/frame';
+
 
 import styles from './page.module.scss'
 
@@ -83,9 +85,16 @@ export default function Home() {
         </div>
       </div>
 
-      <a href="/assets/Resume.pdf">
-        <button className={styles.resumeButton}>Check Out My Resume! &#8594;</button>
-      </a>
+      <h1>Resume</h1>
+      <div className={styles.resumeWrapper}>
+        <Frame 
+          src="/assets/images/Resume.jpg" 
+          caption="View My Resume By Clicking The Image Above!" 
+          href="/assets/Resume.pdf"
+          newTab={true}
+        />
+      </div>
+      
       
     </main>
   )

@@ -9,6 +9,12 @@
     height: auto;
     
     overflow: hidden;
+    
+    //properties used for when picture container is an <a> tag
+    text-decoration: none;
+    display: block;
+
+   
   
     .picture {
       display: block; //MUST USE THIS to remove small gap on bottom of image caused by images being inline by default
