@@ -13,15 +13,16 @@
     @include wood.straight-grain-1-walnut-light-bg(0deg);
     border-radius: 10px;
 
-    font-size: 1.5em;
+    font-size: 1.2em;
     font-weight: bold;
+    line-height: 2em;
   }
 
   //dont use h1 in article because only 1 h1 should be used per page
   .article {
     h3, h4, h5, h6 {
       margin: 1em 0;
-      padding: 1em;
+      padding: 0.5em;
       width: fit-content;
 
       color: wood.$ebony-dark0;
@@ -30,24 +31,13 @@
       border-radius: 10px;
     }
 
-    h4 {
-      margin-left: 2em;
-    }
-
-    h5 {
-      margin-left: 3em;
-
-    }
-
-    h6 {
-      margin-left: 4em;
-
-    }
-
 
     p {
       width: 100%;
       padding: 1em 0;
+
+      font-size: 1.2em;
+      line-height: 2em;
     }
 
     a {
@@ -62,7 +52,7 @@
     blockquote {
       margin: 1em auto;
       padding: 1em;
-      width: 70%;
+      width: 100%;
       max-width: 600px;
 
       @include wood.straight-grain-1-walnut-light-bg(0deg);
@@ -72,11 +62,15 @@
     ul {
       list-style-position: inside;
       padding-left: 1em;
+      line-height: 2em;
+
     }
 
     ol {
       list-style-position: inside;
       padding-left: 1em;
+      line-height: 2em;
+
 
       /*
         The following code allows nested ordered lists to 
