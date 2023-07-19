@@ -74,13 +74,23 @@
       list-style-position: inside;
       padding-left: 1em;
       line-height: 2em;
+      font-size: 1.2em;
+    }
 
+    //stops nested lists from increasing their font size.
+    // The em unit is relative, so each nested list would have
+    // a size of 1.2*1.2*...  
+    //To fix this, set the nested lists to a size of 1em.
+    ul li ul {
+      font-size: 1em;
     }
 
     ol {
       list-style-position: inside;
       padding-left: 1em;
       line-height: 2em;
+      font-size: 1.2em;
+
 
 
       /*
@@ -103,6 +113,10 @@
         content: counters(item, ".") ". ";
         counter-increment: item;
       }
+    }
+
+    ol li ol {
+      font-size: 1em;
     }
 
     hr {
