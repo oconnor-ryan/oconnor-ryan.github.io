@@ -9,7 +9,7 @@ tags:
   - Static Website
 ---
 
-# Why Is This Here? NextJS Already Has This Tutorial!
+## Why Is This Here? NextJS Already Has This Tutorial!
 That tutorial makes use of the old pages router instead of the
 new app router available in NextJS 13+. While many of the 
 steps remain the same, there are enough differences between using

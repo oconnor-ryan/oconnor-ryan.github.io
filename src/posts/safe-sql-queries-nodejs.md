@@ -10,6 +10,6 @@ tags:
   - npm
 ---
 
-# Preventing SQL Injections In The mysql Package
+## Preventing SQL Injections In The mysql Package
 
-# Preventing SQL Injections In The mysql2 Package
+## Preventing SQL Injections In The mysql2 Package

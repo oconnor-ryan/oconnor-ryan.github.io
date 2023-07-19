@@ -1,0 +1,166 @@
+@use "wood-theme" as wood;
+
+.main {
+
+  color: wood.$basswood-light0;
+
+
+  .description {
+    width: 90%;
+    margin: 1em auto;
+    padding: 1em;
+
+    @include wood.straight-grain-1-walnut-light-bg(0deg);
+    border-radius: 10px;
+
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+
+  //dont use h1 in article because only 1 h1 should be used per page
+  .article {
+    h3, h4, h5, h6 {
+      margin: 1em 0;
+      padding: 1em;
+      width: fit-content;
+
+      color: wood.$ebony-dark0;
+
+      @include wood.straight-grain-1-pine-light-bg(0deg);
+      border-radius: 10px;
+    }
+
+    h4 {
+      margin-left: 2em;
+    }
+
+    h5 {
+      margin-left: 3em;
+
+    }
+
+    h6 {
+      margin-left: 4em;
+
+    }
+
+
+    p {
+      width: 100%;
+      padding: 1em 0;
+    }
+
+    a {
+      text-decoration: underline;
+      color: wood.$basswood-light0;
+      
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    blockquote {
+      margin: 1em auto;
+      padding: 1em;
+      width: 70%;
+      max-width: 600px;
+
+      @include wood.straight-grain-1-walnut-light-bg(0deg);
+      border-radius: 10px;
+    }
+
+    ul {
+      list-style-position: inside;
+      padding-left: 1em;
+    }
+
+    ol {
+      list-style-position: inside;
+      padding-left: 1em;
+
+      /*
+        The following code allows nested ordered lists to 
+        have section numbers appended to them like below:
+
+        1. Item1
+          1.1. Hi
+          1.2. There
+            1.2.1 Person
+        2. Item2
+      */
+      counter-reset: item;
+
+      li {
+        display: block;
+      }
+
+      li::before {
+        content: counters(item, ".") ". ";
+        counter-increment: item;
+      }
+    }
+
+    hr {
+      width: 100%;
+      background: wood.$basswood-light0;
+      padding: 2px;
+      margin: 10px 0;
+    }
+
+    //For Inline Code Only
+    code {
+      padding: 2px;
+      @include wood.straight-grain-1-walnut-light-bg(0deg);
+      border-radius: 5px;
+    }
+
+    //For Code Wrapped in Triple Ticks (``` ```) In Markdown
+    pre {
+      overflow-x: scroll; //allow user to scroll if line of code is too long
+
+      padding: 10px;
+      @include wood.straight-grain-1-ebony-dark-bg(0deg);
+      border-radius: 5px;
+      border: 1px solid wood.$basswood-light0;
+
+      code {
+        padding: 0;
+        background: transparent;
+        border-radius: 0;
+      }
+    }
+
+    img {
+      display: block;
+      margin: auto;
+
+      width: 85%;
+      max-width: 600px;
+      height: auto;
+
+      border-radius: 10px;
+    }
+
+    //I could utilize a Frame object by moving the module SCSS
+    // code and class names, to the global.scss file
+    figure {
+      text-align: center;
+    
+      figcaption {
+        margin: 1em auto;
+        padding: 1em;
+
+        width: 60%;
+        max-width: 400px;
+
+        @include wood.straight-grain-1-pine-dark-bg(0deg);
+        border-radius: 10px;
+
+        color: wood.$walnut-dark0;
+        font-weight: bold;
+      }
+    }
+
+  }
+
+}

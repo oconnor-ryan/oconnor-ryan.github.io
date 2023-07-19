@@ -162,7 +162,16 @@ export function getAllPostData() {
 
 export async function getPost(slug: string) : Promise<Post> {
   const postData = allPostData[slug];
-  const contentHTML = (await remark().use(html).process(postData.content)).toString();
+  const contentHTML = (
+    await remark()
+      //must not sanitize input so that raw HTML in Markdown 
+      //is included in output HTML.
+      //Because no one else is posting content on this site,
+      //via Markdown, allowing raw HTML is safe
+      .use(html, {sanitize: false}) 
+      .process(postData.content)
+  ).toString();
+
 
   return {slug: slug, html: contentHTML, data: postData.frontMatter};
 }

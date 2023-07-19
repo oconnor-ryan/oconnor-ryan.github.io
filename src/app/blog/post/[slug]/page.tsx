@@ -1,5 +1,7 @@
 import {getPost, getSlugsToAllPosts} from '@/lib/blog-post-handler';
 
+import styles from './page.module.scss';
+
 //note that this function can only return a JSON object with 
 //each key being the names of the dynamic routes for this
 //page (the folders with the square brackets []).
@@ -22,10 +24,10 @@ export default async function Post({params} : {params: {slug: string}}) {
   //add .md extension back to slug to get the correct post.
   let post = await getPost(params.slug);
   return (
-    <>
-      <h1>{post.data.title}</h1>
-      <h2>{post.data.description}</h2>
-      <div dangerouslySetInnerHTML={{__html: post.html}}/>
-    </>
+    <main className={styles.main}>
+      <h1 className={styles.title}>{post.data.title}</h1>
+      <p className={styles.description}>{post.data.description}</p>
+      <article className={styles.article} dangerouslySetInnerHTML={{__html: post.html}}/>
+    </main>
   );
 }
