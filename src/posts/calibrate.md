@@ -7,6 +7,8 @@ description: >-
   and all screens
 
 tags: []
+thumbnailSrc: /assets/images/blog/default-thumbnail.jpg
+thumbnailCaption: Penny Lane
 ---
 
 ## Heading 2 \<h2>

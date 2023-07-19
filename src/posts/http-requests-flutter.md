@@ -6,6 +6,9 @@ description: >-
 
 tags: 
   - Flutter
+
+thumbnailSrc: /assets/images/blog/default-thumbnail.jpg
+thumbnailCaption: Penny Lane
 ---
 
 ## What Packages Do I Need?

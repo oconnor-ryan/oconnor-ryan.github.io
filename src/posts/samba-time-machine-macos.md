@@ -8,5 +8,8 @@ tags:
   - Linux
   - Debian
   - SMB
+
+thumbnailSrc: /assets/images/blog/default-thumbnail.jpg
+thumbnailCaption: Penny Lane
 ---
 

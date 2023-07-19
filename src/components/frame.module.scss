@@ -2,7 +2,7 @@
 
 .frame {
   .pictureContainer {
-    @include wood.straight-grain-1-pine-dark-border-bg(20px);
+    @include wood.straight-grain-1-pine-dark-border-bg(40px);
     border-radius: 10px;
 
     width: 100%;

@@ -7,6 +7,9 @@ description: >-
 tags: 
   - NextJS
   - Static Website
+
+thumbnailSrc: /assets/images/blog/default-thumbnail.jpg
+thumbnailCaption: Penny Lane
 ---
 
 ## Why Is This Here? NextJS Already Has This Tutorial!

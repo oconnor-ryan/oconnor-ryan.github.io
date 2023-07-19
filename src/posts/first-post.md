@@ -5,7 +5,8 @@ description: >-
   topics I will discuss in these blog posts.
 
 tags: []
-hero_image_src: '/me.jpg'
+thumbnailSrc: /assets/images/blog/default-thumbnail.jpg
+thumbnailCaption: Penny Lane
 ---
 
 ## Welcome to my Blog!

@@ -5,7 +5,7 @@ import { getImageMetaData } from "@/lib/woodgallery-image-handler";
 
 import styles from "./page.module.scss";
 
-export const IMAGES_PER_PAGE = 10;
+export const IMAGES_PER_PAGE = 20;
 
 
 export default function WoodGallery({params}: {params: {page: string}}) {

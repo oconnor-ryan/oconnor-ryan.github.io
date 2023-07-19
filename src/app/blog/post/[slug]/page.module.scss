@@ -1,9 +1,16 @@
 @use "wood-theme" as wood;
 
+
 .main {
 
   color: wood.$basswood-light0;
 
+
+  .thumbnail {
+    margin: 1em auto;
+    width: 90%;
+    max-width: 600px;
+  }
 
   .description {
     width: 90%;
@@ -20,14 +27,16 @@
 
   //dont use h1 in article because only 1 h1 should be used per page
   .article {
+    margin: 0 1em;
+
     h3, h4, h5, h6 {
       margin: 1em 0;
       padding: 0.5em;
       width: fit-content;
 
-      color: wood.$ebony-dark0;
+      color: wood.$basswood-light0;
 
-      @include wood.straight-grain-1-pine-light-bg(0deg);
+      @include wood.straight-grain-1-walnut-light-bg(0deg);
       border-radius: 10px;
     }
 
@@ -35,6 +44,8 @@
     p {
       width: 100%;
       padding: 1em 0;
+
+    //  background: rgba(0,0,0,0.2);
 
       font-size: 1.2em;
       line-height: 2em;

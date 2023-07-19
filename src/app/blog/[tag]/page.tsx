@@ -5,7 +5,7 @@ import PageNavigator from "@/components/page-navigator";
 
 import { getPostDataWithTag, urlTagToTag} from "@/lib/blog-post-handler";
 
-export const POSTS_PER_PAGE = 2;
+export const POSTS_PER_PAGE = 20;
 
 
 export default function BlogSearchPage({params} : {params: {tag: string, page: string}}) {
@@ -23,7 +23,8 @@ export default function BlogSearchPage({params} : {params: {tag: string, page: s
 
   return (
     <main className={styles.blog}>
-      <h1>Blogs</h1>
+      <h1>My Blog</h1>
+      <h2>Tag: {urlTagToTag(params.tag)}</h2>
       <div className={styles.cardContainer}>
         {posts.map(data => <Card key={data.slug} title={data.frontMatter.title} desc={data.frontMatter.description} href={"/blog/post/" + data.slug}/>)}
       </div>

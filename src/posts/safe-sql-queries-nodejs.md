@@ -8,6 +8,9 @@ tags:
   - NodeJS
   - SQL
   - npm
+
+thumbnailSrc: /assets/images/blog/default-thumbnail.jpg
+thumbnailCaption: Penny Lane
 ---
 
 ## Preventing SQL Injections In The mysql Package

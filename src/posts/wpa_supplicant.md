@@ -6,6 +6,9 @@ description: >-
 
 tags:
   - Linux
+
+thumbnailSrc: /assets/images/blog/default-thumbnail.jpg
+thumbnailCaption: Penny Lane
 ---
 
 ## Install
