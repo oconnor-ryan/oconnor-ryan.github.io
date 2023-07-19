@@ -8,10 +8,15 @@ and mobile development!
 
 ## Goals Before Publishing to GitHub
 * Refine the blog post page
-* Use different cards for showing each post.
+  * Add the list of tags that the blog post has.
+  * Append a few blog posts on the bottom of the page that
+  have similar tags.
+  * Add Back To Blog option on posts.
 * Write some posts!
 
 ## Optional Features
+* Generate a smaller version of each image so that loading them
+is faster when being displayed in small components.
 * Add support for MDX files so that server components can be reused
 * Add Site Map to Footer
 * Use CSS to create toolbox instead of using SVG so that
