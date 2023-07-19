@@ -1,0 +1,58 @@
+@use "wood-theme" as wood;
+
+.card {
+  display: block;
+
+  //needed since background in .title is on top of this element,
+  // meaning the border-radius effect will be hidden otherwise
+  overflow: hidden; 
+
+  @include wood.straight-grain-1-walnut-light-bg(0deg);
+  border-radius: 10px;
+
+  font-weight: bold;
+  line-height: 1.5em;
+
+  text-decoration: none; //for when .card is an anchor
+
+  a {
+    color: wood.$basswood-light0;
+  }
+
+  .thumbnail {
+    display: block;
+    width: 100%;
+    height: 300px;
+    object-fit: cover; //maintain aspect ratio and crop image if its too large
+
+  }
+
+  .title {
+    width: 100%;
+    padding: 1em;
+    text-align: center;
+
+    color: wood.$basswood-light0;
+    font-size: 1.3em;
+
+  } 
+
+  .date {
+    width: 100%;
+    padding: 1em;
+
+    text-align: center;
+    color: wood.$basswood-light0;
+    font-size: 1em;
+  }
+
+  .desc {
+    padding: 1em;
+    width: 100%;
+    text-align: center;
+
+    font-size: 1em;
+
+    color: wood.$basswood-light0;
+  }
+}

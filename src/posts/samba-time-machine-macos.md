@@ -9,6 +9,7 @@ tags:
   - Debian
   - SMB
 
+date: 2023-07-19
 thumbnailSrc: /assets/images/blog/default-thumbnail.jpg
 thumbnailCaption: Penny Lane
 ---

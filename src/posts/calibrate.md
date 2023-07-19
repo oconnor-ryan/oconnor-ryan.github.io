@@ -4,9 +4,10 @@ description: >-
   In this blog post, I will utilize every HTML tag that can be
   used in Markdown in order to ensure that every element in 
   each post is styled correctly and looks nice on all browsers
-  and all screens
+  and all screens.
 
 tags: []
+date: 2023-07-19
 thumbnailSrc: /assets/images/blog/default-thumbnail.jpg
 thumbnailCaption: Penny Lane
 ---
