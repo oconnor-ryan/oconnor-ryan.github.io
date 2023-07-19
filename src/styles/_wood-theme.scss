@@ -136,6 +136,10 @@ $default-background-size: 50px;
 //Creates a background with a "border" with a width specified by
 //padding. The user can also specify which borders they want visible
 //( any combination of (top, left, bottom, right)
+/*
+  WARNING: This does not work correctly when the padding
+  value is using a non-pixel unit.
+*/
 @mixin straight-grain-1-border-bg(
   $padding, 
   $color0, 

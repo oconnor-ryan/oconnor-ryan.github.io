@@ -2,7 +2,8 @@
 
 .frame {
   .pictureContainer {
-    @include wood.straight-grain-1-pine-dark-border-bg(40px);
+    
+    @include wood.straight-grain-1-pine-dark-border-bg(30px);
     border-radius: 10px;
 
     width: 100%;
@@ -34,4 +35,14 @@
     @include wood.straight-grain-1-pine-dark-bg(0deg);
     border-radius: 10px;
   }
+}
+
+@media screen and (max-width: 768px) {
+
+  .frame {
+    .pictureContainer {
+      @include wood.straight-grain-1-pine-dark-border-bg(20px);
+    }
+  }
+  
 }
