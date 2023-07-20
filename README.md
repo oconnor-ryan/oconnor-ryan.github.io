@@ -17,7 +17,6 @@ and mobile development!
 ## Optional Features
 * Generate a smaller version of each image so that loading them
 is faster when being displayed in small components.
-* Add support for MDX files so that server components can be reused
 * Add Site Map to Footer
 * Use CSS to create toolbox instead of using SVG so that
 wood-theme SASS partial can be used on it.

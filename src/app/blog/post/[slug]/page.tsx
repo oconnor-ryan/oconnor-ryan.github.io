@@ -1,4 +1,5 @@
-import {getPost, getSlugsToAllPosts} from '@/lib/blog-post-handler';
+import {getArticleJSXFromSlug, getSlugsToAllPosts, getPostDataFromSlug} from '@/lib/blog-post-handler';
+
 import Frame from '@/components/frame';
 
 import styles from './page.module.scss';
@@ -21,21 +22,22 @@ export function generateStaticParams() {
   return getSlugsToAllPosts().map(slug => ({slug: slug}));
 }
 
-export default async function Post({params} : {params: {slug: string}}) {
 
-  //add .md extension back to slug to get the correct post.
-  let post = await getPost(params.slug);
+
+export default async function Post({params} : {params: {slug: string}}) {
+  let postData = getPostDataFromSlug(params.slug);
+  
   return (
     <main className={styles.main}>
       <div className={styles.thumbnail}>
         <Frame 
-          src={post.data.thumbnailSrc}
-          caption={post.data.thumbnailCaption}
+          src={postData.frontMatter.thumbnailSrc}
+          caption={postData.frontMatter.thumbnailCaption}
         />
       </div>
-      <h1 className={styles.title}>{post.data.title}</h1>
-      <p className={styles.description}>{post.data.description}</p>
-      <article className={styles.article} dangerouslySetInnerHTML={{__html: post.html}}/>
+      <h1 className={styles.title}>{postData.frontMatter.title}</h1>
+      <p className={styles.description}>{postData.frontMatter.description}</p>
+      {await getArticleJSXFromSlug(params.slug, styles.article)}
     </main>
   );
 }

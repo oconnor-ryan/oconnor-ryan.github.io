@@ -1,6 +1,5 @@
 import styles from "./page.module.scss";
 
-import Card from '@/components/card';
 import BlogPostCard from "@/components/blog-post-card";
 
 import PageNavigator from "@/components/page-navigator";

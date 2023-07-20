@@ -21,6 +21,7 @@
       display: block; //MUST USE THIS to remove small gap on bottom of image caused by images being inline by default
       width: 100%;
       height: 100%;
+      max-width: 100%;
     }
   }
 

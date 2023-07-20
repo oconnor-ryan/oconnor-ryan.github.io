@@ -5,12 +5,19 @@ import fs from 'fs';
 import {remark} from 'remark';
 import html from 'remark-html';
 
+//import markdown MDX processor
+import { compileMDX } from 'next-mdx-remote/rsc';
+
+// Import components used in MDX processor
+import Frame from '@/components/frame';
+
 //import front-matter processor
 import matter from 'gray-matter';
 
+
 /* Interfaces */
 
-interface PostData {
+export interface PostData {
   slug: string,
   fileExtension: string,
   frontMatter: {
@@ -138,6 +145,39 @@ export function urlTagToTag(urlTag: string) {
 }
 
 
+export async function getArticleJSXFromSlug(slug: string, className: string) {
+  let postData = getPostDataFromSlug(slug);
+
+  //using .mdx
+  if(postData.fileExtension.includes('mdx')) {
+    let {content} = await compileMDX({
+      source: postData.content,
+      components: {Frame},
+      options: {
+        //front matter was already parsed, so no need to do so here
+        parseFrontmatter: false
+      }
+    });
+
+    return(
+      <article className={className}>
+        {content}
+      </article>
+    );
+    
+  } 
+  //using .md
+  else {
+    let post = await getPostMarkdown(slug);
+    return (
+      <article 
+        className={className} 
+        dangerouslySetInnerHTML={{__html: post.html}}
+      />
+    );
+  }
+}
+
 //retrieve the list of postData that has the tag specified.
 //if no tag was specified, the data from all posts is retrieved.
 export function getPostDataWithTag(tag: string = ALL_TAG) {
@@ -155,12 +195,15 @@ export function getPostDataWithTag(tag: string = ALL_TAG) {
 
 }
 
+export function getPostDataFromSlug(slug: string) : PostData {
+  return allPostData[slug];
+}
 
 export function getAllPostData() {
   return Object.values(allPostData);
 }
 
-export async function getPost(slug: string) : Promise<Post> {
+export async function getPostMarkdown(slug: string) : Promise<Post> {
   const postData = allPostData[slug];
   const contentHTML = (
     await remark()
