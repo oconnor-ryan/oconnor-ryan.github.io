@@ -1,27 +1,13 @@
 import styles from "./blog-post-card.module.scss";
+import { PostData } from "@/lib/blog-post-handler";
 
-
-export default function BlogPostCard({ title, desc, date, imgSrc, href }: {title: string, desc: string, date: Date, imgSrc: string, href?: string}) {
-  let cardBody = (
-    <>
-      {/*<div className={styles.thumbnail}><Frame src={imgSrc}/></div>*/}
-      <img className={styles.thumbnail} src={imgSrc}></img>
-      <h4 className={styles.title}>{title}</h4>
-      <p className={styles.date}>Date Posted: {date.toLocaleDateString()}</p>
-      <p className={styles.desc} dangerouslySetInnerHTML={{__html: desc}}></p>
-    </>
-  );
-
-  if(href) {
-    return (
-      <a href={href} className={styles.card}>
-        {cardBody}
-      </a>
-    )
-  }
+export default function BlogPostCard({post}: {post: PostData}) {
   return (
-    <div className={styles.card}>
-     {cardBody}
-    </div>
+    <a className={styles.card} href={`/blog/post/${post.slug}`}>
+      <img className={styles.thumbnail} src={post.frontMatter.thumbnailSrc}></img>
+      <h4 className={styles.title}>{post.frontMatter.title}</h4>
+      <p className={styles.date}>{post.frontMatter.date.toLocaleDateString()}</p>
+      <p className={styles.desc} dangerouslySetInnerHTML={{__html: post.frontMatter.description}}></p>
+    </a>
   );
 }

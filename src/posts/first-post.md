@@ -5,7 +5,7 @@ description: >-
   topics I will discuss in these blog posts.
 
 tags: []
-date: 2023-07-19
+date: 2023-07-20
 thumbnailSrc: /assets/images/blog/default-thumbnail.jpg
 thumbnailCaption: Penny Lane
 ---

@@ -17,7 +17,7 @@ import matter from 'gray-matter';
 
 /* Interfaces */
 
-export interface PostData {
+interface PostData {
   slug: string,
   fileExtension: string,
   frontMatter: {
@@ -26,27 +26,16 @@ export interface PostData {
   content: string
 }
 
-//the front matter defined by the YAML in Markdown files in posts directory
-interface FrontMatter {
-  title: string,
-  description: string,
-  tags: string[],
-
-
-  //optional properties
-  thumbnailImageSrc?: string,
-  heroImageSrc?: string,
-}
 
 //A wrapper for a tag that contains the tag itself and
 //a URL-friendly version of the tag that can be appended to
 //URLs without issues
-export interface TagWrapper {
+interface TagWrapper {
   tag: string,
   urlTag: string //used so that tags in url are correctly formatted, even if tags have spaces
 }
 
-export interface Post {
+interface Post {
   slug: string,
   data: {
     [key: string]: any
@@ -59,7 +48,7 @@ export interface Post {
 
 /* Variables */
 
-export const ALL_TAG = 'All';
+const ALL_TAG = 'All';
 
 
 const POST_DIR = "./src/posts";
@@ -126,12 +115,59 @@ function getTagsFromFrontMatter() : string[] {
   return Array.from(tags) as string[];
 }
 
+/*
+  Retrieves an array of PostData objects sorted from newest to oldest.
+*/
+function getPostDataSortedByDate() {
+  let list = [];
+  for(let data of Object.values(allPostData)) {
+    if(list.length == 0) {
+      list.push(data);
+      continue; //continue to next element
+    } 
+
+    for(let i = 0; i < list.length; i++) {
+
+      //if at the end of the list, the data is the oldest element
+      //in the list and is appended to the end of the list
+      if(i == list.length-1) {
+        list.push(data);
+
+        //make sure to BREAK because this will result in infinite
+        //loop where the same element keeps being inserted for every iteration,
+        //making the list "infinitely" long. This causes a 
+        // NodeJS 'socket hang up' error.
+        break; 
+      }
+      //if the data at the current index is older than the next PostData
+      //object being inserted
+      else if(list[i].frontMatter.date < data.frontMatter.date){
+        //push the older data in the list foward once and put 
+        //the current data object in the gap left behind
+        list.splice(i, 0, data);
+
+        //make sure to BREAK because this will result in infinite
+        //loop where the same element keeps being inserted for every iteration,
+        //making the list "infinitely" long. This causes a 
+        // NodeJS 'socket hang up' error.
+        break;
+      }
+
+      //if the data at the current index is newer than the data
+      //being inserted, iterate.
+    }
+    
+  }
+  return list;
+}
 /* Exports */
+
+export { ALL_TAG };
+export type { PostData, Post, TagWrapper };
 
 
 export function getSlugsToAllPosts() {
-  //remove .md extension from slug for a cleaner URL
-  return Object.keys(allPostData);
+  return getPostDataSortedByDate().map(data => data.slug);
 }
 
 export function getAllTags() {
@@ -182,17 +218,11 @@ export async function getArticleJSXFromSlug(slug: string, className: string) {
 //if no tag was specified, the data from all posts is retrieved.
 export function getPostDataWithTag(tag: string = ALL_TAG) {
   if(tag == ALL_TAG) {
-    return getAllPostData();
+    return getPostDataSortedByDate();
   }
-  let rtn = [];
-  for(let postData of Object.values(allPostData)) {
-    if(postData.frontMatter.tags.includes(tag)) {
-      rtn.push(postData);
-    }
-  }
-
-  return rtn;
-
+  return getPostDataSortedByDate().filter((data, i) => {
+    return data.frontMatter.tags.includes(tag);
+  });
 }
 
 export function getPostDataFromSlug(slug: string) : PostData {
@@ -200,7 +230,11 @@ export function getPostDataFromSlug(slug: string) : PostData {
 }
 
 export function getAllPostData() {
-  return Object.values(allPostData);
+  return getPostDataSortedByDate();
+}
+
+export function getTagsFromSlug(slug: string) {
+  return allTags.filter(tagWrapper => getPostDataFromSlug(slug).frontMatter.tags.includes(tagWrapper.tag));
 }
 
 export async function getPostMarkdown(slug: string) : Promise<Post> {

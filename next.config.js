@@ -13,7 +13,6 @@ const nextConfig = {
   //allow each route to accessible via website.com/<route> instead of website.com/<route>.html.
   trailingSlash: true, 
 
-
   sassOptions: {
     includePaths: [path.join(__dirname, "./src/styles")],
   },

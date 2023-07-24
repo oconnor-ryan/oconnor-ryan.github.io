@@ -1,18 +1,2 @@
 @use 'wood-theme' as wood;
 
-.blog {
-  
-  .cardContainer {
-    width: 100%;
-    display: grid;
-    grid-auto-rows: 1fr;
-
-    grid-template-columns: repeat(auto-fit, minmax(250px, 400px));
-    gap: 1em;
-    justify-content: center;
-
-    a {
-      text-decoration: none;
-    }
-  }
-}

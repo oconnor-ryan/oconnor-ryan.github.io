@@ -8,7 +8,7 @@ tags:
   - NextJS
   - Static Website
 
-date: 2023-07-19
+date: 2023-07-22
 thumbnailSrc: /assets/images/blog/default-thumbnail.jpg
 thumbnailCaption: Penny Lane
 ---

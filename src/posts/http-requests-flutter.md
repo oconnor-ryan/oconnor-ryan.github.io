@@ -7,7 +7,7 @@ description: >-
 tags: 
   - Flutter
 
-date: 2023-07-19
+date: 2023-07-21
 thumbnailSrc: /assets/images/blog/default-thumbnail.jpg
 thumbnailCaption: Penny Lane
 ---

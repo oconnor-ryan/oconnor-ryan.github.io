@@ -7,7 +7,7 @@ description: >-
 tags:
   - Linux
 
-date: 2023-07-19
+date: 2023-07-25
 thumbnailSrc: /assets/images/blog/default-thumbnail.jpg
 thumbnailCaption: Penny Lane
 ---

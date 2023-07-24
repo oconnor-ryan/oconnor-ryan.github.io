@@ -1,6 +1,5 @@
+import BlogCardContainer from "@/components/blog-card-container";
 import styles from "./page.module.scss";
-
-import BlogPostCard from "@/components/blog-post-card";
 
 import PageNavigator from "@/components/page-navigator";
 
@@ -26,20 +25,7 @@ export default function BlogSearchPage({params} : {params: {tag: string, page: s
     <main className={styles.blog}>
       <h1>My Blog</h1>
       <h2>Tag: {urlTagToTag(params.tag)}</h2>
-      <div className={styles.cardContainer}>
-        {/*posts.map(data => <Card key={data.slug} title={data.frontMatter.title} desc={data.frontMatter.description} href={"/blog/post/" + data.slug}/>)*/}
-        {
-          posts.map(data => <BlogPostCard 
-            key={data.slug} 
-            title={data.frontMatter.title} 
-            desc={data.frontMatter.description} 
-            date={data.frontMatter.date} 
-            imgSrc={data.frontMatter.thumbnailSrc} 
-            href={`/blog/post/${data.slug}`}
-          />)
-        }
-
-      </div>
+      <BlogCardContainer posts={posts}/>
       <PageNavigator pageNum={pageNum} numPages={numPages}/>
     </main>
   )

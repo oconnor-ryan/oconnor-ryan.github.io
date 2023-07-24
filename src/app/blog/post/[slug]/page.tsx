@@ -1,8 +1,10 @@
-import {getArticleJSXFromSlug, getSlugsToAllPosts, getPostDataFromSlug} from '@/lib/blog-post-handler';
+import {getArticleJSXFromSlug, getSlugsToAllPosts, getPostDataFromSlug, PostData, getAllPostData, Post, getTagsFromSlug} from '@/lib/blog-post-handler';
 
 import Frame from '@/components/frame';
 
 import styles from './page.module.scss';
+import BlogCardContainer from '@/components/blog-card-container';
+import TagList from '@/components/tag-container';
 
 
 //note that this function can only return a JSON object with 
@@ -22,6 +24,20 @@ export function generateStaticParams() {
   return getSlugsToAllPosts().map(slug => ({slug: slug}));
 }
 
+function sharesTag(post1: PostData, post2: PostData) {
+  if(post1.frontMatter.tags.length == 0 && post2.frontMatter.tags.length == 0) {
+    return true;
+  }
+  
+  return post1.frontMatter.tags.some((tag1: string) => post2.frontMatter.tags.find((tag2: string) => tag1 === tag2));
+}
+function searchForNextRelatedPosts(post: PostData) {
+  return getAllPostData().filter((data, i) => {
+    if(post.frontMatter.date > data.frontMatter.date && sharesTag(post, data)) {
+      return data;
+    }
+  })
+}
 
 
 export default async function Post({params} : {params: {slug: string}}) {
@@ -38,6 +54,12 @@ export default async function Post({params} : {params: {slug: string}}) {
       <h1 className={styles.title}>{postData.frontMatter.title}</h1>
       <p className={styles.description}>{postData.frontMatter.description}</p>
       {await getArticleJSXFromSlug(params.slug, styles.article)}
+
+      <h2>Tags</h2>
+      <TagList tags={getTagsFromSlug(postData.slug)}/>
+
+      <h2>Related Posts: </h2>
+      <BlogCardContainer posts={searchForNextRelatedPosts(postData)}/>
     </main>
   );
 }

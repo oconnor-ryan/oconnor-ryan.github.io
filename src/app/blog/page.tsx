@@ -1,6 +1,10 @@
-import { getAllTags, TagWrapper } from "@/lib/blog-post-handler";
+import { getAllTags, getAllPostData } from "@/lib/blog-post-handler";
 
 import styles from './page.module.scss';
+
+import BlogCardContainer from "@/components/blog-card-container";
+import TagList from "@/components/tag-container";
+
 
 export default function Blog() {
 
@@ -9,9 +13,10 @@ export default function Blog() {
       <h1>Welcome to My Blog</h1>
       <h2>You can search for an article using these tags:</h2>
       <div className={styles.tagList}>
-        {/* encodeURI is required because many web servers do not allow spaces in URL*/}
-        {getAllTags().map((tagWrapper) => <a key={tagWrapper.tag} href={`./${tagWrapper.urlTag}`}>{tagWrapper.tag}</a>)}
+        <TagList tags={getAllTags()}/>
       </div>
+      <h2>My most recent blog posts...</h2>
+      <BlogCardContainer posts={getAllPostData().slice(0, 4)}/>
     </div>
   );
 }
