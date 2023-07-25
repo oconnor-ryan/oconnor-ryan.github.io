@@ -8,6 +8,7 @@ description: >-
 
 tags: []
 date: 2023-07-18
+draft: true
 thumbnailSrc: /assets/images/blog/default-thumbnail.jpg
 thumbnailCaption: Penny Lane
 ---

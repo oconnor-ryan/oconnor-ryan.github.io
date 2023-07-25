@@ -18,7 +18,7 @@ export default function BlogPostCard({post}: {post: PostData}) {
           margin: '1em auto', 
           fontSize: '0.7em', 
           padding: '0em', 
-          gridTemplateColumns: 'repeat(auto-fit, 150px);'
+          gridTemplateColumns: 'repeat(auto-fit, 150px)'
         }} 
         dontLinkTags={true}
       />

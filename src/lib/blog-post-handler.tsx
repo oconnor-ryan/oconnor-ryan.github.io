@@ -61,7 +61,12 @@ const allPostData : {[slug: string] : PostData} = (() => {
 
   for(let file of files) {
     let data = getPostData(file);
-    rtn[data.slug] = data;
+
+    //if running in development environment, retrieve all posts, including drafts.
+    //if running in production environment, only retrieve the posts that are not drafts unless USE_DRAFTS is not set to 1
+    if(process.env.NODE_ENV == 'development' || process.env.USE_DRAFTS == '1' || !data.frontMatter.draft) {
+      rtn[data.slug] = data;
+    }
   }
 
   return rtn;

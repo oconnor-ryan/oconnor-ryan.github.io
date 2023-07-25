@@ -9,6 +9,7 @@ tags:
   - Static Website
 
 date: 2023-07-22
+draft: true
 thumbnailSrc: /assets/images/blog/default-thumbnail.jpg
 thumbnailCaption: Penny Lane
 ---
