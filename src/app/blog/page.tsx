@@ -1,7 +1,5 @@
 import { getAllTags, getAllPostData } from "@/lib/blog-post-handler";
 
-import styles from './page.module.scss';
-
 import BlogCardContainer from "@/components/blog-card-container";
 import TagList from "@/components/tag-container";
 
@@ -9,7 +7,7 @@ import TagList from "@/components/tag-container";
 export default function Blog() {
 
   return(
-    <div className={styles.blog}>
+    <div>
       <h1>Welcome to My Blog!</h1>
       <h2>
         In this blog, I will mostly focus on writing programming tutorials
