@@ -37,7 +37,7 @@ export default function WoodGallery({params}: {params: {page: string}}) {
         that I have made.
       </h2>
       <div className={styles.pictureContainer}>
-        {imageData.map((item) => <Frame key={item.imageUrl} src={item.imageUrl} caption={item.caption}/>)}
+        {imageData.map((item) => <Frame key={item.imageUrl} src={item.imageUrl} caption={item.caption} useModal={true}/>)}
       </div>
       <PageNavigator pageNum={pageNum} numPages={numPages}/>
     </main>
