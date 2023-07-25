@@ -2,8 +2,9 @@ import BlogCardContainer from "@/components/blog-card-container";
 import styles from "./page.module.scss";
 
 import PageNavigator from "@/components/page-navigator";
+import TagList from "@/components/tag-container";
 
-import { getPostDataWithTag, urlTagToTag} from "@/lib/blog-post-handler";
+import { getPostDataWithTag, urlTagToTag, getAllTags, urlTagToTagWrapper} from "@/lib/blog-post-handler";
 
 export const POSTS_PER_PAGE = 20;
 
@@ -23,9 +24,9 @@ export default function BlogSearchPage({params} : {params: {tag: string, page: s
 
   return (
     <main className={styles.blog}>
-      <h1>My Blog</h1>
-      <h2>Tag: {urlTagToTag(params.tag)}</h2>
-      <BlogCardContainer posts={posts}/>
+      <h1>Blog</h1>
+      <TagList tags={getAllTags()} activeTag={urlTagToTagWrapper(params.tag)}/>
+      <BlogCardContainer posts={posts} css={{padding: '2em 0'}}/>
       <PageNavigator pageNum={pageNum} numPages={numPages}/>
     </main>
   )

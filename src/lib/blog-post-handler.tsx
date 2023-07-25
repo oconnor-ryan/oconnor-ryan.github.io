@@ -48,7 +48,8 @@ interface Post {
 
 /* Variables */
 
-const ALL_TAG = 'All';
+const ALL_TAG = 'All'; //This tag refers to every blog post
+const MISC_TAG = 'Miscellaneous'; //this tag is used only on blog posts that have an empty list of tags in their frontmatter
 
 
 const POST_DIR = "./src/posts";
@@ -95,6 +96,11 @@ function getPostData(fileName: string) : PostData {
 
   let parsedPath = path.parse(filePath);
 
+  //Add misc tag to frontmatter that has an empty list of tags
+  if(matterResult.data.tags.length == 0) {
+    matterResult.data.tags.push(MISC_TAG);
+  }
+
   return {
     slug: parsedPath.name, 
     fileExtension: parsedPath.ext, 
@@ -112,6 +118,7 @@ function getTagsFromFrontMatter() : string[] {
     }
   }
   tags.add(ALL_TAG);
+  tags.add(MISC_TAG);
   return Array.from(tags) as string[];
 }
 
@@ -162,7 +169,7 @@ function getPostDataSortedByDate() {
 }
 /* Exports */
 
-export { ALL_TAG };
+export { ALL_TAG, MISC_TAG};
 export type { PostData, Post, TagWrapper };
 
 
@@ -180,6 +187,13 @@ export function urlTagToTag(urlTag: string) {
   return tagWrapper ? tagWrapper.tag : undefined;
 }
 
+export function tagToTagWrapper(tag: string) {
+  return allTags.find(tagWrapper => tagWrapper.tag === tag);
+}
+
+export function urlTagToTagWrapper(urlTag: string) {
+  return allTags.find(tagWrapper => tagWrapper.urlTag === urlTag);
+}
 
 export async function getArticleJSXFromSlug(slug: string, className: string) {
   let postData = getPostDataFromSlug(slug);
@@ -236,6 +250,42 @@ export function getAllPostData() {
 export function getTagsFromSlug(slug: string) {
   return allTags.filter(tagWrapper => getPostDataFromSlug(slug).frontMatter.tags.includes(tagWrapper.tag));
 }
+
+export function sharesTag(post1: PostData, post2: PostData) {
+  if(post1.frontMatter.tags.length == 0 && post2.frontMatter.tags.length == 0) {
+    return true;
+  }
+  
+  return post1.frontMatter.tags.some((tag1: string) => post2.frontMatter.tags.find((tag2: string) => tag1 === tag2));
+}
+
+export function searchForNextRelatedPosts(post: PostData, numPosts: number) {
+  //get related posts that share 1 or more tags
+  let nextPosts = getAllPostData().filter((data, i) => {
+    if(post.frontMatter.date > data.frontMatter.date && sharesTag(post, data)) {
+      return data;
+    }
+  });
+
+  //if there are 3 or more matching posts, return the first 3 posts
+  if(nextPosts.length >= numPosts) {
+    return nextPosts.slice(0, 3);
+  }
+
+  //get posts not currently in the nextPosts array and put the 
+  //first few into the nextPosts array such that the length of nextPosts
+  //equals numPosts.
+  let morePosts = getAllPostData()
+    .sort(() => 0.5 - Math.random()) //shuffle list of posts in random order
+    .filter((data, i) => !nextPosts.includes(data) && post !== data)
+    .slice(0, numPosts - nextPosts.length);
+    
+  nextPosts.push(...morePosts);
+
+
+  return nextPosts;
+}
+
 
 export async function getPostMarkdown(slug: string) : Promise<Post> {
   const postData = allPostData[slug];

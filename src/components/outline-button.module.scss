@@ -2,6 +2,12 @@
 
 $borderRadius: 10px;
 
+@mixin active-button-properties() {
+  color: black;
+  background-clip: border-box;
+  border-radius: $borderRadius;
+}
+
 .button {
 
   /*
@@ -53,11 +59,12 @@ $borderRadius: 10px;
   text-align: center;
   white-space: nowrap; //dont let letters wrap around in text
   font-weight: bold;
-
-  &:hover {
-    color: black;
-    background-clip: border-box;
-    border-radius: $borderRadius;
-  }
 }
 
+.button.interact:hover {
+  @include active-button-properties();
+}
+
+.button.active {
+  @include active-button-properties();
+}
