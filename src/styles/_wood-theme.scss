@@ -52,6 +52,34 @@ $default-background-size: 50px;
 
 }
 
+@function straight-grain-1-basswood-light($degree: 0deg, $size: $default-background-size) {
+  @return straight-grain-1($degree, $basswood-light0, $basswood-light1, $basswood-light2, $size);
+}
+
+@function straight-grain-1-pine-light($degree: 0deg, $size: $default-background-size) {
+  @return straight-grain-1($degree, $pine-light0, $pine-light1, $pine-light2, $size);
+}
+
+@function straight-grain-1-pine-dark($degree: 0deg, $size: $default-background-size) {
+  @return straight-grain-1($degree, $pine-dark0, $pine-dark1, $pine-dark2, $size);
+}
+
+@function straight-grain-1-walnut-light($degree: 0deg, $size: $default-background-size) {
+  @return straight-grain-1($degree, $walnut-light0, $walnut-light1, $walnut-light2, $size);
+}
+
+@function straight-grain-1-walnut-dark($degree: 0deg, $size: $default-background-size) {
+  @return straight-grain-1($degree, $walnut-dark0, $walnut-dark1, $walnut-dark2, $size);
+}
+
+@function straight-grain-1-ebony-light($degree: 0deg, $size: $default-background-size) {
+  @return straight-grain-1($degree, $ebony-light0, $ebony-light1, $ebony-light2, $size);
+}
+
+@function straight-grain-1-ebony-dark($degree: 0deg, $size: $default-background-size) {
+  @return straight-grain-1($degree, $ebony-dark0, $ebony-dark1, $ebony-dark2, $size);
+}
+
 
 // MIX-INS
 

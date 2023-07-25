@@ -1,0 +1,63 @@
+@use 'wood-theme' as wood;
+
+$borderRadius: 10px;
+
+.button {
+
+  /*
+    In order to use the border-radius property on border-image, a trick needs
+    to be done with the ::before psuedo-class of class button. 
+  */
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;  //required for round border trick to work?
+  
+    padding: 5px; //this is the width of the border
+  
+    border-radius: $borderRadius;
+  
+  
+    /*
+      This part allows the rounded outline border to work correctly using
+      an image/gradient. The background is the gradient that the border uses.
+  
+      To quote the article at https://dev.to/afif/border-with-gradient-and-radius-387f
+  
+      (3): We apply a gradient as background and we make its origin the border box (by default it's the padding box).
+      (4): Using the mask property, we apply two opaque layers. The bottom one will cover the whole element and the top one will cover only the padding box (so it will not cover the border area)
+      (5): We exclude the top layer from the bottom one so that only the border area will be shown!
+    */
+    background: wood.straight-grain-1-pine-light(0deg); // (3)
+    mask: linear-gradient(#fff 0 0) content-box, // (4)
+          linear-gradient(#fff 0 0);
+    mask-composite: exclude; // (3)
+  }
+
+
+  position: relative;
+
+  padding: 0.5em;
+
+  /*
+  This section clips the background so that only the text gets the background
+  color. Then, the text's color is set to transparent so that this background color
+  is visible.
+  */
+  background: wood.straight-grain-1-pine-light(0deg);
+  background-clip: text;
+  color: transparent;
+
+  text-decoration: none;
+  font-size: 1.5em;
+  text-align: center;
+  white-space: nowrap; //dont let letters wrap around in text
+  font-weight: bold;
+
+  &:hover {
+    color: black;
+    background-clip: border-box;
+    border-radius: $borderRadius;
+  }
+}
+
