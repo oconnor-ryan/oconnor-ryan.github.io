@@ -5,6 +5,7 @@ import Frame from '@/components/frame';
 import styles from './page.module.scss';
 import BlogCardContainer from '@/components/blog-card-container';
 import TagList from '@/components/tag-container';
+import { Metadata } from 'next';
 
 
 //note that this function can only return a JSON object with 
@@ -22,6 +23,14 @@ import TagList from '@/components/tag-container';
 //  }
 export function generateStaticParams() {
   return getSlugsToAllPosts().map(slug => ({slug: slug}));
+}
+
+export function generateMetadata({params}: {params: {slug: string}}) : Metadata {
+  let postData = getPostDataFromSlug(params.slug);
+  return {
+    title: postData.frontMatter.title,
+    description: postData.frontMatter.description
+  };
 }
 
 export default async function Post({params} : {params: {slug: string}}) {

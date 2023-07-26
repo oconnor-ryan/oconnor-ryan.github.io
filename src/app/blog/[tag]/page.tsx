@@ -3,9 +3,18 @@ import BlogCardContainer from "@/components/blog-card-container";
 import PageNavigator from "@/components/page-navigator";
 import TagList from "@/components/tag-container";
 
-import { getPostDataWithTag, urlTagToTag, getAllTags, urlTagToTagWrapper} from "@/lib/blog-post-handler";
+import { getPostDataWithTag, urlTagToTag, getPostDataFromSlug, getAllTags, urlTagToTagWrapper} from "@/lib/blog-post-handler";
+import { Metadata } from "next";
 
 export const POSTS_PER_PAGE = 20;
+
+
+export function generateMetadata({params}: {params: {tag: string, page: string}}) : Metadata {
+  let tag = urlTagToTag(params.tag);
+  return {
+    title: `Blog - ${tag}`,
+  };
+}
 
 
 export default function BlogSearchPage({params} : {params: {tag: string, page: string}}) {

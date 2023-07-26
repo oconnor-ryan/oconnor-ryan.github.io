@@ -3,7 +3,6 @@ import { getAllTags, getAllPostData } from "@/lib/blog-post-handler";
 import BlogCardContainer from "@/components/blog-card-container";
 import TagList from "@/components/tag-container";
 
-
 export default function Blog() {
 
   return(
