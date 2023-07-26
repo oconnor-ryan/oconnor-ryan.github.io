@@ -1,6 +1,8 @@
 @use "wood-theme" as wood;
 @use "global-variables" as globals;
 
+$backToTopButtonSize: 60px;
+
 .footer {
   display: block;
 
@@ -10,17 +12,61 @@
 
   color: wood.$basswood-light0;
 
+  .backToTop {
+    display: block;
+    margin: auto;
+    margin-bottom: 0.5em;
+
+    cursor: pointer;
+
+
+    //make sure line-height and height are the same
+    //so that the text is aligned vertically.
+    //also make sure that width and height are
+    //equal to that the border-radius: 50% property
+    //makes the buttton look like a circle.
+    width: $backToTopButtonSize;
+    height: $backToTopButtonSize;
+    line-height: $backToTopButtonSize;
+    font-size: calc($backToTopButtonSize - 10px);
+    border-radius: 50%;
+
+    @include wood.straight-grain-1-basswood-light-bg();
+    color: wood.$ebony-dark0;
+
+    text-align: center;
+    font-weight: bold;
+    text-decoration: none;
+
+    user-select: none;
+  }
+
+  .backToTop.js {
+    display: none;
+  }
+
+
   .contentWrapper {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     justify-content: space-between;
-    align-items: center;
+    gap: 2em;
+
+    hr {
+      display: none;
+      width: 100%;
+      background: wood.$basswood-light0;
+      padding: 2px;
+    }
 
     .contactInfo {
+      text-align: center;
+
       .social-container-footer {
         display: block;
         //padding-left: 1em;
+        text-align: left;
+
     
         list-style: none;
     
@@ -65,6 +111,24 @@
       }
     }
 
+    .sitemap {
+      display: block;
+
+      .links {
+        list-style: none;
+        a {
+          text-decoration: underline;
+          color: wood.$basswood-light0;
+        }
+        
+
+        li {
+          padding: 0.5em 0;
+        }
+      }
+      
+    }
+
     .nextjs {
       display: block;
       text-align: center;
@@ -88,19 +152,21 @@
   
 }
 
+
 @media screen and (max-width: 768px) {
   .footer {
+    padding: 1em 0;
+
     .contentWrapper {
       flex-direction: column;
       align-items: center;
+      justify-content: normal;
 
-      gap: 2em;
-
-      .contactInfo {
-        h1 {
-          text-align: center;
-        }
+      hr {
+        display: block;
       }
+      
+
     }
 
     .copyright {
