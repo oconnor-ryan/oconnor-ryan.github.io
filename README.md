@@ -11,8 +11,6 @@ and mobile development!
 
 ### Goals Before Publishing to GitHub
 * Write some posts!
-* Add Site Map to Footer so that user can still navigate through website on mobile without Javascript
-
 
 ### Optional Features
 * Generate a smaller version of each image so that loading them

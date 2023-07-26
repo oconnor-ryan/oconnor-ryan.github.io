@@ -54,6 +54,7 @@ export default function Footer() {
       </div>
 
       <div className={styles.copyright}>&copy; Ryan O'Connor 2023</div>
+      
       <Script 
         id="smooth-scroll"
         dangerouslySetInnerHTML={{
