@@ -19,6 +19,17 @@ html {
   background-color: wood.$walnut-dark0;
 }
 
+body {
+  overflow: auto;
+}
+
+//when the body has a no-scroll class, the body of the webpage can no longer scroll.
+//This is very useful when modals and popups appear on screen so that the user can
+//use the popup without interfering with where they were on the webpage.
+body.no-scroll {
+  overflow: hidden;
+}
+
 
 
 #main-page-wrapper {

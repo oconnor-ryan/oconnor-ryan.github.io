@@ -64,6 +64,7 @@ export default function Frame({src, caption, href, newTab, useModal, css} : {
 
             if(!modal.classList.contains("${modalStyles.visible}")) {
               modal.classList.add("${modalStyles.visible}");
+              document.body.classList.add("no-scroll"); //dont let the webpage scroll behind the modal 
             }
           });
   
@@ -78,6 +79,8 @@ export default function Frame({src, caption, href, newTab, useModal, css} : {
 
             if(modal.classList.contains("${modalStyles.visible}")) {
               modal.classList.remove("${modalStyles.visible}");
+              document.body.classList.remove("no-scroll"); //dont let the webpage scroll behind the modal 
+
             }
             
           });
