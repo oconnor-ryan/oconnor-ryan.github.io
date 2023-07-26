@@ -46,6 +46,9 @@
       padding-top: 100px;
   
       width: 80%;
+
+      //When using images, make sure all of them are 700px wide since having 
+      //images greater than 700px would be a waste of bytes.
       max-width: 700px; //dont make image absurdly huge
   
     }

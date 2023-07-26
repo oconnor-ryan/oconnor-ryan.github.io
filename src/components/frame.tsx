@@ -55,7 +55,7 @@ export default function Frame({src, caption, href, newTab, useModal, css} : {
   return (
     <div style={css} className={styles.frame}>
       {picContainer}
-      {caption ? <p className={styles.caption}>{caption}</p> : null}
+      {caption ? <div className={styles.caption}>{caption}</div> : null}
     </div>
     
   )
