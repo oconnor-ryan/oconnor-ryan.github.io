@@ -40,6 +40,8 @@ export default function Footer() {
           <ul className={styles.links}>
             <li><a href="/blog" className={styles.title}>Blog</a></li>
             <li><a href="/woodgallery" className={styles.title}>Wood Gallery</a></li>
+            <li><a href="/" className={styles.title}>About</a></li>
+
           </ul>
         </div>
 
