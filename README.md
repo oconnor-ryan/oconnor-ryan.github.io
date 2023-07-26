@@ -15,9 +15,6 @@ and mobile development!
 
 
 ### Optional Features
-* Make ModalImage component more versatile by moving the Javascript code required for it to work into the
-ModalImage file. Then, allow the ModalImage to accept children so that when a child in the ModalImage
-is selected, the ModalImage pops up.
 * Generate a smaller version of each image so that loading them
 is faster when being displayed in small components.
 * Use CSS to create toolbox instead of using SVG so that
