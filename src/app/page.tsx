@@ -29,19 +29,18 @@ export default function Home() {
           and minoring in Computer Engineering at Purdue University Northwest.<br><br> 
           I will get my Bachelor's degree in 2024!`} />
 
-          <Card title="Full Stack Developer" desc={`I build websites and mobile
-          apps from the ground up and can manage parts of a web/mobile app, 
-          from database management via SQL to writing backend server-side code to 
-          designing the look-and-feel of apps.`} />
+          <Card title="Full Stack Developer" desc={`I can build websites and mobile
+          apps from the ground up. This includes designing and managing databases, implementing a nice
+          look-and-feel, and utilizing backend code and APIs to provide the necessary services for 
+          end-users.`} />
 
           <Card title="Woodworker" desc={`As a hobby, I carve caricatures, turn vases
-          and chess pieces, create intarsia, and do scrollwork.<br><br> Check out my 
-          <a href='/woodgallery'> woodworking gallery</a> sometime!`} />
+          and chess pieces, create intarsia, and do scrollwork.<br><br> 
+          Check out my <a href='/woodgallery'>woodworking gallery</a> sometime!`} />
 
           <Card title="Blogger" desc={`I made a blog on this site to document
-          the tricks I have learned over the years relating to programming.<br><br>
-          It also serves as a place for me to look back upon when I stumble
-          across a problem I've previously solved.<br><br>
+          the tricks I have learned over the years relating to programming as well 
+          as talk about my woodworking hobby.<br><br>
           Check out my <a href="/blog">blog here!</a>`}/>
 
         </div>
@@ -64,10 +63,11 @@ export default function Home() {
         <div className={`${styles.cardContainer} ${styles.projects}`}>
           <Card title={`AtoB Mobility`} desc={`Tools Used: AWS, Linux, NodeJS
           HTML, CSS, Javascript, MySQL, Flutter<br><br>
-          Me and a team of 3 other people are currently building a startup company
-          called AtoB Mobility that will serve as a ride-sharing service that allows
+          I am part of a team of former classmates who are currently building a startup company
+          called AtoB Mobility, a ride-sharing service that allows
           drivers to pickup multiple passengers going to the same or similar destination,
-          reducing the cost of each trip. I currently helping with hosting the web app via
+          reducing the cost of each trip. <br><br>
+          I'm currently helping with hosting the web app via
           Amazon Web Services and building our mobile app using Flutter so we can deploy it
           to iOS and Android.`}/>
 
@@ -75,7 +75,7 @@ export default function Home() {
           For a project in college, me and two other classmates built a web app where users
           can search for people to work on school projects based on the skills that they have.
           I helped write much of the server-side logic, designed the database schema for the 
-          website, and hosted it on AWS on an EC2 instance.`}/>
+          website, and hosted it on AWS using an EC2 and RDS instance.`}/>
 
           <Card title={`WebGL Rendering Engine`} desc={`Tools Used: Typescript, WebGL<br><br>
           I designed a basic rendering engine for WebGL that allows a developer to render
