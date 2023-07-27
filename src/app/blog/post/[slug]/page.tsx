@@ -1,4 +1,4 @@
-import {getArticleJSXFromSlug, getSlugsToAllPosts, getPostDataFromSlug, sharesTag, searchForNextRelatedPosts, Post, getTagsFromSlug} from '@/lib/blog-post-handler';
+import {getArticleJSXFromSlug, getSlugsToAllPosts, getPostDataFromSlug, searchForNextRelatedPosts, Post, getTagsFromSlug} from '@/lib/blog-post-handler';
 
 import Frame from '@/components/frame';
 
@@ -42,7 +42,7 @@ export default async function Post({params} : {params: {slug: string}}) {
     <></> 
     : 
     <>
-      <h2>Tags</h2>
+      <h2>Tags Used By This Post</h2>
       <TagList tags={postTags}/>
     </>
   ;
@@ -57,12 +57,16 @@ export default async function Post({params} : {params: {slug: string}}) {
       </div>
       <h1 className={styles.title}>{postData.frontMatter.title}</h1>
       <p className={styles.description}>{postData.frontMatter.description}</p>
-      {await getArticleJSXFromSlug(params.slug, styles.article)}
+      <p className={styles.date}>Posted: {postData.frontMatter.date.toLocaleDateString()}</p>
 
-      {tagSection}
-      
-      <h2>Related Posts: </h2>
+      <hr/>
+      {await getArticleJSXFromSlug(params.slug, styles.article)}
+      <hr/>
+
+      <h2>Thanks For Reading My Post! Here's Some Other Posts You May Like:</h2>
       <BlogCardContainer posts={searchForNextRelatedPosts(postData, 3)}/>
+      {tagSection}
+
     </main>
   );
 }

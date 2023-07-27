@@ -25,6 +25,17 @@
     line-height: 2em;
   }
 
+  .date {
+    text-align: center;
+  }
+
+  hr {
+    width: 100%;
+    background: wood.$basswood-light0;
+    padding: 2px;
+    margin: 10px 0;
+  }
+
   //dont use h1 in article because only 1 h1 should be used per page
   .article {
     margin: 0 1em;
@@ -117,13 +128,6 @@
 
     ol li ol {
       font-size: 1em;
-    }
-
-    hr {
-      width: 100%;
-      background: wood.$basswood-light0;
-      padding: 2px;
-      margin: 10px 0;
     }
 
     //For Inline Code Only
