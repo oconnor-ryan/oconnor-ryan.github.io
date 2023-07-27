@@ -2,6 +2,7 @@
   "name": "personal-site",
   "version": "1.0.0",
   "private": true,
+  "type": "commonjs",
   "scripts": {
     "dev": "next dev",
     "build": "next build && node after-build-script.js",
@@ -12,6 +13,7 @@
     "@types/node": "20.2.4",
     "@types/react": "18.2.7",
     "@types/react-dom": "18.2.4",
+    "feed": "^4.2.2",
     "gray-matter": "^4.0.3",
     "next": "13.4.4",
     "next-mdx-remote": "^4.4.1",

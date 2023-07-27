@@ -3,6 +3,7 @@
 # custom
 /ignored
 /Notes-To-Self.md
+/public/feed
 
 # dependencies
 /node_modules

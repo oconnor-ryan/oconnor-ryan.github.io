@@ -3,7 +3,7 @@ import BlogCardContainer from "@/components/blog-card-container";
 import PageNavigator from "@/components/page-navigator";
 import TagList from "@/components/tag-container";
 
-import { getPostDataWithTag, urlTagToTag, getPostDataFromSlug, getAllTags, urlTagToTagWrapper} from "@/lib/blog-post-handler";
+import { getPostDataWithTag, urlTagToTag, getAllTags, urlTagToTagWrapper} from "@/lib/blog-post-handler";
 import { Metadata } from "next";
 
 export const POSTS_PER_PAGE = 20;
