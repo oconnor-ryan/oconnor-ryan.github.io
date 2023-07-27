@@ -25,6 +25,14 @@
     height: 300px;
     object-fit: cover; //maintain aspect ratio and crop image if its too large
 
+    //used for when image does not load in or if there is no thumbnail image
+    background: wood.straight-grain-1-ebony-light();
+    line-height: 300px;
+    color: white;
+    text-align: center;
+    font-size: 1.2em;
+    white-space: nowrap;
+
   }
 
   .title {
