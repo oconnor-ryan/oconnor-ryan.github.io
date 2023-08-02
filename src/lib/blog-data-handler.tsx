@@ -4,7 +4,20 @@ import fs from 'fs';
 //import front-matter processor
 import matter from 'gray-matter';
 
+//import markdown processor
+import {remark} from 'remark';
+import html from 'remark-html';
+
+//import markdown MDX processor
+import { compileMDX } from 'next-mdx-remote/rsc';
+
+// Import components used in MDX processor
+import Frame from '@/components/frame';
+
+
 import { Feed } from 'feed';
+import { getPostDataFromSlug } from './blog-post-handler';
+
 
 
 
@@ -17,6 +30,14 @@ export interface PostData {
     [key: string]: any
   },
   content: string
+}
+
+export interface Post {
+  slug: string,
+  data: {
+    [key: string]: any
+  },
+  html: string
 }
 
 
@@ -115,7 +136,57 @@ export function getPostDataSortedByDate() {
   return allData;
 }
 
-export function generateRSSFeedFiles() {
+async function getPostMarkdown(slug: string) : Promise<Post> {
+  const postData = getPostDataFromSlug(slug)!;
+  const contentHTML = (
+    await remark()
+      //must not sanitize input so that raw HTML in Markdown 
+      //is included in output HTML.
+      //Because no one else is posting content on this site,
+      //via Markdown, allowing raw HTML is safe
+      .use(html, {sanitize: false}) 
+      .process(postData.content)
+  ).toString();
+
+
+  return {slug: slug, html: contentHTML, data: postData.frontMatter};
+}
+
+
+export async function getArticleJSXFromSlug(slug: string, className: string) {
+  let postData = getPostDataFromSlug(slug)!;
+
+  //using .mdx
+  if(postData.fileExtension.includes('mdx')) {
+    let {content} = await compileMDX({
+      source: postData.content,
+      components: {Frame},
+      options: {
+        //front matter was already parsed, so no need to do so here
+        parseFrontmatter: false
+      }
+    });
+
+    return(
+      <article className={className}>
+        {content}
+      </article>
+    );
+    
+  } 
+  //using .md
+  else {
+    let post = await getPostMarkdown(slug);
+    return (
+      <article 
+        className={className} 
+        dangerouslySetInnerHTML={{__html: post.html}}
+      />
+    );
+  }
+}
+
+export async function generateRSSFeedFiles() {
   /*
     This function is run only ONCE.
     It generates the RSS feed files for RSS2, JSON Feed, and Atom Feed based on the posts made
@@ -125,30 +196,34 @@ export function generateRSSFeedFiles() {
   let feed = new Feed({
     title: "Ryan O'Connor's Personal Blog",
     description: "A blog about programming and woodworking.",
-    link: process.env.BASE_URL,
+    link: process.env.BASE_URL!,
     id: process.env.BASE_URL!,
     language: "en",
     copyright: "All Rights Reserved 2023, Ryan O'Connor",
-    favicon: `${process.env.BASE_URL}/favicon.ico`,
+    favicon: `${process.env.BASE_URL!}/favicon.ico`,
     author: {
       name: "Ryan O'Connor",
       email: "oconnor.ryan.m@proton.me",
-      link: process.env.BASE_URL
+      link: process.env.BASE_URL!
     },
     feedLinks: {
-      json: `${process.env.BASE_URL}/feed/rss.json`,
-      rss2: `${process.env.BASE_URL}/feed/rss.xml`,
-      atom: `${process.env.BASE_URL}/feed/atom.xml`
+      json: `${process.env.BASE_URL!}/feed/rss.json`,
+      rss2: `${process.env.BASE_URL!}/feed/rss.xml`,
+      atom: `${process.env.BASE_URL!}/feed/atom.xml`
     }
   });
 
   for(let postData of getPostDataSortedByDate()) {
     feed.addItem({
-      title: postData.frontMatter.title,
-      id: `${process.env.BASE_URL}/blog/post/${postData.slug}`,
-      link: `${process.env.BASE_URL}/blog/post/${postData.slug}`,
-      description: postData.frontMatter.description,
-      date: postData.frontMatter.date
+      title: postData.frontMatter.title!,
+      id: `/blog/post/${postData.slug}`,
+      link: `/blog/post/${postData.slug}`,
+   //   content: postData.content, MDX cannot be parsed to HTML statically, so content from it cannot be nicely formatted in RSS feed
+      category: postData.frontMatter.tags,
+      //image URL is not correctly generated, so I'm ignoring it.
+      //image: postData.frontMatter.thumbnailSrc !== undefined ? `${process.env.BASE_URL!}${postData.frontMatter.thumbnailSrc}` : undefined,
+      description: postData.frontMatter.description!,
+      date: postData.frontMatter.date!
     });
   }
 

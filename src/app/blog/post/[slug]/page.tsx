@@ -22,7 +22,7 @@ import { Metadata } from 'next';
 //  export function generateStaticParams() {
 //    return [{slug: 'hi'}, {slug: 'there'}];
 //  }
-export function generateStaticParams() {
+export async function generateStaticParams() {
    /*
     Generates the needed RSS feed files. 
 
@@ -32,7 +32,9 @@ export function generateStaticParams() {
     Weird Bug?: When running 'next build', the RSS feeds will only be generated if 
     the generateStaticParams method does NOT return an empty list
   */
-  generateRSSFeedFiles(); 
+  await generateRSSFeedFiles(); 
+
+  console.log("RSS FEEDS GENERATED!");
 
   return getSlugsToAllPosts().map(slug => ({slug: slug}));
 }

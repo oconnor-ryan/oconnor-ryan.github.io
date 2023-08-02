@@ -1,16 +1,5 @@
 
-//import markdown processor
-import {remark} from 'remark';
-import html from 'remark-html';
-
-//import markdown MDX processor
-import { compileMDX } from 'next-mdx-remote/rsc';
-
-// Import components used in MDX processor
-import Frame from '@/components/frame';
-
-
-import { getPostDataSortedByDate, ALL_TAG, MISC_TAG, PostData } from './blog-data-handler';
+import { getPostDataSortedByDate, getArticleJSXFromSlug, Post, ALL_TAG, MISC_TAG, PostData } from './blog-data-handler';
 
 
 /* Interfaces */
@@ -23,13 +12,6 @@ interface TagWrapper {
   urlTag: string //used so that tags in url are correctly formatted, even if tags have spaces
 }
 
-interface Post {
-  slug: string,
-  data: {
-    [key: string]: any
-  },
-  html: string
-}
 
 
 /* Variables */
@@ -66,12 +48,12 @@ function getTagsFromFrontMatter() : string[] {
 
 /* Exports */
 
-export { ALL_TAG, MISC_TAG};
-export type { Post, TagWrapper, PostData };
+export { ALL_TAG, MISC_TAG, getArticleJSXFromSlug};
+export type { Post, TagWrapper, PostData};
 
 
 export function getSlugsToAllPosts() {
-  return getPostDataSortedByDate().map(data => data.slug);
+  return allPostData.map(data => data.slug);
 }
 
 export function getAllTags() {
@@ -90,39 +72,6 @@ export function tagToTagWrapper(tag: string) {
 
 export function urlTagToTagWrapper(urlTag: string) {
   return allTags.find(tagWrapper => tagWrapper.urlTag === urlTag);
-}
-
-export async function getArticleJSXFromSlug(slug: string, className: string) {
-  let postData = getPostDataFromSlug(slug)!;
-
-  //using .mdx
-  if(postData.fileExtension.includes('mdx')) {
-    let {content} = await compileMDX({
-      source: postData.content,
-      components: {Frame},
-      options: {
-        //front matter was already parsed, so no need to do so here
-        parseFrontmatter: false
-      }
-    });
-
-    return(
-      <article className={className}>
-        {content}
-      </article>
-    );
-    
-  } 
-  //using .md
-  else {
-    let post = await getPostMarkdown(slug);
-    return (
-      <article 
-        className={className} 
-        dangerouslySetInnerHTML={{__html: post.html}}
-      />
-    );
-  }
 }
 
 //retrieve the list of postData that has the tag specified.
@@ -184,18 +133,3 @@ export function searchForNextRelatedPosts(post: PostData, numPosts: number) {
 }
 
 
-export async function getPostMarkdown(slug: string) : Promise<Post> {
-  const postData = getPostDataFromSlug(slug)!;
-  const contentHTML = (
-    await remark()
-      //must not sanitize input so that raw HTML in Markdown 
-      //is included in output HTML.
-      //Because no one else is posting content on this site,
-      //via Markdown, allowing raw HTML is safe
-      .use(html, {sanitize: false}) 
-      .process(postData.content)
-  ).toString();
-
-
-  return {slug: slug, html: contentHTML, data: postData.frontMatter};
-}
