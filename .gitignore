@@ -3,7 +3,14 @@
 # custom
 /ignored
 /Notes-To-Self.md
+# RSS Feed files are pregenerated at build time, so no need to track them
 /public/feed
+
+# Every folder named 'original' stores the largest version of the images
+# used for the website. For performance reasons, these possibly giant files are 
+#ignored
+/public/assets/images/**/original/
+
 
 # dependencies
 /node_modules
