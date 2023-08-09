@@ -82,8 +82,8 @@
     }
 
     ul {
-      list-style-position: inside;
-      padding-left: 1em;
+      list-style-position: outside;
+      padding-left: 2em;
       line-height: 2em;
       font-size: 1.2em;
     }
@@ -92,13 +92,13 @@
     // The em unit is relative, so each nested list would have
     // a size of 1.2*1.2*...  
     //To fix this, set the nested lists to a size of 1em.
-    ul li ul {
+    ul li ul, ul li ol, ol li ul, ol li ol {
       font-size: 1em;
     }
 
     ol {
-      list-style-position: inside;
-      padding-left: 1em;
+      list-style-position: outside;
+      padding-left: 2em;
       line-height: 2em;
       font-size: 1.2em;
 
@@ -114,21 +114,33 @@
             1.2.1 Person
         2. Item2
       */
+      /*
       counter-reset: item;
 
       li {
         display: block;
+      }
+      li {
       }
 
       li::before {
         content: counters(item, ".") ". ";
         counter-increment: item;
       }
+      
+
+      // Override behavior of adding 1.1.1 to nested ordered lists
+      li ul {
+        counter-reset: none;
+
+        //override li::before by maually adding Unicode dot with space yourself.
+        li::before {
+          content: '\2022' " ";
+        }
+      }
+      */
     }
 
-    ol li ol {
-      font-size: 1em;
-    }
 
     //For Inline Code Only
     code {
