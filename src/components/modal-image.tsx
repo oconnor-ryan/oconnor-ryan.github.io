@@ -23,7 +23,7 @@ export default function ModalImage ({imgSrc, caption, className, style, children
     <div className={styles.popup}>
       <span className={styles.close}>&times;</span>
       <img className={styles.image} src={imgSrc}></img>
-      <div className={styles.caption}>{caption}</div>
+      {caption != "" ? <div className={styles.caption}>{caption}</div> : <></>}
     </div>
     
     <div className={styles.wrappedContent}>{children}</div>
