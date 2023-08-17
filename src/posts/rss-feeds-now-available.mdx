@@ -124,7 +124,7 @@ This RSS file is a data file that stores basic information about the website,
 such as its URL, the date that the RSS data file was generated, and, most 
 importantly, a record of every single post made by that website.
 
-<Frame src="/assets/images/blog/rss-example.png" caption="A snippet of my website's RSS file." useModal={true} css={{width: '100%', maxWidth: '700px', margin: 'auto'}}/>
+<Frame src="/assets/images/blog/rss-format-example.jpg" caption="A snippet of my website's RSS file." useModal={true} css={{width: '100%', maxWidth: '700px', margin: 'auto'}}/>
 
 Each record will include metadata about each post, such as its title, author, and tags.
 Some websites may even include its entire article in that record so you don't 
@@ -138,7 +138,7 @@ reader application. The real magic happens when you tell your feed reader to
 subscribe to the RSS feed from a website. 
 
 <Frame 
-  src="/assets/images/blog/How-RSS-Subscription-Works-Diagram.jpg" 
+  src="/assets/images/blog/rss-subscription-diagram.jpg" 
   caption="In this diagram, the RSS reader will send an
   HTTP request to download the RSS feed file from the website and 
   store the contents into its local data store." 
@@ -152,7 +152,7 @@ display each post on that website into a nicely formatted inbox on your computer
 When the website you subscribed to makes a new post, they will update their own RSS
 file with data about the new post. 
 <Frame 
-  src="/assets/images/blog/How-RSS-Updates-Works-Diagram.jpg" 
+  src="/assets/images/blog/rss-update-diagram.jpg" 
   caption="In this diagram, the RSS reader will redownload the RSS feed file from the website.
   If it has any new data, that data is stored in the feed reader's data store
   and is available for you to read." 
@@ -199,15 +199,15 @@ personal information. To use it:
 ### Subscribing to RSS Feeds
 Navigate to the website you want to subscribe to and open the Feedbro extension:
 
-<Frame src="/assets/images/blog/rss-step1.png" useModal={true} css={{width: '100%', maxWidth: '700px', margin: 'auto'}}/>
+<Frame src="/assets/images/blog/rss-step1.jpg" useModal={true} css={{width: '100%', maxWidth: '700px', margin: 'auto'}}/>
 
 Click on 'Find Feeds In Current Tab'. 
 
-<Frame src="/assets/images/blog/rss-step2.png" useModal={true} css={{width: '100%', maxWidth: '700px', margin: 'auto'}}/>
+<Frame src="/assets/images/blog/rss-step2.jpg" useModal={true} css={{width: '100%', maxWidth: '700px', margin: 'auto'}}/>
 
 > If no options are displayed, the 
 > website either does not have an RSS file or it did not properly link the RSS
-> file location. If you want to check for this file, you can look for the <img src="/assets/images/blog/rss-feed.png" style={{width: '25px', height: '25px', maxWidth: '25px', margin: 0, borderRadius: 0, display: 'inline'}}/> symbol
+> file location. If you want to check for this file, you can look for the <img src="/assets/images/blog/rss-feed.jpg" style={{width: '25px', height: '25px', maxWidth: '25px', margin: 0, borderRadius: 0, display: 'inline'}}/> symbol
 > or a hyperlink called 'RSS Feed', usually located in the navbar or footer of a website.
 > Click on this link or icon to see the raw 
 > RSS file, then open the Feedbro extension and click on 'Find Feeds In Current Tab' again.
@@ -220,12 +220,12 @@ JSON feeds are slightly different file formats, but perform the same job as RSS 
 
 Select the feed(s) you want to follow and hit 'Subscribe':
 
-<Frame src="/assets/images/blog/rss-step3.png" useModal={true} css={{width: '100%', maxWidth: '700px', margin: 'auto'}}/>
+<Frame src="/assets/images/blog/rss-step3.jpg" useModal={true} css={{width: '100%', maxWidth: '700px', margin: 'auto'}}/>
 
 Once you've successfully subscribed to that feed, select the 'Open Feed Reader'
 option to view your inbox.
 
-<Frame src="/assets/images/blog/rss-step4.png" useModal={true} css={{width: '100%', maxWidth: '700px', margin: 'auto'}}/>
+<Frame src="/assets/images/blog/rss-step4.jpg" useModal={true} css={{width: '100%', maxWidth: '700px', margin: 'auto'}}/>
 
 You can now see a snippet of all the posts of the website you subscribed to.
 If you want to view a post on the website, just click the title of the
@@ -244,7 +244,7 @@ reader.
 
 On the left sidebar, select the 'Rules' option:
 
-<Frame src="/assets/images/blog/rss-filter1.png" useModal={true} css={{width: '100%', maxWidth: '700px', margin: 'auto'}}/>
+<Frame src="/assets/images/blog/rss-filter1.jpg" useModal={true} css={{width: '100%', maxWidth: '700px', margin: 'auto'}}/>
 
 
 On the main window under the 'No defined rules yet' text, click 'Add Rule'.
@@ -254,7 +254,7 @@ there word 'blog' is not in my title or description.
 
 Below is a picture of how I configured this rule:
 
-<Frame src="/assets/images/blog/rss-filter2.png" useModal={true} css={{width: '100%', maxWidth: '700px', margin: 'auto'}}/>
+<Frame src="/assets/images/blog/rss-filter2.jpg" useModal={true} css={{width: '100%', maxWidth: '700px', margin: 'auto'}}/>
 
 Let me break down this form for you:
 
@@ -276,11 +276,11 @@ conditions is true. Click 'Add Action' and select 'Delete Article'.
 Here is a screenshot of the entire rule for adding the 'HTML' tag to
 all posts that have the word HTML in it's title or description:
 
-<Frame src="/assets/images/blog/rss-filter3.png" useModal={true} css={{width: '100%', maxWidth: '700px', margin: 'auto'}}/>
+<Frame src="/assets/images/blog/rss-filter3.jpg" useModal={true} css={{width: '100%', maxWidth: '700px', margin: 'auto'}}/>
 
 Here is the result of these 2 rules added to my website.
 
-<Frame src="/assets/images/blog/rss-filter4.png" useModal={true} css={{width: '100%', maxWidth: '700px', margin: 'auto'}}/>
+<Frame src="/assets/images/blog/rss-filter4.jpg" useModal={true} css={{width: '100%', maxWidth: '700px', margin: 'auto'}}/>
 
 My 8 posts got filtered out into 4 posts that contain the word 'Blog' in 
 them and the 2 posts that mention 'HTML' have an 'HTML' tag.
@@ -293,9 +293,9 @@ well as some settings.
 On Feedbro, you need to go to the Settings page and the option to import 
 and export OPML files will appear near the top of the page.
 
-<Frame src="/assets/images/blog/rss-opml-step1.png" caption="Open the settings in Feedbro." useModal={true} css={{width: '100%', maxWidth: '700px', margin: 'auto'}}/>
+<Frame src="/assets/images/blog/rss-opml-step1.jpg" caption="Open the settings in Feedbro." useModal={true} css={{width: '100%', maxWidth: '700px', margin: 'auto', paddingBottom: '1em'}}/>
 
-<Frame src="/assets/images/blog/rss-opml-step2.png" caption="Click the Import/Export Feed Subscriptions (as OPML) buttons" useModal={true} css={{width: '100%', maxWidth: '700px', margin: 'auto'}}/>
+<Frame src="/assets/images/blog/rss-opml-step2.jpg" caption="Click the Import/Export Feed Subscriptions (as OPML) buttons" useModal={true} css={{width: '100%', maxWidth: '700px', margin: 'auto'}}/>
 
 
 <a id="conclusion"></a>
