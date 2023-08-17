@@ -1,4 +1,5 @@
 import {getArticleJSXFromSlug, getSlugsToAllPosts, getPostDataFromSlug, searchForNextRelatedPosts, Post, getTagsFromSlug} from '@/lib/blog-post-handler';
+import { generateRSSFeedFiles } from '@/lib/blog-data-handler';
 
 import Frame from '@/components/frame';
 
@@ -21,12 +22,25 @@ import { Metadata } from 'next';
 //  export function generateStaticParams() {
 //    return [{slug: 'hi'}, {slug: 'there'}];
 //  }
-export function generateStaticParams() {
+export async function generateStaticParams() {
+   /*
+    Generates the needed RSS feed files. 
+
+    Note: In development build, this command will be run each time the user visits the /blog page.
+    In production, this command will only be called once at build time.
+
+    Weird Bug?: When running 'next build', the RSS feeds will only be generated if 
+    the generateStaticParams method does NOT return an empty list
+  */
+  await generateRSSFeedFiles(); 
+
+  console.log("RSS FEEDS GENERATED!");
+
   return getSlugsToAllPosts().map(slug => ({slug: slug}));
 }
 
 export function generateMetadata({params}: {params: {slug: string}}) : Metadata {
-  let postData = getPostDataFromSlug(params.slug);
+  let postData = getPostDataFromSlug(params.slug)!;
   return {
     title: postData.frontMatter.title,
     description: postData.frontMatter.description
@@ -34,7 +48,7 @@ export function generateMetadata({params}: {params: {slug: string}}) : Metadata 
 }
 
 export default async function Post({params} : {params: {slug: string}}) {
-  let postData = getPostDataFromSlug(params.slug);
+  let postData = getPostDataFromSlug(params.slug)!;
   
   let postTags = getTagsFromSlug(postData.slug);
 

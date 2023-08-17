@@ -1,0 +1,311 @@
+---
+title: RSS Feeds Now Available!
+description: >- 
+  RSS Feeds are now available on website in three formats: RSS2, JSON, and Atom!
+  The links to those feeds are at the footer of all of my webpages.
+
+tags: 
+  - Announcement
+date: 2023-08-16T22:00:00-05:00
+draft: false
+thumbnailSrc: /assets/images/blog/rss-thumbnail.jpg
+---
+
+## Table of Contents
+* [Introduction](./#introduction)
+* [What's An RSS Feed?](./#what-is-rss-feed)
+* [Why Should I Use An RSS Feed If It's So Old?](./#why-use-rss-feed)
+  * [Complete Control Over What You Want To See](./#control-what-you-see)
+  * [Anonymity](./#anonymity)
+* [How Does An RSS Feed Work?](./#how-rss-works)
+* [How Do I Use An RSS Feed Reader?](./#how-to-use-rss)
+  * [Subscribing to RSS Feeds](./#subscribe-to-rss)
+  * [Filtering Posts](./#filter-posts-rss)
+  * [Backup and Import RSS Feed Subscriptions](./#backup-rss-feed)
+* [Conclusion](./#conclusion)
+
+---
+
+<a id="introduction"></a>
+## Introduction
+When I first built this website and published it to Github, a thought 
+suddenly popped up in my head:
+
+> How will people know when I make new posts?
+
+The only ways I knew how to update users previously was to either send 
+new posts to custom user accounts on this site or to use a third-party
+email subscription service. Because this website is static (meaning
+I cannot run server-side code) and I have no interest in using a 
+third-party email subscription service, I looked for alternative ways to
+inform you when I make new posts. This led me to learn about RSS feeds,
+which is an old yet simple way for static websites to inform users about 
+new updates without using emails or other services. 
+
+After some brief research, I used the <a href="https://www.npmjs.com/package/feed" target="_blank">feed</a>
+package on the npm registry and this <a href="https://blog.logrocket.com/adding-rss-feed-next-js-app/#using-rss-library" target="_blank">tutorial</a>
+from Ibadehin Mojeed to add RSS feeds to my own site. After playing around
+with it, I realized just how amazing this old technology is! I can subscribe
+to the RSS feed of any websites I wanted, get their latests updates, and filter
+out content I don't want all without giving them my email or creating an account!
+For this reason, I'm going to preach about the greatness of RSS feeds in this post.
+I'll tell you what it is, how it works, and how to use them so that you can
+follow your favorite websites and bloggers.
+
+
+<a id="what-is-rss-feed"></a>
+## What's An RSS Feed?
+An RSS feed is basically a file that a website provides that allows you
+to be notified when a website gets new content without periodically 
+checking that site to see what has changed. According to Wikipedia,
+it <a href="https://en.wikipedia.org/wiki/RSS" target="_blank">gained widespread 
+popularity in 2005 and 2006</a> and allowed users to receive the latest posts, news, and
+other content from multiple websites. Nowadays, however, the popularity
+of RSS feeds has greatly declined due to the rise of social media applications
+and email subscriptions, according to <a href="https://blog.powr.io/are-rss-feeds-still-being-used" target="_blank">POWR</a>.
+Think about it, on social media apps, you just need to follow or subscribe
+to your favorite content creaters and you'll get notified when they post
+new stuff. And when you want to get the latest news from a certain website, 
+you generally give them your email, allowing them to send their latest posts
+and updates into your inbox.
+
+<a id="why-use-rss-feed"></a>
+## Why Should I Use An RSS Feed If It's So Old?
+Despite it being an very old technology that has not been updated in 14 years,
+it offers advantages that no other modren tools have been able to provide.
+
+
+<a id="control-what-you-see"></a>
+### Complete Control Over What You Want To See
+When you use a social media application, the content you view is limited
+to whatever is available on that platform. For example, there is no
+native support for your YouTube account to follow a Facebook account 
+and vise-versa. You cannot follow the activity of any other website using 
+just a social media account. In addition, you may only want to see a subset of the 
+content posted by the accounts you follow. Not all social media accounts 
+make it easy for you to filter out content you don't want.
+
+When you sign up for an email subscription on a website, you are trusting that website to 
+only send you emails about their new posts. However, these websites may 
+send you more than just the link to the latest post. They may bombard your
+email inbox with spam, which may contain unwanted advertisments or even 
+phishing attempts and malware. In addition, you will need to set up filters
+in your email client in order to filter away new posts and spam that don't interest you.
+
+
+With RSS feeds, you don't have to worry about anything I mentioned before. You can 
+subscribe to the RSS feeds of any website on the internet that provides them.
+Some websites may even create separate RSS feeds for each user so that you 
+can pick who you want to follow. In addition, most RSS feed readers allow you
+to filter each individual feed using keywords and topics, allowing you to only
+view the content you actually want to see from each user you follow. Now,
+instead of relying on your email client and/or social media account to 
+filter content, you can specify your own filters in the RSS feed reader.
+
+
+<a id="anonymity"></a>
+### Anonymity
+For users who don't like the idea of providing their email to websites to
+receive updates or creating an account with their personal information on
+a social media app, RSS feeds are perfect for you. The only thing that an RSS 
+feed reader does is ask the
+websites you subscribed to for their RSS feed files via a HTTP request. 
+You don't need to give out your personal information or email to receive 
+updates from those websites. Assuming that you RSS feed reader does not require
+you to make any online accounts, your anonymity is further improved by not 
+needing to create a social media account or email account at all. 
+
+<a id="how-rss-works"></a>
+## How Does An RSS Feed Work?
+First of all, the website you want to subscribe to must provide a RSS file.
+Without that file, you cannot subscribe to that website.
+
+This RSS file is a data file that stores basic information about the website, 
+such as its URL, the date that the RSS data file was generated, and, most 
+importantly, a record of every single post made by that website.
+
+<Frame src="/assets/images/blog/rss-format-example.jpg" caption="A snippet of my website's RSS file." useModal={true} css={{width: '100%', maxWidth: '700px', margin: 'auto'}}/>
+
+Each record will include metadata about each post, such as its title, author, and tags.
+Some websites may even include its entire article in that record so you don't 
+even need to visit the website to read the articles that are posted. For those
+who are interested, give the <a href="https://www.rssboard.org/rss-specification" target="_blank">RSS 2.0 specification</a>
+a read for a detailed description of the file format.
+
+By itself, this RSS file is not very useful to you. In order to fully leverage
+the capabilities of RSS I stated above, you will need to download a trusted RSS feed
+reader application. The real magic happens when you tell your feed reader to
+subscribe to the RSS feed from a website. 
+
+<Frame 
+  src="/assets/images/blog/rss-subscription-diagram.jpg" 
+  caption="In this diagram, the RSS reader will send an
+  HTTP request to download the RSS feed file from the website and 
+  store the contents into its local data store." 
+  useModal={true} 
+  css={{width: '100%', maxWidth: '700px', margin: 'auto'}}
+/>
+
+After downloading the RSS feed file, the feed reader will then 
+display each post on that website into a nicely formatted inbox on your computer.
+
+When the website you subscribed to makes a new post, they will update their own RSS
+file with data about the new post. 
+<Frame 
+  src="/assets/images/blog/rss-update-diagram.jpg" 
+  caption="In this diagram, the RSS reader will redownload the RSS feed file from the website.
+  If it has any new data, that data is stored in the feed reader's data store
+  and is available for you to read." 
+  useModal={true} 
+  css={{width: '100%', maxWidth: '700px', margin: 'auto'}}
+/>
+
+When you reopen your RSS reader or tell it to update
+its feed, it will redownload the new RSS file from the website and check to see if
+it has any new posts. If there are new posts, those posts will be displayed on 
+the inbox of your RSS reader.
+
+Best of all, you can subscribe to as many websites as you want, allowing you
+to keep up-to-date on multiple websites without having to frequently visit each one.
+
+
+If you don't want to view certain posts, most RSS readers will allow you
+to set up filters that exclude certain posts from websites based on the 
+keywords, phrases, and tags you specify.
+
+As you can see, it's a suprisingly simple and effective solution to automatically
+retrieve and filter new content from multiple websites, all without needing an
+email address or account.
+
+
+<a id="how-to-use-rss"></a>
+## How Do I Use An RSS Feed Reader?
+How to use your RSS feed reader will depend on which one you download. You can obtain
+an RSS feed reader by using:
+* Browser extensions, such as <a href="https://addons.mozilla.org/en-US/firefox/addon/feedbroreader/" target="_blank">Feedbro</a> on Firefox and Google Chrome.
+* Standalone applications, such as <a href="https://ravenreader.app" target="_blank">Raven Reader</a>, a cross-platform (Windows, MacOS, Linux) feed reader application.
+* Websites, such as <a href="https://feedly.com/" target="_blank">Feedly</a>, which works on all devices but requires you to create an account.
+  * You can even self-host your own RSS feed reader website by using free-and-open-source projects,
+  such as <a href="https://tt-rss.org/" target="_blank">Tiny Tiny RSS</a> or 
+  <a href="https://apps.nextcloud.com/apps/news" target="_blank">Nextcloud News</a> if you're already self-hosting Nextcloud.
+
+As of now, I mostly use Feedbro, but I recently installed Raven Reader and am currently playing around with it.
+
+Because I've used Feedbro for a while now, I will show you how to use it. Sadly, 
+it is not open-source, but it is free, easy to use, and does not ask for 
+personal information. To use it:
+
+<a id="subscribe-to-rss"></a>
+### Subscribing to RSS Feeds
+Navigate to the website you want to subscribe to and open the Feedbro extension:
+
+<Frame src="/assets/images/blog/rss-step1.jpg" useModal={true} css={{width: '100%', maxWidth: '700px', margin: 'auto'}}/>
+
+Click on 'Find Feeds In Current Tab'. 
+
+<Frame src="/assets/images/blog/rss-step2.jpg" useModal={true} css={{width: '100%', maxWidth: '700px', margin: 'auto'}}/>
+
+> If no options are displayed, the 
+> website either does not have an RSS file or it did not properly link the RSS
+> file location. If you want to check for this file, you can look for the <img src="/assets/images/blog/rss-feed.jpg" style={{width: '25px', height: '25px', maxWidth: '25px', margin: 0, borderRadius: 0, display: 'inline'}}/> symbol
+> or a hyperlink called 'RSS Feed', usually located in the navbar or footer of a website.
+> Click on this link or icon to see the raw 
+> RSS file, then open the Feedbro extension and click on 'Find Feeds In Current Tab' again.
+
+
+You may see multiple feeds depending on whether the website makes separate
+feeds for each topic and/or the type of RSS file they support. Feedbro can
+read from both RSS and Atom Feed files, but not JSON Feed files (Atom Feed and
+JSON feeds are slightly different file formats, but perform the same job as RSS feeds).
+
+Select the feed(s) you want to follow and hit 'Subscribe':
+
+<Frame src="/assets/images/blog/rss-step3.jpg" useModal={true} css={{width: '100%', maxWidth: '700px', margin: 'auto'}}/>
+
+Once you've successfully subscribed to that feed, select the 'Open Feed Reader'
+option to view your inbox.
+
+<Frame src="/assets/images/blog/rss-step4.jpg" useModal={true} css={{width: '100%', maxWidth: '700px', margin: 'auto'}}/>
+
+You can now see a snippet of all the posts of the website you subscribed to.
+If you want to view a post on the website, just click the title of the
+post to be redirected to the website. 
+
+
+<a id="filter-posts-rss"></a>
+### Filtering Posts
+In this section, I'll show you how to filter and tag the posts you subscribed to see. 
+As an example, I'll show you how to hide all posts that don't include
+the word "blog" and insert an 'HTML' tag into all posts that contain the word
+'HTML' inside a specific website.
+
+Open the Feedbro extension and select the 'Open Feed Reader' option to view the
+reader.
+
+On the left sidebar, select the 'Rules' option:
+
+<Frame src="/assets/images/blog/rss-filter1.jpg" useModal={true} css={{width: '100%', maxWidth: '700px', margin: 'auto'}}/>
+
+
+On the main window under the 'No defined rules yet' text, click 'Add Rule'.
+
+We will first create a rule to hide all posts from my website where 
+there word 'blog' is not in my title or description.
+
+Below is a picture of how I configured this rule:
+
+<Frame src="/assets/images/blog/rss-filter2.jpg" useModal={true} css={{width: '100%', maxWidth: '700px', margin: 'auto'}}/>
+
+Let me break down this form for you:
+
+1. Leave the 'Enabled' and 'Fallthrough' checkboxes checked.
+2. In the two dropdown menus by the When option, select 
+"New article arrives" in "feed" and then select the feed you want to filter.
+This means that when a new article is posted, the rule will check the
+conditions below and, if the condition is true, perform an action.
+3. In the match section, select the 'All Conditions' option from the dropdown.
+This means that all conditions must be true before the action specified later
+in the rule is performed.
+    * Press 'Add Condition' to add more conditions.
+    * In the first condition, use the dropdown to form the sentence: "Content doesn't contain text blog using case-insensive matching"
+        This means that if the description of a post does not contain the string
+        "blog", whether capitalized or not, then apply the actions specified.
+4. Finally, you will need to add an action that occurs when one of those
+conditions is true. Click 'Add Action' and select 'Delete Article'.
+
+Here is a screenshot of the entire rule for adding the 'HTML' tag to
+all posts that have the word HTML in it's title or description:
+
+<Frame src="/assets/images/blog/rss-filter3.jpg" useModal={true} css={{width: '100%', maxWidth: '700px', margin: 'auto'}}/>
+
+Here is the result of these 2 rules added to my website.
+
+<Frame src="/assets/images/blog/rss-filter4.jpg" useModal={true} css={{width: '100%', maxWidth: '700px', margin: 'auto'}}/>
+
+My 8 posts got filtered out into 4 posts that contain the word 'Blog' in 
+them and the 2 posts that mention 'HTML' have an 'HTML' tag.
+
+<a id="backup-rss-feed"></a>
+### Backup And Import RSS Feed Subscriptions
+To backup RSS feeds, you can export your feed as an OPML file, which is
+also just an XML file that contains the list of URLs you subscribed to as
+well as some settings.
+On Feedbro, you need to go to the Settings page and the option to import 
+and export OPML files will appear near the top of the page.
+
+<Frame src="/assets/images/blog/rss-opml-step1.jpg" caption="Open the settings in Feedbro." useModal={true} css={{width: '100%', maxWidth: '700px', margin: 'auto', paddingBottom: '1em'}}/>
+
+<Frame src="/assets/images/blog/rss-opml-step2.jpg" caption="Click the Import/Export Feed Subscriptions (as OPML) buttons" useModal={true} css={{width: '100%', maxWidth: '700px', margin: 'auto'}}/>
+
+
+<a id="conclusion"></a>
+## Conclusion
+RSS feeds are an old yet reliable way of receiving updates from the websites
+you subscribe to without giving away personal information or locking you into
+using the content from a specific platform. While many websites have replaced
+their RSS feeds with email subscriptions, many other websites, especially blogs
+and news sites, will continue to provide RSS feeds for the forseeable future.
+Now that you have learned about what RSS feeds are and how to use them, please
+consider subscribing to my RSS feed for more content relating to programming, 
+web development, and woodworking!
+

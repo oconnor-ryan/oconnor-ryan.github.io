@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 
-const path = require("path");
+const path = require('path');
 
 //note that you can access the webpack config through here as well
 
@@ -14,7 +14,7 @@ const nextConfig = {
   trailingSlash: true, 
 
   sassOptions: {
-    includePaths: [path.join(__dirname, "./src/styles")],
+    includePaths: [path.resolve("./src/styles")],
   },
 }
 

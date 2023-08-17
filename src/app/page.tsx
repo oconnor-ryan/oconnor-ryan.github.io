@@ -5,6 +5,7 @@ import Frame from '@/components/frame';
 
 import styles from './page.module.scss'
 
+
 //page is the equivalent to index.html on Apache web server
 export default function Home() {
   return (

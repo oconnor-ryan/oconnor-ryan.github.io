@@ -38,10 +38,13 @@ export default function Footer() {
         <div className={styles.sitemap}>
           <h2>Site Map</h2>
           <ul className={styles.links}>
-            <li><a href="/blog" className={styles.title}>Blog</a></li>
-            <li><a href="/woodgallery" className={styles.title}>Wood Gallery</a></li>
             <li><a href="/" className={styles.title}>About</a></li>
-
+            <li><a href="/woodgallery" className={styles.title}>Wood Gallery</a></li>
+            <li><a href="/blog" className={styles.title}>Blog</a></li>
+            
+            <li><a href="/feed/rss.xml" className={styles.title}>RSS Feed</a></li>
+            <li><a href="/feed/rss.json" className={styles.title}>RSS JSON Feed</a></li>
+            <li><a href="/feed/atom.xml" className={styles.title}>Atom Feed</a></li>
           </ul>
         </div>
 

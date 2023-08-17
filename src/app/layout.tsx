@@ -14,6 +14,7 @@ export const metadata = {
     This is where I keep my portfolio, programming projects, and resume as well as my blog
     and an image gallery for all of my woodworking projects.
   `,
+
 }
 
 export default function RootLayout({
@@ -23,6 +24,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="alternate" type="application/rss+xml" title="Ryan O'Connor's RSS Feed" href="/feed/rss.xml"/>
+        <link rel="alternate" type="application/atom+xml" title="Ryan O'Connor's Atom Feed" href="/feed/atom.xml"/>
+        <link rel="alternate" title="Ryan O'Connor's JSON RSS Feed" type="application/feed+json" href="/feed/rss.json" />
+
+      </head>
       {/* Added no-js class in order to load different SCSS if Javascript is on or not. */}
       <body className={`${inter.className} no-js`}>
         <TopNavbar />
