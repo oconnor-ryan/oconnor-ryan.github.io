@@ -34,8 +34,6 @@ export async function generateStaticParams() {
   */
   await generateRSSFeedFiles(); 
 
-  console.log("RSS FEEDS GENERATED!");
-
   return getSlugsToAllPosts().map(slug => ({slug: slug}));
 }
 
