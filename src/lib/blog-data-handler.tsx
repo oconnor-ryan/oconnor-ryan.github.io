@@ -227,6 +227,11 @@ export async function generateRSSFeedFiles() {
     });
   }
 
+  //Must create the feed folder manually, otherwise trying to write
+  //the RSS files to a folder that does not exist will throw an
+  //error in production
+  fs.mkdirSync(path.resolve("./public/feed"), {recursive: true});
+
   fs.writeFileSync(path.resolve("./public/feed/rss.json"), feed.json1());
   fs.writeFileSync(path.resolve("./public/feed/rss.xml"), feed.rss2());
   fs.writeFileSync(path.resolve("./public/feed/atom.json"), feed.atom1());
