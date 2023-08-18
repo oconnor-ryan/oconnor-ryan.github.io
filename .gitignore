@@ -6,6 +6,9 @@
 # RSS Feed files are pregenerated at build time, so no need to track them
 /public/feed
 
+# Ignore blog drafts (ex: blog-name.draft.mdx is ignored)
+/src/posts/*.draft.*
+
 # Every folder named 'original' stores the largest version of the images
 # used for the website. For performance reasons, these possibly giant files are 
 #ignored

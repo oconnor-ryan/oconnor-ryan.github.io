@@ -101,25 +101,23 @@ export function getPostDataSortedByDate() {
       continue;
     }
 
+    //checks if the post of the current file is older than all posts
+    //currently in the allData array. 
+    let isOldest = true;
+
+    //this for loop checks where to insert the post data from the current
+    //file in the list of posts.
     for(let i = 0; i < allData.length; i++) {
 
-      //if at the end of the list, the data is the oldest element
-      //in the list and is appended to the end of the list
-      if(i == allData.length-1) {
-        allData.push(data);
-
-        //make sure to BREAK because this will result in infinite
-        //loop where the same element keeps being inserted for every iteration,
-        //making the list "infinitely" long. This causes a 
-        // NodeJS 'socket hang up' error.
-        break; 
-      }
-      //if the data at the current index is older than the next PostData
-      //object being inserted
-      else if(allData[i].frontMatter.date < data.frontMatter.date){
+      //if the data being inserted is newer than the post at the current
+      //index...
+      if(allData[i].frontMatter.date < data.frontMatter.date){
         //push the older data in the list foward once and put 
         //the current data object in the gap left behind
         allData.splice(i, 0, data);
+
+        // set isOldest to false to avoid executing code after this loop
+        isOldest = false;
 
         //make sure to BREAK because this will result in infinite
         //loop where the same element keeps being inserted for every iteration,
@@ -130,6 +128,14 @@ export function getPostDataSortedByDate() {
 
       //if the data at the current index is newer than the data
       //being inserted, iterate.
+    }
+
+    //if the for loop completes without inserting the post into the 
+    //allData array, that means that the post is the older than all 
+    //posts in the allData array. 
+    //Thus, the post gets appended to the end of the allData array.
+    if(isOldest) {
+      allData.push(data);
     }
   }
 
