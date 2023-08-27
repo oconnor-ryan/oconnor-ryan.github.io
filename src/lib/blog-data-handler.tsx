@@ -222,8 +222,8 @@ export async function generateRSSFeedFiles() {
   for(let postData of getPostDataSortedByDate()) {
     feed.addItem({
       title: postData.frontMatter.title!,
-      id: `/blog/post/${postData.slug}`,
-      link: `/blog/post/${postData.slug}`,
+      id: `${process.env.BASE_URL!}/blog/post/${postData.slug}`,
+      link: `${process.env.BASE_URL!}/blog/post/${postData.slug}`,
    //   content: postData.content, MDX cannot be parsed to HTML statically, so content from it cannot be nicely formatted in RSS feed
       category: postData.frontMatter.tags,
       //image URL is not correctly generated, so I'm ignoring it.
