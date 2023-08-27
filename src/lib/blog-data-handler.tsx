@@ -240,7 +240,7 @@ export async function generateRSSFeedFiles() {
 
   fs.writeFileSync(path.resolve("./public/feed/rss.json"), feed.json1());
   fs.writeFileSync(path.resolve("./public/feed/rss.xml"), feed.rss2());
-  fs.writeFileSync(path.resolve("./public/feed/atom.json"), feed.atom1());
+  fs.writeFileSync(path.resolve("./public/feed/atom.xml"), feed.atom1());
   
 }
 
