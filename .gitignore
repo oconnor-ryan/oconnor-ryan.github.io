@@ -3,6 +3,8 @@
 # custom
 /ignored
 /Notes-To-Self.md
+sync-exclude.lst
+
 # RSS Feed files are pregenerated at build time, so no need to track them
 /public/feed
 
