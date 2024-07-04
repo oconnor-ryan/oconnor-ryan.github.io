@@ -26,9 +26,8 @@ export default function Home() {
         <h2>My name is Ryan O'Connor, and I am a...</h2>
 
         <div className={styles.cardContainer}>
-          <Card title="College Student" desc={`I'm majoring in Computer Science
-          and minoring in Computer Engineering at Purdue University Northwest.<br><br> 
-          I will get my Bachelor's degree in 2024!`} />
+          <Card title="College Graduate" desc={`I'm received my Bachelor of Science Degree
+          from Purdue University Northwest. I majored in Computer Science and minored in Computer Engineering.`} />
 
           <Card title="Full Stack Developer" desc={`I can build websites and mobile
           apps from the ground up. This includes designing and managing databases, implementing a nice
@@ -72,17 +71,26 @@ export default function Home() {
           Amazon Web Services and building our mobile app using Flutter so we can deploy it
           to iOS and Android.`}/>
 
-          <Card title={`Group Finder Website`} desc={`Tools Used: Javascript, PHP, AWS, MariaDB, Linux<br><br>
-          For a project in college, me and two other classmates built a web app where users
-          can search for people to work on school projects based on the skills that they have.
-          I helped write much of the server-side logic, designed the database schema for the 
-          website, and hosted it on AWS using an EC2 and RDS instance.`}/>
+          <Card title={`End-To-End Encrypted Messaging Web App`} desc={`Tools Used: Javascript, Web Cryptography API,
+          NodeJS, ExpressJS, WebSocket, WebRTC, VoIP<br><br>
+          A full-stack web application created for my senior design project where users can create chatrooms
+          and send text, images, and files to other users using their browsers. All messages are end-to-end encrypted and can be
+          sent to other users even if they are offline. <br><br> 
+          It utilized a modified version of the 
+          X3DH key agreement algorithm to allow users to agree on a specific AES cryptography key to use without sending
+          that key to the API server. The web app can also perform 1-on-1 video calls between 2 users using WebRTC.
+          <br><br>
+          Check out the project
+          <a href="https://github.com/oconnor-ryan/E2E2" target="_blank">here on my Github &#8594;</a>`}/>
 
-          <Card title={`WebGL Rendering Engine`} desc={`Tools Used: Typescript, WebGL<br><br>
-          I designed a basic rendering engine for WebGL that allows a developer to render
-          3D models and textures using only a few lines of code.<br><br>
-          Check out the project 
-          <a href="https://github.com/oconnor-ryan/ryrender" target="_blank">here on my Github &#8594;</a>`}/>
+          <Card title={`3D Printing Web App`} desc={`Tools Used: Typescript, NextJS, .NET, ReactJS<br><br>
+          During college, I helped 2 members of Purdue Northwest's Additive Manufacturing Club to design and
+          build a web app where users can request to have 3D parts printed for them by the club. Users
+          can place an order by providing what filaments they want to use, an SDL model, and how many to print.
+          <br><br>
+          These orders can then be tracked by members of the 
+          club and they can schedule when to print the parts from certain orders. These members can also
+          mark orders as complete or reject them.`}/>
 
         </div>
       </div>
