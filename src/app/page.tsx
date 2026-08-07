@@ -26,14 +26,26 @@ export default function Home() {
         <h2>My name is Ryan O'Connor, and I am a...</h2>
 
         <div className={styles.cardContainer}>
-          <Card title="College Graduate" desc={`I'm received my Bachelor of Science Degree
+          <Card 
+            title="Software Engineer" 
+            desc={`I can build websites and mobile
+                  apps from the ground up. This includes:`} 
+            list={[
+              "Creating and managing infrastructure on AWS or Azure",
+              "Designing databases schemas",
+              "Implementing a nice look-and-feel for websites",
+              "Utilizing backend code and APIs to provide services for end-users"
+
+
+            ]}
+          />
+
+
+
+          <Card title="College Graduate" desc={`I've received my Bachelor of Science Degree
           from Purdue University Northwest. I majored in Computer Science and minored in Computer Engineering.`} />
 
-          <Card title="Full Stack Developer" desc={`I can build websites and mobile
-          apps from the ground up. This includes designing and managing databases, implementing a nice
-          look-and-feel, and utilizing backend code and APIs to provide the necessary services for 
-          end-users.`} />
-
+          
           <Card title="Woodworker" desc={`As a hobby, I carve caricatures, turn vases
           and chess pieces, create intarsia, and do scrollwork.<br><br> 
           Check out my <a href='/woodgallery'>woodworking gallery</a> sometime!`} />
@@ -52,6 +64,68 @@ export default function Home() {
         <Toolbox />    
       </div>
 
+      <div id="experience" className={styles.experienceWrapper}>
+        <h1>Experience</h1>
+        <h2>Here is my work experience relating to software engineering:</h2>
+
+        <div className={`${styles.cardContainer} ${styles.projects}`}>
+
+          <Card 
+            title={`Dimenso`} 
+            subtitle={`Software Engineer; October 2025 to Present`} 
+
+            desc={`Tools Used: AWS, PostgreSQL, Python,
+            React, FastAPI, LiveKit, OpenAI, Clerk<br><br>
+
+            I'm working at a AI company that allows scientists to easily capture lab data during experiments and perform data analysis
+            upon that collected data.`}
+            list={[
+              "I've been redesigning Dimenso's AWS infrastructure to comply with the SOC 2 security framework.",
+              "I conduct access reviews and track changes to job roles to ensure that all employees have appropriate access to Dimenso resources.",
+              "I've utilized LiveKit and OpenAI to allow Dimenso's AI lab assistant to respond to commands and collect lab data.",
+              "On our API service, I've implemented file sharing for Dimenso's users, as well as user authentication using Clerk."
+            ]}
+            href="https://www.dimenso.ai/"
+          />
+
+          <Card 
+            title={`WeClub`} 
+            subtitle={`Cloud Engineer; June 2026 to August 2026`} 
+
+            desc={`Tools Used: AWS, Kubernetes, Docker,
+            MySQL, MongoDB, Azure<br><br>
+
+            I successfully migrated a Kubernetes cluster and a React website from Azure to AWS.`}
+            list={[
+              "I setup AWS EKS and adjusted WeClub's Kubernetes manifest files to work with AWS.",
+              "I configured AWS EKS to allow certain Kubernetes services to store user files in a S3 bucket.",
+              "I utilized AWS CloudFront and a S3 bucket to host WeClub's website.",
+              "I recovered data stored on VHD files used by the MySQL and MongoDB instances hosted on Azure, and migrated it into the databases on AWS EKS."
+            ]}
+            href="https://www.linkedin.com/company/weclubconnect/about/"
+          />
+
+          <Card 
+            title={`Movelz`} 
+            subtitle={`Volunteer Full Stack Developer; June 2023 to September 2025`} 
+
+            desc={`Tools Used: AWS, Firebase, ExpressJS,
+            NodeJS, Javascript, MySQL, Flutter<br><br>
+
+            I was part of a team of former classmates who built a startup company
+            called AtoB Mobility Incorporated. Together, we created Movelz, a ride-sharing service.
+            `}
+            list={[
+              "I helped design, deploy, and maintain our API service on AWS",
+              "I utilized Stripe to manage payments.",
+              "I assisted our front-end developer team with utilizing Firebase on our mobile app for user authentication."
+            ]}
+            href="https://www.linkedin.com/company/movelz/about/"
+          />
+        </div>
+      </div>
+
+
       <div id="projects" className={styles.projectWrapper}>
         <h1>Projects</h1>
         <h2>
@@ -61,15 +135,6 @@ export default function Home() {
         </h2>
 
         <div className={`${styles.cardContainer} ${styles.projects}`}>
-          <Card title={`AtoB Mobility`} desc={`Tools Used: AWS, Linux, NodeJS
-          HTML, CSS, Javascript, MySQL, Flutter<br><br>
-          I am part of a team of former classmates who are currently building a startup company
-          called AtoB Mobility, a ride-sharing service that allows
-          drivers to pickup multiple passengers going to the same or similar destination,
-          reducing the cost of each trip. <br><br>
-          I'm currently helping with hosting the web app via
-          Amazon Web Services and building our mobile app using Flutter so we can deploy it
-          to iOS and Android.`}/>
 
           <Card title={`End-To-End Encrypted Messaging Web App`} desc={`Tools Used: Javascript, Web Cryptography API,
           NodeJS, ExpressJS, WebSocket, WebRTC, VoIP<br><br>

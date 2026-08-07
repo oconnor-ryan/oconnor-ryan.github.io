@@ -58,7 +58,7 @@ export default function Footer() {
         <hr/>
       </div>
 
-      <div className={styles.copyright}>&copy; Ryan O'Connor 2023</div>
+      <div className={styles.copyright}>&copy; Ryan O'Connor 2026</div>
       
       <Script 
         id="smooth-scroll"

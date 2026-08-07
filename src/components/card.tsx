@@ -1,10 +1,18 @@
 import styles from "./card.module.scss";
 
-export default function Card({ title, desc, href }: {title: string, desc: string, href?: string}) {
+export default function Card({ title, desc, href, subtitle, list }: {title: string, desc: string, href?: string, subtitle?: string, list?: string[]}) {
   let cardBody = (
     <>
-      <h4 className={styles.title}>{title}</h4>
-      <p className={styles.desc} dangerouslySetInnerHTML={{__html: desc}}></p>
+      <div className={styles.title}>
+        <h4>{title}</h4>
+        {subtitle ? <h5>{subtitle}</h5> : <></>}
+
+      </div>
+      <div className={styles.desc}>
+        <p dangerouslySetInnerHTML={{__html: desc}}></p>
+        {list ? <ul>{list.map((r,i) => <li key={i}>{r}</li>)}</ul> : <></>}
+      </div>
+
     </>
   );
 

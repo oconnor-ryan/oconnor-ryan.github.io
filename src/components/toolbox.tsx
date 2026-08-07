@@ -7,18 +7,18 @@ export default function Toolbox() {
     <div id="toolboxContainer" className={`${styles.toolboxContainer}`}>
       <img className={styles.toolbox} src="/assets/images/svg/toolbox.svg"></img>
       <ul className={styles.skillContainer}>
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>SASS</li>
+        <li>AWS</li>
+        <li>Azure</li>
+        <li>Kubernetes</li>
+        <li>MySQL</li>
+        <li>PostgreSQL</li>
+        <li>Linux</li>
+        <li>Git</li>
         <li>Javascript</li>
         <li>Typescript</li>
-        <li>NextJS</li>
-        <li>PHP</li>
+        <li>React</li>
+        <li>Python</li>
         <li>NodeJS</li>
-        <li>Linux</li>
-        <li>AWS</li>
-        <li>Git</li>
-        <li>MariaDB / MySQL</li>
         <li>XCode for iOS</li>
         <li>Android Studio</li>
         <li>Flutter</li>
